@@ -1,0 +1,31 @@
+// General variables ----
+$default-fonts    : "Helvetica", Arial, sans-serif;
+$base-font-name   : 'Lato';
+// ----------------------
+
+// Fonts path -----------
+$font-path      : '/fonts/';
+
+$base-font-data : (
+  // 'font-folder', 'font-file-name', 'font-local-1', 'font-local-2', 'font-weight'
+    1: ('lato/', 'lato-regular', 'Lato Regular', 'Lato-Regular', 400),
+    2: ('lato/', 'lato-medium', 'Lato Medium', 'Lato-Medium', 500),
+    3: ('lato/', 'lato-semibold', 'Lato SemiBold', 'Lato-SemiBold', 600),
+    4: ('lato/', 'lato-bold', 'Lato Bold', 'Lato-Bold', 700),
+);
+
+// ----------------------
+
+// Fonts family variables
+$base-font-size     : 62.5%; // 10px
+$base-font-family   : $base-font-name, $default-fonts !default;
+
+// Typography -----------
+@function line_height($lh, $fs) { // lh - line-height, fs - font-size
+  @return $lh / $fs; // value float or integer
+}
+
+$size-body: 1.3rem;
+
+$size-h2: 3.5rem;
+$size-h3: 1.6rem;

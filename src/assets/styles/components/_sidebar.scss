@@ -1,0 +1,39 @@
+.nav-bar {
+  width: 26.7rem;
+  min-width: 26.7rem;
+  margin-right: 2.4rem;
+}
+
+.nav-list {
+  margin-top: 8.4rem;
+
+  .nav-list-item {
+    margin-bottom: 1.6rem;
+  }
+
+  .list-item-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.8rem;
+    border-radius: .6rem;
+    color: $sidebar-text-color;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: all 200ms;
+
+    &.active,
+    &:hover {
+      background: $sidebar-active;
+      color: $white;
+      box-shadow: 0 3px 6px rgba($black, .12);
+    }
+  }
+
+  .icon {
+    @extend %flexCenterChildren;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 2rem;
+    font-size: 2.2rem;
+  }
+}

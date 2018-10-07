@@ -1,0 +1,92 @@
+@import '../../utilities/color';
+@import '../../utilities/fonts_var';
+
+// Buttons styles
+
+.button {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none 0;
+  background-color: transparent;
+  font-family: $base-font-family;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all .4s ease-in-out 0s;
+  user-select: none;
+
+  &-primary {
+    color: $button-primary;
+
+    &:hover {
+      color: darken($button-primary, 15%);
+    }
+  }
+
+  &-secondary {
+    color: $button-secondary;
+
+    &:hover {
+      color: darken($button-secondary, 15%);
+    }
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none 0;
+    background: transparent;
+    color: $button-primary;
+    line-height: 2.2rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 200ms ease-in-out 0s;
+    user-select: none;
+
+    .icon {
+      font-size: 2.2rem;
+    }
+
+    &:hover {
+      color: darken($button-primary, 10%);
+    }
+
+    &.delete {
+      color: $button-delete;
+
+      .icon {
+        margin-right: .8rem;
+      }
+
+      &:hover {
+        color: darken($button-delete, 10%);
+      }
+    }
+
+    &.export-file {
+      .icon {
+        margin-left: .8rem;
+      }
+    }
+  }
+
+  &-group {
+    text-align: right;
+
+    .button {
+      margin-left: 4rem;
+    }
+  }
+}

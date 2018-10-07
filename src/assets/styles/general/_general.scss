@@ -1,0 +1,28 @@
+html {
+  position: relative;
+  min-height: 100%;
+
+  body {
+    height: 100%;
+    min-height: .1rem;
+  }
+}
+
+// General classes for project
+.wrapper {
+  width: 100%;
+}
+
+.container {
+  width: 114rem;
+  margin: 0 auto;
+}
+
+.is-disable {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.link {
+  text-decoration: underline;
+}

@@ -1,0 +1,23 @@
+.main-content {
+  margin-top: $header-height;
+  padding: 2.6rem 0;
+
+  &.login {
+    padding-top: 0;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .content {
+    flex-grow: 3;
+  }
+}
+
+.top-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}

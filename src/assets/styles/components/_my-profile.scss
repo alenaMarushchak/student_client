@@ -1,0 +1,19 @@
+.my-profile {
+  padding: 0;
+
+  &-inner {
+    display: flex;
+
+    .avatar-block {
+      display: flex;
+      align-items: center;
+      padding: 4rem 8rem 4rem 4rem;
+      border-right: .1rem solid rgba($input-border, .2);
+    }
+
+    .form-body {
+      flex-grow: 2;
+      padding: 9rem 5.8rem 3rem 2.6rem;
+    }
+  }
+}

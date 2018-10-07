@@ -1,0 +1,26 @@
+@import '../utilities/variables';
+
+.login-wrapper {
+  @extend %fitBackground;
+  height: calc(100vh - #{$header-height});
+  background-image: url('../img/login-background.png');
+
+  .login-heading {
+    width: 55.8rem;
+    margin: 0 auto;
+    padding: 2.6rem 0;
+  }
+
+  .login-block {
+    width: 55.8rem;
+    margin: 0 auto;
+    padding: 3rem 5rem;
+    border-radius: .8rem;
+    background: $base-bg;
+    box-shadow: 0 16px 30px rgba($black, .16);
+
+    .form-body {
+      padding: 7rem 0 7.2rem;
+    }
+  }
+}

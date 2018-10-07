@@ -1,0 +1,132 @@
+@import '../utilities/color';
+
+// Tables styles
+
+table {
+  border: {
+    collapse: collapse;
+    spacing: 0;
+  };
+}
+
+td,
+th {
+  @extend %textOverflow;
+  padding: 1rem 1.4rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+thead tr {
+  height: 4.5rem;
+  background: $thead-background;
+  color: $thead-text;
+  font-weight: 700;
+}
+
+tbody tr {
+  height: 5rem;
+  border-bottom: .1rem solid $base-border;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+
+  .sort-icon {
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 250ms;
+
+    &:hover {
+      color: darken($thead-text, 10%);
+    }
+  }
+
+  &-top-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.3rem;
+
+    &.right {
+      justify-content: flex-end;
+    }
+
+    .left-side {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-field {
+      margin: 0 5.6rem 0 3.4rem;
+
+      .checkbox-custom {
+        border: .2rem solid $checkbox-checked;
+      }
+
+      .label-text {
+        color: $checkbox-checked;
+      }
+    }
+
+    .info-title {
+      padding: 0;
+    }
+  }
+
+  &-bottom-panel {
+    margin-top: 1.4rem;
+    text-align: right;
+
+    .icon {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.email-status {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: $white;
+  font-size: 2rem;
+  line-height: 2rem;
+  text-align: center;
+
+  &.confirmed {
+    background: $email-confirmed;
+  }
+
+  &.not-confirmed {
+    background: $email-not-confirmed;
+  }
+}
+
+.completed {
+  color: $status-completed;
+}
+
+.in-progress {
+  color: $status-in-progress;
+}
+
+// styles for table cells
+
+.checkbox-cell {
+  width: 3rem;
+  padding-right: 0;
+}
+
+.full-name-cell {
+  width: 20rem;
+  max-width: 18rem;
+}
+
+.email-cell {
+  width: 25rem;
+  max-width: 25rem;
+}

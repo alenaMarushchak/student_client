@@ -1,0 +1,67 @@
+.pagination {
+  display: flex;
+
+  &-item {
+    @extend %flexCenterChildren;
+    min-width: 3.5rem;
+    height: 3.5rem;
+    margin: .4rem;
+    padding: .5rem;
+    border: {
+      width: .1rem;
+      style: solid;
+      color: $pagination-border;
+      radius: .4rem;
+    };
+    background-color: $white;
+    color: $pagination-text;
+    cursor: pointer;
+    transition: all 150ms ease-in-out 0s;
+
+    &:hover,
+    &.active {
+      border-color: $pagination-active;
+      background-color: $pagination-active;
+      color: $white;
+    }
+
+    &.prev,
+    &.next {
+      padding: 0;
+      font-size: 2rem;
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      span {
+        opacity: .5;
+      }
+    }
+  }
+
+  &-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2.6rem 0;
+
+    //.pages-info {
+    //  display: flex;
+    //  align-items: center;
+    //  white-space: nowrap;
+    //
+    //  .select-field {
+    //    margin: 0 1rem;
+    //
+    //    .select {
+    //      width: 7rem;
+    //      height: 3rem;
+    //      padding: 0;
+    //      border: .1rem solid $pagination-border;
+    //      background: $white;
+    //    }
+    //  }
+    //}
+  }
+}
