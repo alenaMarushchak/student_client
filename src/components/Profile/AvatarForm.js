@@ -1,7 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Input from 'components/Input/Input'
-import urlJoin from 'url-join';
 
 function AvatarForm({
   onChange,
@@ -11,17 +8,28 @@ function AvatarForm({
   return (
     <React.Fragment>
       <div className="avatar-block">
-        <div className="upload-file">
-          <div className="user-avatar" style={{ backgroundImage: `url(${preview})` }}></div>
+          <div className="upload-file">
+
+          <div className="user-avatar">There will be avatar</div>
+
           <label className="btn-upload-file">
-            <span className="icon-file-upload"></span>
-            <input type="file" onChange={onChange} accept="image/*" />
+
+            <span className="icon-file-upload"/>
+
+              <input type="file" onChange={onChange} accept="image/*" />
+
           </label>
+
           <button type="button" className="button-icon delete" onClick={cleanAvatar}>
-            <span className="icon-clear"></span>
+
+            <span className="icon-clear"/>
+
           </button>
         </div>
+
+
       </div>
+
     </React.Fragment>
   );
 }

@@ -1,0 +1,42 @@
+// Classes state (for JS). Can use "!important"
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.align {
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-justify {
+    text-align: justify;
+  }
+}
+
+.overflow {
+  &-hidden {
+    overflow: hidden !important;
+  }
+
+  &-auto {
+    overflow: auto !important;
+  }
+}

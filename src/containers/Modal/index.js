@@ -5,12 +5,12 @@ import constants from '../../constants';
 import actions from '../../actions';
 
 const {
-    showModal,
+    //showModal,
     hideModal
 } = actions;
 
 const {
-    modal
+   // modal
 } = constants;
 
 class Modal extends React.Component {
@@ -20,8 +20,8 @@ class Modal extends React.Component {
     }
 
     content = () => {
-        const {modalType, modalContentProps} = this.props;
-        const modalProps = {modalContentProps, closeModal: this.props.hideModal};
+        const {modalType, modalContentProps} = this.props; // eslint-disable-next-line
+        //const modalProps = {modalContentProps, closeModal: this.props.hideModal};
 
         //todo fix
         switch (modalType) {

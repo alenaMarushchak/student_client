@@ -1,0 +1,50 @@
+@import '../../utilities/color';
+@import '../../utilities/fonts_var';
+
+// Form elements styles
+
+input[type='tel'],
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='search'],
+input[type='password'],
+textarea,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.2rem .6rem;
+  border: 0 {
+    bottom-width: .1rem;
+    style: solid;
+    color: rgba($input-border, .8);
+    radius: 0;
+  };
+  background: $input-bg;
+  font-size: 1.5rem;
+  font-weight: 400;
+
+  &::-webkit-input-placeholder {
+    color: rgba($input-placeholder, .5);
+  }
+
+  &::-moz-placeholder {
+    color: rgba($input-placeholder, .5);
+  }
+
+  &:-ms-input-placeholder {
+    color: rgba($input-placeholder, .5);
+  }
+}
+
+textarea {
+  height: 11rem;
+  border-width: .1rem;
+  resize: none;
+}
+
+.input-field,
+.textarea-field {
+  position: relative;
+  margin-bottom: 2.4rem;
+}

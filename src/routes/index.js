@@ -13,11 +13,11 @@ class Routes extends React.Component {
         <Route component={Home} path="/" exact key={'/'}/>,
         <Route component={UsersList} path="/users" exact key={'/users'}/>,
         <Route component={Profile} path="/users/profile" exact key={'/users/profile'}/>,
-        <Redirect from="/users/sign_in" to="/" key={'redirect'}/>,
+        <Redirect from="/users/sign_in" to="/" key={'redirect'}/>
     ];
 
     guestRoutes = [
-        <Route component={Login} path="/users/sign_in" key={'/users/sign_in'}/>,
+        <Route component={Login} path="/users/sign_in" key={'/users/sign_in'}/>
     ];
 
     sharedRoutes = [];

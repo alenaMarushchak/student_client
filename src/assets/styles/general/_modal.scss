@@ -1,0 +1,94 @@
+@import '../utilities/color';
+
+// modal animation -----
+
+@keyframes modalFadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// modal styles -----
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 75.2rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  z-index: 1050;
+  animation: modalFadeInDown .45s both;
+
+  .close {
+    position: absolute;
+    top: -1.9rem;
+    right: -1.9rem;
+    width: 3.8rem;
+    height: 3.8rem;
+    padding: .6rem;
+    border-radius: 50%;
+    background: $modal-close-bg;
+    color: $white;
+    font-size: 2.6rem;
+  }
+
+  &-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($modal-backdrop, .2);
+    z-index: 1040;
+  }
+
+  &-inner {
+    position: relative;
+    padding: 3rem 6rem;
+    border-radius: .8rem;
+    background-color: $modal-bg;
+    box-shadow: 0 3px 30px rgba($black, .16);
+  }
+
+  .heading {
+    margin: 1.8rem 0;
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 3.6rem;
+    text-align: center;
+  }
+
+  .modal-heading {
+    @extend .heading;
+    margin: 0 0 3.3rem;
+    color: $modal-heading-color;
+  }
+
+  .button-group {
+    margin-top: 3.5rem;
+  }
+
+  &.picture {
+    width: auto;
+
+    img {
+      display: block;
+      width: auto;
+      max-width: 108rem;
+      height: auto;
+      max-height: 69.6rem;
+    }
+
+    .modal-inner {
+      padding: 0;
+    }
+  }
+}

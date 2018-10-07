@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import urlJoin from 'url-join';
 
 function Header({
   logged,
@@ -18,19 +16,14 @@ function Header({
       </div>
       {logged && <div className="user-block">
         <div onClick={redirectToProfile} className="user-name">{`${user.firstName} ${user.lastName}`}</div>
-        <div onClick={redirectToProfile} className="user-avatar" style={{ backgroundImage: `url(${urlJoin('/', user.avatar || '')})` }}>
-        </div>
+        <div onClick={redirectToProfile} className="user-avatar"> There will be your avatar </div>
         <button onClick={logout} type="button" className="button log-out">
-          <span className="icon-logout"></span>
+            <span className="icon-logout">Log out</span>
         </button>
       </div>}
     </header>
 
   );
 }
-
-Header.defaultProps = {};
-
-Header.propTypes = {};
 
 export default Header;

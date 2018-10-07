@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { call, put } from 'redux-saga/effects';
+import {call, put} from 'redux-saga/effects';
 import constants from '../../constants';
 import actions from '../../actions';
+import auth from '../../services/auth';
 
 const {
     updateSession,
@@ -13,8 +14,6 @@ const {
     API_LOGOUT
 } = constants;
 
-
-
 const apiLogin = (email, password) => (
     axios.post(API_LOGIN, {
         email,
@@ -23,28 +22,33 @@ const apiLogin = (email, password) => (
 );
 
 const apiLogout = () => (
-    axios.delete(API_LOGOUT)
+    axios.put(API_LOGOUT)
 );
 
-function* loginStory(email, password) {
-    const response = yield call(apiLogin, email, password);
-
-    const user = response.data;
-
-    yield call(updateSessionStory, user);
-
-    return user;
-}
+const writeAuthSessionToStorage = (user, token) => {
+    auth.storeSession(user, token)
+};
 
 function* updateSessionStory(user) {
     yield put(updateSession(user));
 
+    yield call(writeAuthSessionToStorage, user);
+    return user;
+}
+
+function* loginStory(email, password) {
+    const response = yield call(apiLogin, email, password);
+    const user = response.data;
+
+    yield call(updateSessionStory, user);
     return user;
 }
 
 function* logoutStory() {
     yield call(apiLogout);
     yield put(sessionLogout());
+
+    yield call(writeAuthSessionToStorage, {});
 }
 
-export {loginStory, logoutStory, updateSessionStory};
+export {loginStory, logoutStory};

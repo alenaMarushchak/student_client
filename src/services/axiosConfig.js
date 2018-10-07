@@ -1,5 +1,6 @@
 import axios from 'axios';
-import auth from './auth.js';
+import auth from './auth';
+
 axios.defaults.baseURL = 'http://localhost:3001';
 window.axios = axios;
 
@@ -17,29 +18,19 @@ class AxiosConfigurator {
 
     loadLocalStorageToken = () => {
         const {
-            token,
             user
         } = auth.retrieveSession();
-        this.token = token;
-        this.updateToken();
+        this.user = user;
     };
 
     subscribeForSessionChange = () => {
         this.store.subscribe((state) => {
-            const token = this.store.getState().session.token;
-            if (this.token != token) {
-                this.token = token;
-                this.updateToken();
+            const user = this.store.getState().session.user;
+
+            if (this.user !== user) {
+                this.user = user;
             }
         })
-    };
-
-    updateToken = () => {
-        if (this.token) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
-        } else {
-            axios.defaults.headers.common['Authorization'] = null;
-        }
     };
 
     configureAxios = () => {

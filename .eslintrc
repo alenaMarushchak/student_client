@@ -18,7 +18,6 @@
     "mocha": true
   },
   "rules": {
-    "comma-dangle": 1,
     "no-undef": 1,
     "global-strict": 0,
     "no-underscore-dangle": 0,

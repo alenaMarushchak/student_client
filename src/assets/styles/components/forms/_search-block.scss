@@ -1,0 +1,41 @@
+.search-block {
+  display: flex;
+  width: 34.2rem;
+
+  input {
+    margin-right: -.8rem;
+    padding: .8rem 1.6rem;
+    border: {
+      width: .1rem;
+      style: solid;
+      color: rgba($second-text-color, .2);
+      radius: .6rem;
+    };
+    background: transparent;
+
+    &::-webkit-input-placeholder {
+      color: $second-text-color;
+    }
+
+    &::-moz-placeholder {
+      color: $second-text-color;
+    }
+
+    &:-ms-input-placeholder {
+      color: $second-text-color;
+    }
+  }
+
+  .button {
+    width: 3.6rem;
+    height: 3.6rem;
+    padding: .8rem;
+    border: {
+      width: .1rem;
+      style: solid;
+      color: $second-text-color;
+      radius: .6rem;
+    };
+    background: $body-background;
+  }
+}

@@ -16,7 +16,7 @@ import historyCreator from './services/history';
 
 const store = configureStore({});
 
-const axiosConfig = new AxiosConfigurator(store);
+new AxiosConfigurator(store);
 
 sagaMiddleware.run(sagas);
 

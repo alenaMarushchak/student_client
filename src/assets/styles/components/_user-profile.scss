@@ -1,0 +1,86 @@
+.user-avatar {
+  @extend %fitBackground;
+  width: 13rem;
+  height: 13rem;
+  margin-right: 3rem;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba($black, .16);
+  cursor: pointer;
+}
+
+.user-info-block {
+  margin-bottom: 4rem;
+  line-height: 2rem;
+
+  &.base-info {
+    display: flex;
+    margin-top: 1.4rem;
+  }
+
+  .info-title {
+    border-bottom: .1rem solid $user-info-title-border;
+  }
+
+  .user-name {
+    margin: 1rem 0 1.2rem;
+    font-size: 2.4rem;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .user-email {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+
+    .email-status {
+      margin-left: 1.2rem;
+    }
+  }
+
+  .user-phone {
+    margin-bottom: 1.2rem;
+  }
+
+  .user-register-date {
+    color: rgba($base-text-color, .5);
+
+    .date {
+      color: $base-text-color;
+    }
+  }
+
+  .info-field {
+    margin-top: 2rem;
+
+    .label {
+      display: inline-block;
+      width: 16rem;
+      color: rgba($base-text-color, .5);
+      font-weight: 700;
+    }
+
+    .value {
+      display: inline-block;
+
+      &.accent {
+        color: $base-link;
+      }
+    }
+
+    .link {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.info-title {
+  padding-bottom: 1.2rem;
+  color: $user-info-title;
+  font-size: 2.4rem;
+}
+
+.error-container {
+    color: red;
+    margin-top: 5px;
+}

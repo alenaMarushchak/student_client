@@ -8,27 +8,31 @@ const {
 
 const session = (session = {
     user: {},
-    token: null,
-    logged: undefined
+    logged: null
   }, action) => {
+
   switch(action.type) {
+
     case UPDATE_SESSION:
       const newData = { ...session,
         ...action.payload
-      }
+      };
+
       return {
         ...newData,
-        logged: !!(!_.isEmpty(newData.user) && newData.token)
-      }
+        logged: !_.isEmpty(newData.user)
+      };
+
     case SESSION_LOGOUT:
       return {
         ...session,
         user: {},
-        logged: false,
-        token: null
-      }
-    default: return session;
+        logged: false
+      };
+
+    default:
+      return session;
   }
-}
+};
 
 export { session };

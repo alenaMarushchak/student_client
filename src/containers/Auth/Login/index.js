@@ -41,7 +41,7 @@ class Login extends Component {
 }
 
 const connectedLogin = connect(
-    state => ({}),
+    state => ({}),// eslint-disable-next-line
     dispatch => (
         {
             login: () => dispatch(loginSaga()),

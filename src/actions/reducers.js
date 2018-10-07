@@ -1,4 +1,5 @@
-import constants from 'constants';
+import constants from '../constants';
+
 const {
   UPDATE_SESSION,
   SESSION_LOGOUT,
@@ -10,14 +11,11 @@ const {
     CLEAN_DATA
 } = constants;
 
-export const updateSession = (user = null, token = null) => ({
+export const updateSession = (user = null) => ({
   type: UPDATE_SESSION,
   payload: {
     ...(
       user ? { user } : {}
-    ),
-    ...(
-      token ? { token } : {}
     )
   }
 });
@@ -66,9 +64,9 @@ export const showModal = (modalType, modalContentProps = {}) => ({
 });
 
 export const hideModal = () => ({
-  type: modal.HIDE_MODAL,
+  type: modal.HIDE_MODAL
 });
 
 export const cleanData = (type) => ({
-  type: `${CLEAN_DATA}_${type}`,
+  type: `${CLEAN_DATA}_${type}`
 });

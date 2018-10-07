@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Switch, withRouter} from 'react-router-dom';
+import {/*Switch,*/ withRouter} from 'react-router-dom';
 import Routes from '../../routes'
+import Sidebar from '../Sidebar';
+import Header from '../Header'
 import actions from '../../actions';
 import Modal from '../../containers/Modal';
 
@@ -17,16 +19,13 @@ class App extends Component {
         logged  : PropTypes.bool
     };
 
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillMount = () => {
+    componentWillMount() {
         this.props.login();
     };
 
     wrapper = ({children}) => {
         const {logged} = this.props;
+
         if (!logged) {
             return <React.Fragment>{children}</React.Fragment>
         } else {
@@ -48,8 +47,10 @@ class App extends Component {
 
         return (
             <div className="wrapper">
+                <Header/>
                 {children}
                 <this.wrapper>
+                    <Sidebar/>
                     <Routes/>
                 </this.wrapper>
             </div>
@@ -58,7 +59,7 @@ class App extends Component {
 }
 
 const connectedApp = connect((store) => ({
-        logged: store.session.logged,
+        logged: store.session.logged
     }),
     (dispatch) => ({
         login: () => dispatch(loginFromStore())

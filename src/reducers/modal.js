@@ -14,15 +14,15 @@ const modal = (modal = {
       return {
         modalType: action.modalType,
         modalContentProps: action.modalContentProps
-      }
+      };
     case HIDE_MODAL:
       return {
         modalType: null,
         modalContentProps: {}
-      }
+      };
     default:
       return modal;
   }
-}
+};
 
 export { modal };

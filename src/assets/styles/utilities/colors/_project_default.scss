@@ -1,0 +1,49 @@
+// Default --------------
+$black : #000 !default;
+$white : #fff !default;
+// -----------------------
+
+$colors-default : (
+  'light-gray' : #f1f1f3, // $base-border
+  'gray'       : #8f8f8f, //
+  'dark-gray'  : #414141, //
+  'light-blue' : #b5bdce, //
+  'blue'       : #4d4f5c, //
+  'dark-blue'  : #43425d  //
+);
+
+$colors-state : (
+  'red'    : #ff7474, //
+  'green'  : #2cc58c, //
+  'blue'   : #2cb6c5, //
+);
+
+$gray-1    : #f8f9fb;
+$gray-2    : #acacac;
+$gray-3    : #f9f9f9;
+$gray-4    : #e8e9ec;
+$gray-5    : #f5f6fa;
+
+$blue-1    : #808495;
+$blue-2    : #a3a6b4;
+$blue-3    : #6770b7;
+
+$colors : (
+  'default' : $colors-default,
+  'state'   : $colors-state
+);
+
+// usage: color("name-of-type", "name-of-color")
+// to avoid to repeating map-get($colors, ...)
+
+@function color($color, $type) {
+  @if map-has-key($colors, $color) {
+    $curr-color: map-get($colors, $color);
+    @if map-has-key($curr-color, $type) {
+      @return map-get($curr-color, $type);
+    }
+  }
+  
+  @warn "Unknown `#{$type}` in #{$color}.";
+  @return null;
+}

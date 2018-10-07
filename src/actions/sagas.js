@@ -10,8 +10,8 @@ const {
   TOAST_SAGA,
   LOAD_USERS_SAGA,
   LOAD_USER_SAGA,
-  DELETE_USERS_SAGA,
-  UPDATE_USER_SAGA,
+  DELETE_USERS_SAGA
+ // UPDATE_USER_SAGA,
 } = constants;
 
 export const addRequestError = (response) => {
@@ -47,7 +47,6 @@ export const loginFromStore = () => ({
   type: LOGIN_FROM_STORE
 });
 
-// Toasts
 const defaultToast = (toastType, node) => ({
   type: TOAST_SAGA,
   toastType,

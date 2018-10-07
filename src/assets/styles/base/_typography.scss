@@ -1,0 +1,38 @@
+@import '../utilities/fonts_var';
+
+// Typography style
+
+html {
+  font-size: $base-font-size;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  font: {
+    family: $base-font-family;
+    size: $size-body;
+    weight: 400;
+  };
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: {
+    family: $base-font-family;
+    weight: 700;
+  };
+}
+
+h2 {
+  font-size: $size-h2;
+}
+
+h3 {
+  font-size: $size-h3;
+}

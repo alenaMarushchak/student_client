@@ -1,0 +1,64 @@
+@import './colors/project_default';
+
+// Base ------------------
+$base-bg                  : $white;
+$base-text-color          : color('default', 'blue');
+$second-text-color        : color('default', 'dark-gray');
+$base-link                : color('state', 'blue');
+$base-border              : color('default', 'light-gray');
+// -----------------------
+
+// General ---------------
+$body-background          : $gray-1;
+// -----------------------
+
+// Buttons ---------------
+$button-primary           : color('state', 'blue');
+$button-secondary         : $gray-2;
+$button-delete            : color('state', 'red');
+// -----------------------
+
+// Forms -----------------
+$input-bg                 : $white;
+$input-border             : color('default', 'light-blue');
+$input-placeholder        : color('default', 'dark-blue');
+
+$checkbox-border          : $gray-2;
+$checkbox-checked         : color('state', 'blue');
+
+$upload-file              : color('state', 'blue');
+// -----------------------
+
+// Modal -----------------
+$modal-bg                 : $white;
+$modal-shadow             : $black;
+$modal-backdrop           : $black;
+$modal-close-bg           : color('default', 'gray');
+$modal-heading-color      : color('state', 'red');
+// -----------------------
+
+// Sidebar ---------------
+$sidebar-text-color       : color('default', 'gray');
+$sidebar-active           : color('state', 'blue');
+// -----------------------
+
+// Pagination ------------
+$pagination-text          : $base-text-color;
+$pagination-active        : color('state', 'blue');
+$pagination-border        : $gray-4;
+$pagination-arrows        : $blue-1;
+// -----------------------
+
+// Table -----------------
+$thead-background         : $gray-5;
+$thead-text               : $blue-2;
+$email-confirmed          : color('state', 'green');
+$email-not-confirmed      : color('state', 'red');
+$status-in-progress       : color('state', 'green');
+$status-completed         : color('state', 'red');
+// -----------------------
+
+// User info -------------
+$user-info-title          : color('default', 'dark-blue');
+$user-info-title-border   : rgba($blue-3, .2);
+// -----------------------
