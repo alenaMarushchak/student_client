@@ -1,11 +1,9 @@
-import * as reducerConstants from './reducer.js';
 import * as apiConstants from './api.js';
-import * as sagaConstants from './saga.js';
+import * as actionTypes from './actionTypes.js';
 
 const globalConstants = {
-  ...reducerConstants,
   ...apiConstants,
-  ...sagaConstants
+  ...actionTypes
 };
 
 export default globalConstants;

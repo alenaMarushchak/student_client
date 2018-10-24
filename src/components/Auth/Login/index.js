@@ -9,10 +9,10 @@ function Login({
   return (
     <form onSubmit={onSubmit}>
       <div className="form-body">
-        <Input name="email" type="email" placeholder="Email"
+        <Input name="email" type="email" placeholder="Email" value={"admin@admin.com"}
           containerProps={{className: 'input-field'}}
         />
-        <Input name="password" type="password" placeholder="Password"
+        <Input name="password" type="password" placeholder="Password" value={"admin12345"}
           containerProps={{className: 'input-field'}}
         />
       </div>

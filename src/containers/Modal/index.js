@@ -4,13 +4,16 @@ import {connect} from 'react-redux';
 import constants from '../../constants';
 import actions from '../../actions';
 
+import EditUser from '../User/edit';
+import CreateUser from '../User/create';
+
 const {
-    //showModal,
+    showModal,
     hideModal
 } = actions;
 
 const {
-   // modal
+    modal
 } = constants;
 
 class Modal extends React.Component {
@@ -20,15 +23,15 @@ class Modal extends React.Component {
     }
 
     content = () => {
-        const {modalType, modalContentProps} = this.props; // eslint-disable-next-line
-        //const modalProps = {modalContentProps, closeModal: this.props.hideModal};
+        const {modalType, modalContentProps} = this.props;
+        const modalProps = {modalContentProps, closeModal: this.props.hideModal};
 
-        //todo fix
+
         switch (modalType) {
-            case 'EDIT':
-                return <div>edit</div>;
-            case 'CREATE':
-                return <div>create</div>;
+            case modal.type.CREATE_USER:
+                return <CreateUser {...modalProps} />;
+            case modal.type.EDIT_USER:
+                return <EditUser {...modalProps} />;
             default:
                 return null;
         }
@@ -43,6 +46,7 @@ class Modal extends React.Component {
                 isOpen={!!modalType}
                 className="modal-backdrop"
                 overlayClassName="modal-container"
+                ariaHideApp={false}
             >
                 {this.content()}
             </ReactModal>

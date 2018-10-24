@@ -4,7 +4,6 @@ import {Router} from 'react-router-dom';
 import App from './containers/App';
 import AxiosConfigurator from './services/axiosConfig';
 
-import Modal from './containers/Modal';
 import {ToastContainer} from 'react-toastify';
 
 import sagas from './sagas';
@@ -27,7 +26,6 @@ class Root extends Component {
             <Provider store={store}>
                 <Router history={historyCreator.generateHistory()}>
                     <App>
-                        <Modal/>
                         <ToastContainer/>
                     </App>
                 </Router>

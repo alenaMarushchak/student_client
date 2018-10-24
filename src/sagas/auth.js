@@ -1,56 +1,53 @@
-import {call, put, takeLatest, select} from 'redux-saga/effects'
+import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
 import _ from 'lodash';
 import auth from '../services/auth';
+import axios from 'axios';
+import constants from '../constants';
 import actions from '../actions';
-import stories from './stories';
-import constants from '../constants'
 
-let {
-    loginStory,
-    logoutStory
-} = stories;
-
-let {
-    LOGIN_SAGA,
-    LOGOUT_SAGA,
+const {
+    API_LOGIN,
+    API_LOGOUT,
+    LOGIN,
+    LOGOUT,
     LOGIN_FROM_STORE
 } = constants;
 
-let {
-    addErrorsSaga,
+const {
+    requestLogin,
+    requestLoginSuccess,
+    requestLoginError,
     toast,
     updateSession
 } = actions;
 
-function* login({}) {
+function* loginAsync() {
     try {
+        yield put(requestLogin());
         const {email, password} = yield select(store => store.form.login.values);
+        const user = yield call(() => {
+            return axios.post(API_LOGIN, {
+                email,
+                password
+            }).then(res => res.data)
+        });
 
-        const user = yield call(loginStory, email, password);
+        auth.storeSession(user);
 
         yield put(toast.success(`Hello ${user.firstName} ${user.lastName}`));
-    } catch (e) {
-        console.error(e);
 
-        yield put(toast.error(`Email or password is incorrect`));
-        yield put(addErrorsSaga(LOGIN_SAGA, e.response))
+        yield put(requestLoginSuccess(user));
+    } catch (error) {
+        yield put(requestLoginError(error));
     }
 }
 
-function* logout() {
-    try {
-        yield call(logoutStory)
-    } catch (e) {
-        console.error(e);
-    }
-}
+function* logoutAsync() {
+    yield call(() => {
+        return axios.delete(API_LOGOUT)
+    });
 
-function* loginSaga() {
-    yield takeLatest(LOGIN_SAGA, login);
-}
-
-function* logoutSaga() {
-    yield takeLatest(LOGOUT_SAGA, logout)
+    auth.storeSession({});
 }
 
 function* loginFromStore() {
@@ -67,8 +64,16 @@ function* loginFromStore() {
     }
 }
 
+function* loginSaga() {
+    yield takeLatest(LOGIN, loginAsync);
+}
+
+function* logoutSaga() {
+    yield takeLatest(LOGOUT, logoutAsync);
+}
+
 function* loginFromStoreSaga() {
     yield takeLatest(LOGIN_FROM_STORE, loginFromStore)
 }
 
-export {loginSaga, logoutSaga, loginFromStoreSaga};
+export {loginSaga, logoutSaga, loginFromStoreSaga}

@@ -1,38 +1,66 @@
-import _ from 'lodash';
-
 import constants from '../constants';
+import _ from 'lodash';
 const {
-  UPDATE_SESSION,
-  SESSION_LOGOUT
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR,
+    UPDATE_SESSION,
+    LOGOUT
 } = constants;
 
-const session = (session = {
-    user: {},
-    logged: null
-  }, action) => {
+const initialState = {
+    user    : null,
+    logged  : false,
+    loading : false,
+    error   : false,
+    errorMsg: ''
+};
+const session = (state = initialState, action) => {
+    switch (action.type) {
+        case  LOGIN_REQUEST:
 
-  switch(action.type) {
+            return {
+                user    : {},
+                logged  : false,
+                loading : true,
+                error   : false,
+                errorMsg: ''
+            };
+        case LOGIN_SUCCESS:
 
-    case UPDATE_SESSION:
-      const newData = { ...session,
-        ...action.payload
-      };
+            return {
+                user    : action.user,
+                loading : false,
+                logged  : true,
+                error   : false,
+                errorMsg: ''
+            };
+        case LOGIN_ERROR:
 
-      return {
-        ...newData,
-        logged: !_.isEmpty(newData.user)
-      };
-
-    case SESSION_LOGOUT:
-      return {
-        ...session,
-        user: {},
-        logged: false
-      };
-
-    default:
-      return session;
-  }
+            return {
+                user    : {},
+                loading : false,
+                logged  : false,
+                error   : true,
+                errorMsg: action.error.errorMsg
+            };
+        case UPDATE_SESSION:
+            const newData = { ...initialState,
+                ...action.payload
+            };
+            return {
+                ...newData,
+                logged: !_.isEmpty(newData.user)
+            };
+        case LOGOUT:
+            return {
+                ...initialState,
+                user: {},
+                logged: false
+            };
+        default:
+            return state;
+    }
 };
 
-export { session };
+export {session};
