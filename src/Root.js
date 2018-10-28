@@ -10,8 +10,7 @@ import sagas from './sagas';
 import {configureStore, sagaMiddleware} from './stores/configureStore';
 import historyCreator from './services/history';
 
-//import 'styles/main.scss';
-//import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const store = configureStore({});
 

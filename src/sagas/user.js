@@ -10,7 +10,8 @@ const {
     CREATE_USER_SAGA,
     LOAD_USERS_LIST_SAGA,
     LOAD_USER_SAGA,
-    EDIT_USER_SAGA
+    EDIT_USER_SAGA,
+    DELETE_USER_SAGA
 } = constants;
 
 const {
@@ -22,7 +23,8 @@ const {
     addRequestError,
     loadUsersList,
     loadUser,
-    editUser
+    editUser,
+    deleteUser
 } = actions;
 
 function* validateUser(data) {
@@ -71,7 +73,7 @@ function* _createUserSaga() {
 
         const isValid = yield call(validateUser, jsonData);
 
-        if (!isValid) return console.log('not valid');
+        if (!isValid) return;
 
         const response = yield call(apiCreateUser, jsonData);
 
@@ -174,6 +176,17 @@ function* _loadUser({id}) {
     }
 }
 
+function* _deleteUser({id}) {
+    try {
+        yield call(() => axios.delete(`${API_USER}/${id}`));
+
+        yield put(deleteUser(id));
+    } catch (e) {
+        console.error(e);
+        yield put(addRequestError(e.response));
+    }
+}
+
 function* createUserSaga() {
     yield takeLatest(CREATE_USER_SAGA, _createUserSaga);
 }
@@ -190,5 +203,9 @@ function* editUserSaga() {
     yield takeLatest(EDIT_USER_SAGA, _editUserSaga)
 }
 
+function* deleteUserItemSaga() {
+    yield takeLatest(DELETE_USER_SAGA, _deleteUser)
+}
 
-export {createUserSaga, loadUserSaga, loadUsersListSaga, editUserSaga};
+
+export {createUserSaga, loadUserSaga, loadUsersListSaga, editUserSaga, deleteUserItemSaga};

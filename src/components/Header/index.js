@@ -1,29 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {Header, Image, Button, Grid} from 'semantic-ui-react'
 
-function Header({
-  logged,
-  user,
-  logout,
-  redirectToProfile
-}) {
-  return (
-    <header className="main-header">
-      <div className="logo-block">
-        <Link to="/">
-          <img src="/img/logo.png" alt="logo" />
-        </Link>
-      </div>
-      {logged && <div className="user-block">
-        <div onClick={redirectToProfile} className="user-name">{`${user.firstName} ${user.lastName}`}</div>
-        <div onClick={redirectToProfile} className="user-avatar"> There will be your avatar </div>
-        <button onClick={logout} type="button" className="button log-out">
-            <span className="icon-logout">Log out</span>
-        </button>
-      </div>}
-    </header>
+function HeaderComponent({
+                             logged,
+                             user,
+                             logout,
+                             redirectToProfile
+                         }) {
+    return (
+        <Grid>
+            <Grid.Row>
+                {logged && <React.Fragment>
+                    <Grid.Column floated='left' width={5} style={{'padding': '20px'}}>
 
-  );
+                        <Image circular src="/img/logo.jpg" size='tiny' verticalAlign='middle'
+                               onClick={redirectToProfile}/>
+                        <div style={{display: 'inline'}}>
+                            <Header as={'h2'}>
+                                {`${user.firstName} ${user.lastName}`}
+                            </Header>
+                            <Button content={'Log out'} onClick={logout} size='mini'/>
+                        </div>
+                    </Grid.Column>
+                </React.Fragment>
+                }
+            </Grid.Row>
+        </Grid>
+    );
 }
 
-export default Header;
+export default HeaderComponent;

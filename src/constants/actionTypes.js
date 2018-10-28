@@ -53,3 +53,6 @@ export const LOAD_USER_SAGA = 'LOAD_USER_SAGA';
 
 export const EDIT_USER_SAGA = 'EDIT_USER_SAGA';
 export const EDIT_USER = 'EDIT_USER';
+
+export const DELETE_USER_SAGA = 'DELETE_USER_SAGA';
+export const DELETE_USER = 'DELETE_USER';

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getFormValues} from 'redux-form';
-import {Route} from 'react-router-dom';
 import {push} from 'react-router-redux';
+import {Header} from 'semantic-ui-react'
 
 import UsersListView from '../../components/User/list';
 import Toolbar from '../../components/User/list/toolbar';
@@ -12,7 +12,8 @@ import constants from '../../constants';
 
 const {
     loadUsersListSaga,
-    showModal
+    showModal,
+    deleteUserItemSaga
 } = actions;
 
 class UsersList extends Component {
@@ -47,15 +48,12 @@ class UsersList extends Component {
         this.props.getUsersList(page.selected + 1, filters)
     };
 
-    navigateTo = (path) => {
-        this.props.dispatch(push(path))
+    deleteUserItem = (id) => {
+        this.props.deleteUserItem(id);
     };
 
-    showEdit = (props) => {
-        if (props.match.params.id) {
-            this.props.showEditUserModal(props.match.params.id);
-        }
-        return null;
+    navigateTo = (id) => {
+        this.props.dispatch(push(`/users/${id}`));
     };
 
     showCreate = () => {
@@ -68,41 +66,35 @@ class UsersList extends Component {
             page = 1,
             totalPages,
             getUsersList,
-            users
+            users,
         } = this.props;
 
-        return (<div>
-                <div>
-                    <span onClick={this.showCreate}>Create user +</span>
-                </div>
-                <div>
-                    <Toolbar
-                        loadUsersList={getUsersList}
-                    />
-                    <React.Fragment>
-                        <UsersListView
-                            values={users}
-                            navigateTo={this.navigateTo}
-                        />
-                        <Pagination
-                            value={page}
-                            totalPages={totalPages}
-                            onChange={this.onPageChange}
-                        />
+        return (<React.Fragment>
 
-                        <Route path="/users/:id" component={this.showEdit}/>
-                    </React.Fragment>
-                </div>
-            </div>
+                <Header as='h3' onClick={this.showCreate} style={{cursor: 'pointer'}}>Create user +</Header>
+
+                <Toolbar
+                    loadUsersList={getUsersList}
+                />
+                <UsersListView
+                    values={users}
+                    navigateTo={this.navigateTo}
+                    deleteUser={this.deleteUserItem}
+                />
+                <Pagination
+                    value={page}
+                    totalPages={totalPages}
+                    onChange={this.onPageChange}
+                />
+
+            </React.Fragment>
         );
     }
 }
 
 const connectedUsersList = connect(
     store => ({
-        errors     : store.errors[`${constants.CREATE_USER_SAGA}_FRONTEND`],
         users      : store.users.list.values,
-        isLoading  : store.users.isLoading,
         page       : store.users.list.page,
         totalPages : store.users.list.totalPages,
         filters    : store.users.list.filters,
@@ -111,7 +103,7 @@ const connectedUsersList = connect(
     dispatch => (
         {
             getUsersList       : (page, filters) => dispatch(loadUsersListSaga(page, filters)),
-            showEditUserModal  : (id) => dispatch(showModal(constants.modal.type.EDIT_USER, {id})),
+            deleteUserItem     : (id) => dispatch(deleteUserItemSaga(id)),
             showCreateUserModal: () => dispatch(showModal(constants.modal.type.CREATE_USER)),
             dispatch
         }

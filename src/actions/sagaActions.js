@@ -11,7 +11,8 @@ const {
     CREATE_USER_SAGA,
     LOAD_USERS_LIST_SAGA,
     LOAD_USER_SAGA,
-    EDIT_USER_SAGA
+    EDIT_USER_SAGA,
+    DELETE_USER_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -96,6 +97,13 @@ export const loadUserSaga = (id) => ({
 export const editUserSaga = (id) => {
     return ({
         type: EDIT_USER_SAGA,
+        id
+    })
+};
+
+export const deleteUserItemSaga = (id) => {
+    return ({
+        type: DELETE_USER_SAGA,
         id
     })
 };

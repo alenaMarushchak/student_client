@@ -4,6 +4,7 @@ import {Redirect, withRouter, Route, Switch} from 'react-router-dom';
 
 import Login from '../containers/Auth/Login';
 import UsersList from '../containers/UsersList'
+import UserProfile from '../containers/User/item'
 
 const Home = () => (<div>Home</div>);
 const Profile = () => (<div>Profile</div>);
@@ -11,6 +12,7 @@ const Profile = () => (<div>Profile</div>);
 class Routes extends React.Component {
     loggedRoutes = [
         <Route component={Home} path="/" exact key={'/'}/>,
+        <Route path="/users/:id" component={UserProfile} key={'/users/:id'}/>,
         <Route component={UsersList} path="/users*" exact key={'/users'}/>,
         <Route component={Profile} path="/profile" exact key={'/profile'}/>,
         <Redirect from="/sign_in" to="/" key={'redirect'}/>

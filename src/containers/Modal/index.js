@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactModal from 'react-modal';
+import { Modal } from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import constants from '../../constants';
 import actions from '../../actions';
@@ -16,7 +16,7 @@ const {
     modal
 } = constants;
 
-class Modal extends React.Component {
+class ModalComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -42,14 +42,10 @@ class Modal extends React.Component {
             modalType
         } = this.props;
         return (
-            <ReactModal
-                isOpen={!!modalType}
-                className="modal-backdrop"
-                overlayClassName="modal-container"
-                ariaHideApp={false}
+            <Modal open={!!modalType}
             >
                 {this.content()}
-            </ReactModal>
+            </Modal>
         );
     }
 }
@@ -63,7 +59,7 @@ const connectedModal = connect(
         dispatch,
         hideModal: () => dispatch(hideModal())
     })
-)(Modal);
+)(ModalComponent);
 
 
 export default connectedModal;

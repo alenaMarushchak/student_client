@@ -12,7 +12,9 @@ const {
     CLEAN_ERRORS,
     LOAD_USERS_LIST,
     LOAD_USER,
-    modal
+    modal,
+    DELETE_USER,
+    CLEAN_DATA
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -90,4 +92,14 @@ export const loadUser = (value) => ({
     payload: {
         value
     }
+});
+
+
+export const deleteUser = (id) => ({
+    type   : DELETE_USER,
+    payload: id
+});
+
+export const cleanData = (type) => ({
+    type: `${CLEAN_DATA}_${type}`,
 });

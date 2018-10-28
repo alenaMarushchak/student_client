@@ -4,55 +4,62 @@ import actions from '../../actions';
 import constants from "../../constants";
 import EditForm from '../../components/User/editUser';
 import {push} from "react-router-redux";
+import {Button, Modal} from "semantic-ui-react";
 
 const {
-    loadUserSaga,
-    editUserSaga
+    editUserSaga,
 } = actions;
 
-
 class EditUser extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-        this.props.loadUser(this.props.modalContentProps.id);
-    }
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log('onSubmit edit');
+
         this.props.editUser(this.props.modalContentProps.id);
         this.props.dispatch(push('/users'));
         this.props.closeModal()
     };
 
-    closeEditModal = () => {
-        const {closeModal, dispatch} = this.props;
+    closeModal = () => {
+        const {closeModal} = this.props;
 
         closeModal();
-        dispatch(push('/users'));
     };
 
     render() {
         const {
-            modalContentProps,
-            errors,
-            user
+            errors = {},
+            user = {},
+            modalContentProps
         } = this.props;
 
 
-        return (<React.Fragment>
-                <button onClick={this.closeEditModal} type="button" className="button close">
-                    Close modal
-                </button>
-                <EditForm
-                    onSubmit={this.onSubmit}
-                    errors={errors || {}}
-                    initialValues={user}
-                    {...modalContentProps}
-                />
+        return ( <React.Fragment>
+
+                <Modal.Header>Edit user</Modal.Header>
+
+                <Modal.Content>
+                    <EditForm
+                        onSubmit={this.onSubmit}
+                        errors={errors || {}}
+                        initialValues={user}
+                        {...modalContentProps}
+                    />
+                </Modal.Content>
+
+                <Modal.Actions>
+                    <Button color='black' onClick={this.closeModal}>
+                        Close
+                    </Button>
+                    <Button
+                        positive
+                        icon='checkmark'
+                        labelPosition='right'
+                        content="Save"
+                        onClick={this.onSubmit}
+                    />
+                </Modal.Actions>
+
             </React.Fragment>
         );
     }
@@ -60,13 +67,12 @@ class EditUser extends Component {
 
 const connectedEditUser = connect(
     store => ({
-        errors: store.errors[`${constants.CREATE_USER_SAGA}_FRONTEND`],
+        errors: store.errors[`${constants.EDIT_USER_SAGA}_FRONTEND`],
         user  : store.users.selected.value,
     }),
     dispatch => (
         {
             editUser: (id) => dispatch(editUserSaga(id)),
-            loadUser: (id) => dispatch(loadUserSaga(id)),
             dispatch
         }
     ))(EditUser);

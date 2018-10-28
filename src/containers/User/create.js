@@ -4,6 +4,8 @@ import actions from '../../actions';
 import constants from "../../constants";
 import CreateForm from '../../components/User/createUser';
 
+import {Button, Modal} from 'semantic-ui-react'
+
 const {
     createUserSaga
 } = actions;
@@ -20,17 +22,36 @@ class CreateUser extends Component {
     render() {
         const {
             closeModal,
-            errors
+            errors,
+            modalContentProps
         } = this.props;
 
-        return (<React.Fragment>
-                <button onClick={closeModal} type="button" className="button close">
-                    Close modal
-                </button>
-                <CreateForm
-                    onSubmit={this.onSubmit}
-                    errors={errors || {}}
-                />
+        console.log('render modal');
+        return (
+            <React.Fragment>
+
+                <Modal.Header>Create user</Modal.Header>
+                <Modal.Content>
+                    <CreateForm
+                        onSubmit={this.onSubmit}
+                        errors={errors || {}}
+                        {...modalContentProps}
+                    />
+                </Modal.Content>
+
+                <Modal.Actions>
+                    <Button color='black' onClick={closeModal}>
+                        Close
+                    </Button>
+                    <Button
+                        positive
+                        icon='checkmark'
+                        labelPosition='right'
+                        content="Save"
+                        onClick={this.onSubmit}
+                    />
+                </Modal.Actions>
+
             </React.Fragment>
         );
     }
@@ -48,3 +69,7 @@ const connectedCreateUser = connect(
     ))(CreateUser);
 
 export default connectedCreateUser;
+
+
+
+

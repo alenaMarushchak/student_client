@@ -5,7 +5,8 @@ const {
     LOAD_USERS_LIST,
     CLEAN_DATA,
     CREATE_USER,
-    EDIT_USER
+    EDIT_USER,
+    DELETE_USER
 } = constants;
 
 const users = (users = {
@@ -49,9 +50,10 @@ const users = (users = {
         case LOAD_USER:
             return {
                 ...users,
-                selected: {
-                    value: action.payload.value
-                },
+                selected: Object.assign({},
+                    {
+                        value: action.payload.value
+                    })
             };
 
         case `${CLEAN_DATA}_${LOAD_USER}`:
@@ -70,11 +72,10 @@ const users = (users = {
                     values: users.list.values.concat(action.payload)
                 }
             };
-        case EDIT_USER:
+        case EDIT_USER: {
             let index = users.list.values.findIndex(o => o._id === action.payload._id);
 
             users.list.values[index] = action.payload;
-            console.log(action.payload);
             return {
                 ...users,
                 list: {
@@ -82,6 +83,20 @@ const users = (users = {
                     values: [].concat(users.list.values)
                 }
             };
+        }
+        case DELETE_USER: {
+            let index = users.list.values.findIndex(o => o._id === action.payload);
+
+            users.list.values.splice(index, 1);
+
+            return {
+                ...users,
+                list: {
+                    ...users.list,
+                    values: [].concat(users.list.values)
+                }
+            };
+        }
         default:
             return users;
 

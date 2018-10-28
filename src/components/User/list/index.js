@@ -1,36 +1,39 @@
 import React from 'react';
 import Item from './listItem'
+import {Table} from 'semantic-ui-react'
 
 function UsersList({
                        values = [],
-                       navigateTo
+                       navigateTo,
+                       deleteUser
                    }) {
-    return (
-        <React.Fragment>
-            <div className="card">
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th className="full-name-cell">Name</th>
-                        <th className="email-cell">Email</th>
-                        <th>Role</th>
+    return (<Table basic='very' celled collapsing>
 
-                    </tr>
-                    </thead>
+            <Table.Header>
+                <Table.Row>
 
-                    <tbody>
-                    {values.map(item => (
-                        <Item
-                            item={item}
-                            key={item._id}
-                            navigateTo={navigateTo}
-                        />
-                    ))}
-                    </tbody>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Email</Table.HeaderCell>
+                    <Table.HeaderCell>Role</Table.HeaderCell>
+                    <Table.HeaderCell>Actions</Table.HeaderCell>
+                    <Table.HeaderCell/>
 
-                </table>
-            </div>
-        </React.Fragment>
+                </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+                {values.map(item => (
+                    <Item
+                        item={item}
+                        key={item._id}
+                        navigateTo={navigateTo}
+                        deleteUser={deleteUser}
+                    />
+                ))}
+            </Table.Body>
+
+
+        </Table>
     );
 }
 

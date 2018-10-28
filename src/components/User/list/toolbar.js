@@ -1,12 +1,13 @@
 import React from 'react';
 import Input from '../../Input'
 import {reduxForm} from 'redux-form'
+import {Button} from 'semantic-ui-react'
 
 const Toolbar = ({
                      loadUsersList,
                  }) => (
     <React.Fragment>
-        <div className="top-panel">
+        <div className='ui icon input'>
             <Input
                 containerProps={{
                     className: 'search-block'
@@ -16,12 +17,12 @@ const Toolbar = ({
                 }}
                 placeholder="Search..."
                 name="search"
-            >
-                <button onClick={loadUsersList} type="button" className="button">
-                    SEARCH
-                </button>
-            </Input>
+                type='text'
+            />
+
         </div>
+        <Button onClick={loadUsersList} size={'small'} icon='search'/>
+
     </React.Fragment>
 );
 
