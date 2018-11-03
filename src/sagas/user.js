@@ -11,7 +11,8 @@ const {
     LOAD_USERS_LIST_SAGA,
     LOAD_USER_SAGA,
     EDIT_USER_SAGA,
-    DELETE_USER_SAGA
+    DELETE_USER_SAGA,
+    UPLOAD_AVATAR_SAGA
 } = constants;
 
 const {
@@ -43,14 +44,6 @@ const getSearchValue = (store) => (
 );
 
 
-const formatData = (json) => {
-    let data = new FormData();
-
-    Object.keys(json).forEach(field => {
-        data.append(`${field}`, json[field]);
-    });
-    return data;
-};
 
 const apiCreateUser = (data) => (
     axios.post(API_USER, data)

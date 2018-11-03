@@ -4,18 +4,32 @@ import {Redirect, withRouter, Route, Switch} from 'react-router-dom';
 
 import Login from '../containers/Auth/Login';
 import UsersList from '../containers/UsersList'
-import UserProfile from '../containers/User/item'
+import UserProfile from '../containers/User/item';
+import Profile from '../containers/Profile'
 
-const Home = () => (<div>Home</div>);
-const Profile = () => (<div>Profile</div>);
+import {ROLES} from '../constants/custom';
+
+const Home = () => (<div>Home There will be statistic for admin</div>);
+const HomeTeacher = () => (<div>Home There will be some info for teacher </div>);
+const HomeStudent = () => (<div>Home There will be some info for student</div>);
 
 class Routes extends React.Component {
-    loggedRoutes = [
+    adminRoutes = [
         <Route component={Home} path="/" exact key={'/'}/>,
+        <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
         <Route path="/users/:id" component={UserProfile} key={'/users/:id'}/>,
         <Route component={UsersList} path="/users*" exact key={'/users'}/>,
-        <Route component={Profile} path="/profile" exact key={'/profile'}/>,
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
+    ];
+
+    teacherRouter = [
+        <Route component={HomeTeacher} path="/" exact key={'/'}/>,
+        <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
+    ];
+
+    studentRouter = [
+        <Route component={HomeStudent} path="/" exact key={'/'}/>,
+        <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
     ];
 
     guestRoutes = [
@@ -26,9 +40,28 @@ class Routes extends React.Component {
 
     routes = () => {
         const {
-            logged
+            logged,
+            user: {
+                role
+            }
         } = this.props;
-        const routes = logged ? this.loggedRoutes : this.guestRoutes;
+
+        let routes = this.guestRoutes;
+
+        if (logged) {
+            switch (role) {
+                case ROLES.ADMIN:
+                    routes = this.adminRoutes;
+                    break;
+                case ROLES.TEACHER:
+                    routes = this.teacherRouter;
+                    break;
+                default:
+                    routes = this.studentRouter;
+                    break;
+            }
+        }
+
         return ([
             ...this.sharedRoutes,
             ...routes,

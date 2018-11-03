@@ -12,7 +12,8 @@ const {
     LOAD_USERS_LIST_SAGA,
     LOAD_USER_SAGA,
     EDIT_USER_SAGA,
-    DELETE_USER_SAGA
+    DELETE_USER_SAGA,
+    UPLOAD_AVATAR_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -105,5 +106,12 @@ export const deleteUserItemSaga = (id) => {
     return ({
         type: DELETE_USER_SAGA,
         id
+    })
+};
+
+export const uploadAvatarSaga = (avatar) => {
+    return ({
+        type: UPLOAD_AVATAR_SAGA,
+        avatar
     })
 };

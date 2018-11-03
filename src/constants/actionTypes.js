@@ -56,3 +56,5 @@ export const EDIT_USER = 'EDIT_USER';
 
 export const DELETE_USER_SAGA = 'DELETE_USER_SAGA';
 export const DELETE_USER = 'DELETE_USER';
+
+export const UPLOAD_AVATAR_SAGA = 'UPLOAD_AVATAR_SAGA';

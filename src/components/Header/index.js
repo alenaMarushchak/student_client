@@ -14,7 +14,8 @@ function HeaderComponent({
                 {logged && <React.Fragment>
                     <Grid.Column floated='left' width={5} style={{'padding': '20px'}}>
 
-                        <Image circular src="/img/logo.jpg" size='tiny' verticalAlign='middle'
+                        <Image circular src={user.avatar ? user.avatar : "/img/logo.jpg"} size='tiny'
+                               verticalAlign='middle'
                                onClick={redirectToProfile}/>
                         <div style={{display: 'inline'}}>
                             <Header as={'h2'}>
