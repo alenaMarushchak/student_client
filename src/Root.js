@@ -4,15 +4,13 @@ import {Router} from 'react-router-dom';
 import App from './containers/App';
 import AxiosConfigurator from './services/axiosConfig';
 
-import Modal from './containers/Modal';
 import {ToastContainer} from 'react-toastify';
 
 import sagas from './sagas';
 import {configureStore, sagaMiddleware} from './stores/configureStore';
 import historyCreator from './services/history';
 
-//import 'styles/main.scss';
-//import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const store = configureStore({});
 
@@ -27,7 +25,6 @@ class Root extends Component {
             <Provider store={store}>
                 <Router history={historyCreator.generateHistory()}>
                     <App>
-                        <Modal/>
                         <ToastContainer/>
                     </App>
                 </Router>

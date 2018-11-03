@@ -1,50 +1,58 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import {Menu, Icon} from 'semantic-ui-react'
 
-function Sidebar({
-}) {
-  return (
-    <div className="nav-bar">
-      <ul className="nav-list">
+function Sidebar({user}) {
+    return (
 
-        <li className="nav-list-item">
-          <NavLink activeClassName="active" exact to="/" className="list-item-link">
-            <div className="icon">
-              <span className="icon-home"/>
-            </div>
-            <div className="label">Home</div>
-          </NavLink>
-        </li>
+        <Menu>
+            <NavLink exact
+                     to="/"
+                     name='home'
+                     className={`item`}>
 
-        <li className="nav-list-item">
-          <NavLink activeClassName="active" to='/users' className="list-item-link">
-            <div className="icon">
-              <span className="icon-user-management"/>
-            </div>
-            <div className="label">Users management</div>
-          </NavLink>
-        </li>
+                <Icon name={'home'}/>
 
-        <li className="nav-list-item">
-          <NavLink activeClassName="active" to="/subjects" className="list-item-link">
-            <div className="icon">
-              <span className="icon-package-management"/>
-            </div>
-            <div className="label">Subject management</div>
-          </NavLink>
-        </li>
+                Home
 
-        <li className="nav-list-item">
-          <NavLink activeClassName="active" to="/blog" className="list-item-link">
-            <div className="icon">
-              <span className="icon-KPIs"/>
-            </div>
-            <div className="label">Blog management</div>
-          </NavLink>
-        </li>
-      </ul>
-    </div>
-  );
+            </NavLink>
+
+            <NavLink to='/users'
+                     name='users'
+                     className={`item`}>
+
+                <Icon name={'users'}/>
+
+                Users management
+
+            </NavLink>
+
+            <NavLink to="/subjects"
+                     className={`item`}
+                     name='subjects'
+                    >
+
+                <Icon name={'book'}/>
+
+                Subject management
+
+            </NavLink>
+
+
+            <NavLink to="/blog"
+                     className={`item`}
+                     name='blog'>
+
+                <Icon name={'blogger'}/>
+
+                Blog management
+
+            </NavLink>
+
+
+        </Menu>
+
+    );
 }
 
 export default Sidebar;

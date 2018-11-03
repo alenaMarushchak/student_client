@@ -7,6 +7,9 @@ import Sidebar from '../Sidebar';
 import Header from '../Header'
 import actions from '../../actions';
 import Modal from '../../containers/Modal';
+import {
+    Container,
+} from 'semantic-ui-react'
 
 const {
     loginFromStore
@@ -42,18 +45,18 @@ class App extends Component {
 
     render() {
         const {
-            children
+            children,
         } = this.props;
 
         return (
-            <div className="wrapper">
+            <Container>
                 <Header/>
                 {children}
                 <this.wrapper>
                     <Sidebar/>
                     <Routes/>
                 </this.wrapper>
-            </div>
+            </Container>
         );
     }
 }

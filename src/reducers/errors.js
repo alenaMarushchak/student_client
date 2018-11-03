@@ -12,18 +12,18 @@ const errors = (errorsState = {}, {
         case ADD_ERRORS:
             return {
                 ...errorsState,
-                ...{[requestType]: errors}
+                ...{ [requestType]: errors }
             };
         case CLEAN_ERRORS:
             return {
                 ...errorsState,
-                ...{[requestType]: {}},
-                ...{[`${requestType}_FRONTEND`]: {}}
+                ...{ [requestType]: {} },
+                ...{ [`${requestType}_FRONTEND`]: {} }
             };
         default:
             return errorsState;
     }
 };
 
-export {errors};
+export { errors };
 

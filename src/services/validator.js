@@ -29,7 +29,7 @@ class Validator {
     if (!validators[validator]) return;
 
     if (_.isFunction(validators[validator]))
-      return validate(object, validators[validator](object))
+      return validate(object, validators[validator](object));
     else
       return validate(object, constrains);
   }

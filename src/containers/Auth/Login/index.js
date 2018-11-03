@@ -26,22 +26,17 @@ class Login extends Component {
 
     render() {
         return (
-            <main className="main-content login">
-                <div className="login-wrapper">
-                    <h2 className="login-heading">Login</h2>
-                    <div className="login-block">
-                        <LoginForm
-                            onSubmit={this.onSubmit}
-                        />
-                    </div>
-                </div>
-            </main>
+            <React.Fragment>
+                <LoginForm
+                    onSubmit={this.onSubmit}
+                />
+            </React.Fragment>
         );
     }
 }
 
 const connectedLogin = connect(
-    state => ({}),// eslint-disable-next-line
+    state => ({}),
     dispatch => (
         {
             login: () => dispatch(loginSaga()),

@@ -1,5 +1,5 @@
-import * as reducerActions from './reducers.js'
-import * as sagaActions from './sagas.js'
+import * as reducerActions from './reducerActions'
+import * as sagaActions from './sagaActions'
 
 const globalActions = {
   ...reducerActions,

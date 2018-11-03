@@ -9,7 +9,8 @@ const Index = ({
                    type = "text",
                    placeholder,
                    children,
-                   prefixChildren = null
+                   prefixChildren = null,
+                   value
                }) => (
     <div {...containerProps}>
         {prefixChildren}
@@ -22,6 +23,7 @@ const Index = ({
                type={type}
                placeholder={placeholder}
                {...inputProps}
+               value={value}
         />
         {children}
         <div className="error-container">{errors || []}</div>

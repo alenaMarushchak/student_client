@@ -49,7 +49,7 @@ const propTps = {
 };
 
 Error.propTypes = propTps;
-Success.propTypes = propTps
+Success.propTypes = propTps;
 Warning.propTypes = propTps;
 Info.propTypes = propTps;
 
