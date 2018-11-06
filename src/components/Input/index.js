@@ -3,7 +3,6 @@ import {Field} from 'redux-form'
 
 const Index = ({
                    errors,
-                   containerProps = {},
                    inputProps = {},
                    name,
                    type = "text",
@@ -12,7 +11,7 @@ const Index = ({
                    prefixChildren = null,
                    value
                }) => (
-    <div {...containerProps}>
+    <React.Fragment>
         {prefixChildren}
         <Field {...{
             type     : 'text',
@@ -27,6 +26,6 @@ const Index = ({
         />
         {children}
         <div className="error-container">{errors || []}</div>
-    </div>);
+    </React.Fragment>);
 
 export default Index;

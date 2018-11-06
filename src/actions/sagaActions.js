@@ -13,7 +13,14 @@ const {
     LOAD_USER_SAGA,
     EDIT_USER_SAGA,
     DELETE_USER_SAGA,
-    UPLOAD_AVATAR_SAGA
+    UPLOAD_AVATAR_SAGA,
+
+    CREATE_SUBJECT_SAGA,
+    LOAD_SUBJECTS_LIST_SAGA,
+    LOAD_SUBJECT_SAGA,
+    EDIT_SUBJECT_SAGA,
+    DELETE_SUBJECT_SAGA,
+
 } = constants;
 
 export const addRequestError = (response) => {
@@ -113,5 +120,36 @@ export const uploadAvatarSaga = (avatar) => {
     return ({
         type: UPLOAD_AVATAR_SAGA,
         avatar
+    })
+};
+
+
+export const createSubjectSaga = () => ({
+    type: CREATE_SUBJECT_SAGA
+});
+
+
+export const loadSubjectsListSaga = (page = 0, filters = {}) => ({
+    type: LOAD_SUBJECTS_LIST_SAGA,
+    page,
+    filters
+});
+
+export const loadSubjectSaga = (id) => ({
+    type: LOAD_SUBJECT_SAGA,
+    id
+});
+
+export const editSubjectSaga = (id) => {
+    return ({
+        type: EDIT_SUBJECT_SAGA,
+        id
+    })
+};
+
+export const deleteSubjectItemSaga = (id) => {
+    return ({
+        type: DELETE_SUBJECT_SAGA,
+        id
     })
 };

@@ -4,7 +4,7 @@ import actions from '../../actions';
 import constants from "../../constants";
 import {push} from "react-router-redux";
 
-import {Header, Button, Container, Image, Icon, Label, Form} from 'semantic-ui-react'
+import {Header, Button, Container, Image, Icon, Label, Segment} from 'semantic-ui-react'
 
 const {
     loadUserSaga,
@@ -28,7 +28,6 @@ class UserProfile extends Component {
 
     showEditModal = () => {
         let id = this.props.user._id;
-
         this.props.showEditUserModal(id);
     };
 
@@ -52,21 +51,43 @@ class UserProfile extends Component {
 
                     <Header as={'h2'} content={'User Information'}/>
 
-                    <Image src='/img/logo.jpg' size='small' circular/>
+                    <Segment.Group horizontal>
 
-                    <Form>
-                        <Form.Group widths='equal'>
-                            <Form.Input fluid label='First name' readOnly value={firstName}/>
-                            <Form.Input fluid label='Last name' readOnly value={lastName}/>
-                        </Form.Group>
-                        <Form.Group widths='equal'>
-                            <Form.Input fluid label='Role' readOnly value={role === 5 ? 'Teacher' : 'Student'}/>
-                        </Form.Group>
-                    </Form>
+                        <Segment>
+                            <Image src='/img/logo.jpg' size='small' circular/>
+                        </Segment>
 
-                    <Label>
-                        <Icon name='mail'/> {email}
-                    </Label>
+                        <Segment>
+                            <Header as='h5' attached='top'>
+                                First name
+                            </Header>
+
+                            <Segment attached color='teal'>{firstName}</Segment>
+
+                            <Header as='h5' attached='top'>
+                                Last name
+                            </Header>
+
+                            <Segment attached color='teal'>{lastName}</Segment>
+                        </Segment>
+
+                    </Segment.Group>
+
+                    <Header as='h5' attached='top'>
+                        Role
+                    </Header>
+
+                    <Segment attached color='teal'>{role === 5 ? 'Teacher' : 'Student'}</Segment>
+
+                    <Header as='h5' attached='top'>
+                        Email
+                    </Header>
+
+                    <Segment attached color='teal'>
+                        <Label>
+                            <Icon name='mail'/> {email}
+                        </Label>
+                    </Segment>
 
                 </Container>
 

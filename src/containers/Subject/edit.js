@@ -2,44 +2,52 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import actions from '../../actions';
 import constants from "../../constants";
-import CreateForm from '../../components/User/createUser';
-
-import {Button, Modal} from 'semantic-ui-react'
+import EditForm from '../../components/Subject/editSubject';
+import {push} from "react-router-redux";
+import {Button, Modal} from "semantic-ui-react";
 
 const {
-    createUserSaga
+    editSubjectSaga,
 } = actions;
 
-
-class CreateUser extends Component {
+class EditSubject extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.createUser();
+
+        this.props.editSubject(this.props.modalContentProps.id);
+        this.props.dispatch(push('/subjects'));
+    };
+
+    closeModal = () => {
+        const {closeModal} = this.props;
+
+        closeModal();
     };
 
     render() {
         const {
-            closeModal,
-            errors,
+            errors = {},
+            subject = {},
             modalContentProps
         } = this.props;
 
-        console.log('render modal');
-        return (
-            <React.Fragment>
 
-                <Modal.Header>Create user</Modal.Header>
+        return ( <React.Fragment>
+
+                <Modal.Header>Edit subject</Modal.Header>
+
                 <Modal.Content>
-                    <CreateForm
+                    <EditForm
                         onSubmit={this.onSubmit}
                         errors={errors || {}}
+                        initialValues={subject}
                         {...modalContentProps}
                     />
                 </Modal.Content>
 
                 <Modal.Actions>
-                    <Button color='black' onClick={closeModal}>
+                    <Button color='black' onClick={this.closeModal}>
                         Close
                     </Button>
                     <Button
@@ -56,19 +64,16 @@ class CreateUser extends Component {
     }
 }
 
-const connectedCreateUser = connect(
+const connectedEditSubject = connect(
     store => ({
-        errors: store.errors[`${constants.CREATE_USER_SAGA}_FRONTEND`],
+        errors: store.errors[`${constants.EDIT_SUBJECT_SAGA}_FRONTEND`],
+        subject  : store.subjects.selected.value,
     }),
     dispatch => (
         {
-            createUser: () => dispatch(createUserSaga()),
+            editSubject: (id) => dispatch(editSubjectSaga(id)),
             dispatch
         }
-    ))(CreateUser);
+    ))(EditSubject);
 
-export default connectedCreateUser;
-
-
-
-
+export default connectedEditSubject;

@@ -17,7 +17,6 @@ class EditUser extends Component {
 
         this.props.editUser(this.props.modalContentProps.id);
         this.props.dispatch(push('/users'));
-        this.props.closeModal()
     };
 
     closeModal = () => {

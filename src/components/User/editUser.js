@@ -5,14 +5,13 @@ import {Form} from "semantic-ui-react";
 
 const FormComponent = ({
                   errors,
-                  onSubmit,
                   initialValues
               }) => (
     <Form>
         <Form.Field>
             <label>First Name</label>
             <Input name="firstName" type="text" placeholder="First Name"
-                   containerProps={{className: 'input-field'}}
+
                    errors={errors.firstName}
                    value={initialValues.firstName}
             />
@@ -20,7 +19,7 @@ const FormComponent = ({
         <Form.Field>
             <label>Last Name</label>
             <Input name="lastName" type="text" placeholder="Last Name"
-                   containerProps={{className: 'input-field'}}
+
                    errors={errors.lastName}
                    value={initialValues.lastName}
             />
@@ -28,7 +27,7 @@ const FormComponent = ({
         <Form.Field>
             <label>Email</label>
             <Input name="email" type="email" placeholder="Email"
-                   containerProps={{className: 'input-field'}}
+
                    errors={errors.email}
                    value={initialValues.email}
             />
@@ -36,7 +35,7 @@ const FormComponent = ({
         <Form.Field>
             <label>Role</label>
             <Input name="role" type="text" placeholder="role"
-                   containerProps={{className: 'input-field'}}
+
                    errors={errors.role}
                    value={initialValues.role}
             />

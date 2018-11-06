@@ -4,13 +4,15 @@ import * as userSagas from './user.js'
 import * as errorSagas from './errors.js'
 import * as toastSagas from './toasts.js'
 import * as profileSagas from './profile.js'
+import * as subjectSagas from './subject.js'
 
 const sagas = {
     ...authSagas,
     ...userSagas,
     ...errorSagas,
     ...toastSagas,
-    ...profileSagas
+    ...profileSagas,
+    ...subjectSagas
 };
 
 export default function* root() {
