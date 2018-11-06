@@ -25,16 +25,18 @@ const {
     loadUsersList,
     loadUser,
     editUser,
-    deleteUser
+    deleteUser,
+    hideModal
 } = actions;
 
-function* validateUser(data) {
-    const errors = validator.validate(data, 'createUser');
+function* validateUser(data, type, action) {
+    const errors = validator.validate(data, type);
+
     if (errors) {
-        yield put(addValidateError(CREATE_USER_SAGA, errors));
+        yield put(addValidateError(action, errors));
         return false;
     } else {
-        yield put(cleanErrors(CREATE_USER_SAGA));
+        yield put(cleanErrors(action));
         return true;
     }
 }
@@ -42,7 +44,6 @@ function* validateUser(data) {
 const getSearchValue = (store) => (
     (getFormValues('usersToolbar')(store) || {search: ''}).search
 );
-
 
 
 const apiCreateUser = (data) => (
@@ -64,7 +65,7 @@ function* _createUserSaga() {
             role     : generatedFields.role,
         };
 
-        const isValid = yield call(validateUser, jsonData);
+        const isValid = yield call(validateUser, jsonData, 'createUser', CREATE_USER_SAGA);
 
         if (!isValid) return;
 
@@ -74,7 +75,9 @@ function* _createUserSaga() {
 
         yield put(createUser(user));
 
-        yield put(toast.success('User was created successfully'))
+        yield put(toast.success('User was created successfully'));
+
+        yield put(hideModal());
     } catch (e) {
         yield put(addErrorsSaga(CREATE_USER_SAGA, e.response));
     }
@@ -83,28 +86,38 @@ function* _createUserSaga() {
 function* _editUserSaga({id}) {
     try {
         const generatedFields = yield select(store => (getFormValues('editUser')(store)));
+        const {firstName, lastName, email, role} = generatedFields;
+
+        const oldFields = yield select(store => store.users.selected.value);
         const jsonData = {};
 
-        if (generatedFields.firstName) {
-            jsonData.firstName = generatedFields.firstName;
+        if (firstName && oldFields.firstName !== firstName) {
+            jsonData.firstName = firstName;
         }
 
-        if (generatedFields.lastName) {
-            jsonData.lastName = generatedFields.lastName;
+        if (lastName && oldFields.lastName !== lastName) {
+            jsonData.lastName = lastName;
         }
 
-        if (generatedFields.email) {
-            jsonData.email = generatedFields.email;
+        if (email && oldFields.email !== email) {
+            jsonData.email = email;
         }
 
-        if (generatedFields.role) {
-            jsonData.role = generatedFields.role;
+        if (role && oldFields.role !== role) {
+            jsonData.role = role;
         }
 
-        const isValid = yield call(validateUser, jsonData);
+        if (!Object.keys(jsonData).length) {
+
+            yield put(toast.error('Nothing to update!'));
+            yield put(hideModal());
+
+            return;
+        }
+
+        const isValid = yield call(validateUser, jsonData, 'editUser', EDIT_USER_SAGA);
 
         if (!isValid) {
-            console.log('not valid');
             return;
         }
 
@@ -114,7 +127,9 @@ function* _editUserSaga({id}) {
 
         yield put(editUser(user));
 
-        yield put(toast.success('User was updated successfully'))
+        yield put(toast.success('User was updated successfully'));
+
+        yield put(hideModal())
     } catch (e) {
         yield put(addErrorsSaga(EDIT_USER_SAGA, e.response));
     }

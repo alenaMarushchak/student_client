@@ -1,11 +1,13 @@
 import React from 'react';
-import { Modal } from 'semantic-ui-react'
+import {Modal} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import constants from '../../constants';
 import actions from '../../actions';
 
 import EditUser from '../User/edit';
 import CreateUser from '../User/create';
+import CreateSubject from '../Subject/create';
+import EditSubject from '../Subject/edit';
 
 const {
     showModal,
@@ -32,6 +34,10 @@ class ModalComponent extends React.Component {
                 return <CreateUser {...modalProps} />;
             case modal.type.EDIT_USER:
                 return <EditUser {...modalProps} />;
+            case modal.type.CREATE_SUBJECT:
+                return <CreateSubject {...modalProps} />;
+            case modal.type.EDIT_SUBJECT:
+                return <EditSubject {...modalProps} />;
             default:
                 return null;
         }

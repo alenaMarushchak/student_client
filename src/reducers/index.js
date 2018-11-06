@@ -5,6 +5,7 @@ import * as sessionReducer from './session.js';
 import * as errorReducer from './errors.js';
 import * as userReducer from './users.js';
 import * as modalReducer from './modal.js';
+import * as subjectReducer from './subjects.js';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     ...sessionReducer,
     ...errorReducer,
     ...userReducer,
-    ...modalReducer
+    ...modalReducer,
+    ...subjectReducer
 });
 
 export default rootReducer;

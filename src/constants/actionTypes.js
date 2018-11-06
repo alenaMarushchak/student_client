@@ -3,8 +3,10 @@ export const modal = {
     SHOW_MODAL: 'SHOW_MODAL',
     HIDE_MODAL: 'HIDE_MODAL',
     type      : {
-        CREATE_USER: 'CREATE_USER',
-        EDIT_USER  : 'EDIT_USER',
+        CREATE_USER   : 'CREATE_USER',
+        EDIT_USER     : 'EDIT_USER',
+        EDIT_SUBJECT  : 'EDIT_SUBJECT',
+        CREATE_SUBJECT: 'CREATE_SUBJECT',
     },
     route     : {
         CREATE_USER: '/user',
@@ -19,7 +21,7 @@ export const toast = {
         ERROR  : 'ERROR',
         INFO   : 'INFO'
     }
-}
+};
 
 export const TOAST_SAGA = 'TOAST_SAGA';
 export const UPDATE_SESSION = 'UPDATE_SESSION';
@@ -58,3 +60,19 @@ export const DELETE_USER_SAGA = 'DELETE_USER_SAGA';
 export const DELETE_USER = 'DELETE_USER';
 
 export const UPLOAD_AVATAR_SAGA = 'UPLOAD_AVATAR_SAGA';
+
+
+export const CREATE_SUBJECT_SAGA = 'CREATE_SUBJECT_SAGA';
+export const CREATE_SUBJECT = 'CREATE_SUBJECT';
+
+export const LOAD_SUBJECTS_LIST = 'LOAD_SUBJECTS_LIST';
+export const LOAD_SUBJECT = 'LOAD_SUBJECT';
+
+export const LOAD_SUBJECTS_LIST_SAGA = 'LOAD_SUBJECTS_LIST_SAGA';
+export const LOAD_SUBJECT_SAGA = 'LOAD_SUBJECT_SAGA';
+
+export const EDIT_SUBJECT_SAGA = 'EDIT_SUBJECT_SAGA';
+export const EDIT_SUBJECT = 'EDIT_SUBJECT';
+
+export const DELETE_SUBJECT_SAGA = 'DELETE_SUBJECT_SAGA';
+export const DELETE_SUBJECT = 'DELETE_SUBJECT';

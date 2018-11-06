@@ -46,11 +46,13 @@ function* handleResponseByStatus(response) {
             yield put(toast.warning('Internal server error'));
             break;
         default:
+            break;
     }
 }
 
 function* handleErrors(requestType, handler, errors, response) {
     yield call(handleResponseByStatus, response);
+    console.log(requestType, handler, errors, response);
     switch (handler) {
         case TOAST_HANDLER:
             yield put(toast.error(errors));

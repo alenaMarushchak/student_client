@@ -4,7 +4,9 @@ import {Redirect, withRouter, Route, Switch} from 'react-router-dom';
 
 import Login from '../containers/Auth/Login';
 import UsersList from '../containers/UsersList'
+import SubjectsList from '../containers/SubjectsList'
 import UserProfile from '../containers/User/item';
+import Subject from '../containers/Subject/item';
 import Profile from '../containers/Profile'
 
 import {ROLES} from '../constants/custom';
@@ -19,6 +21,8 @@ class Routes extends React.Component {
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
         <Route path="/users/:id" component={UserProfile} key={'/users/:id'}/>,
         <Route component={UsersList} path="/users*" exact key={'/users'}/>,
+        <Route path="/subjects/:id" component={Subject} key={'/subjects/:id'}/>,
+        <Route component={SubjectsList} path="/subjects*" exact key={'/subjects'}/>,
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
 

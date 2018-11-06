@@ -5,6 +5,7 @@ const {
     LOGIN_SUCCESS,
     LOGIN_ERROR,
     LOGOUT,
+    ADD_ERRORS,
     EDIT_USER,
     UPDATE_SESSION,
     API_ERROR_SAGA,
@@ -14,7 +15,13 @@ const {
     LOAD_USER,
     modal,
     DELETE_USER,
-    CLEAN_DATA
+    CLEAN_DATA,
+
+    LOAD_SUBJECTS_LIST,
+    EDIT_SUBJECT,
+    CREATE_SUBJECT,
+    DELETE_SUBJECT,
+    LOAD_SUBJECT
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -32,9 +39,17 @@ export const requestLogin = () => {
     return {type: LOGIN_REQUEST}
 };
 
+export const addErrors = (requestType, errors) => {
+    return {
+        type: ADD_ERRORS,
+        errors: errors,
+        requestType: requestType
+    }
+};
+
 export const cleanErrors = (requestType) => {
     return {
-        type       : CLEAN_ERRORS,
+        type: CLEAN_ERRORS,
         requestType: requestType
     }
 };
@@ -102,4 +117,43 @@ export const deleteUser = (id) => ({
 
 export const cleanData = (type) => ({
     type: `${CLEAN_DATA}_${type}`,
+});
+
+
+export const createSubject = (subject) => {
+    return {
+        type   : CREATE_SUBJECT,
+        payload: subject
+    }
+};
+
+export const editSubject = (subject) => {
+    return {
+        type   : EDIT_SUBJECT,
+        payload: subject
+    }
+};
+
+
+export const loadSubjectsList = (values, page = 0, filters = {}, totalPages = 0) => ({
+    type   : LOAD_SUBJECTS_LIST,
+    payload: {
+        values,
+        page,
+        filters,
+        totalPages
+    }
+});
+
+export const loadSubject = (value) => ({
+    type   : LOAD_SUBJECT,
+    payload: {
+        value
+    }
+});
+
+
+export const deleteSubject = (id) => ({
+    type   : DELETE_SUBJECT,
+    payload: id
 });
