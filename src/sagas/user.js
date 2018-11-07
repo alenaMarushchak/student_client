@@ -151,6 +151,7 @@ function* _loadUsersList({filters = {}, page = 0}) {
             ...filters,
         };
 
+        console.log(apiFilters);
         const response = yield call(() => axios.get(API_USER, {
             params: {
                 ...apiFilters

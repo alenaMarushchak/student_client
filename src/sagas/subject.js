@@ -152,7 +152,6 @@ function* _loadSubjectsList({filters = {}, page = 0}) {
         yield put(loadSubjectsList(subjects, newPage, {...oldFilters, search, ...filters}, pages));
     } catch (e) {
         yield put(addRequestError(e.response));
-        console.error(e);
     }
 }
 
@@ -163,7 +162,6 @@ function* _loadSubject({id}) {
 
         yield put(loadSubject(subject));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }

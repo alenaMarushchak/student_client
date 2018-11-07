@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import actions from '../../actions';
-import constants from "../../constants";
-import CreateForm from '../../components/User/createUser';
+import actions from '../../../actions';
+import constants from "../../../constants";
+import CreateForm from '../../../components/Admin/Subject/createSubject';
 
 import {Button, Modal} from 'semantic-ui-react'
 
 const {
-    createUserSaga
+    createSubjectSaga
 } = actions;
 
 
-class CreateUser extends Component {
+class CreateSubject extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.createUser();
+        this.props.createSubject();
     };
 
     render() {
@@ -25,11 +25,10 @@ class CreateUser extends Component {
             modalContentProps
         } = this.props;
 
-        console.log('render modal');
         return (
             <React.Fragment>
 
-                <Modal.Header>Create user</Modal.Header>
+                <Modal.Header>Create subject</Modal.Header>
                 <Modal.Content>
                     <CreateForm
                         onSubmit={this.onSubmit}
@@ -56,18 +55,18 @@ class CreateUser extends Component {
     }
 }
 
-const connectedCreateUser = connect(
+const connectedCreateSubject = connect(
     store => ({
-        errors: store.errors[`${constants.CREATE_USER_SAGA}_FRONTEND`],
+        errors: store.errors[`${constants.CREATE_SUBJECT_SAGA}_FRONTEND`],
     }),
     dispatch => (
         {
-            createUser: () => dispatch(createUserSaga()),
+            createSubject: () => dispatch(createSubjectSaga()),
             dispatch
         }
-    ))(CreateUser);
+    ))(CreateSubject);
 
-export default connectedCreateUser;
+export default connectedCreateSubject;
 
 
 

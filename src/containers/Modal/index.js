@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import constants from '../../constants';
 import actions from '../../actions';
 
-import EditUser from '../User/edit';
-import CreateUser from '../User/create';
-import CreateSubject from '../Subject/create';
-import EditSubject from '../Subject/edit';
+import EditUser from '../Admin/User/edit';
+import CreateUser from '../Admin/User/create';
+import CreateSubject from '../Admin/Subject/create';
+import EditSubject from '../Admin/Subject/edit';
 
 const {
     showModal,
