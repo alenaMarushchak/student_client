@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import actions from '../../actions';
-import constants from "../../constants";
-import EditForm from '../../components/User/editUser';
+import actions from '../../../actions/index';
+import constants from "../../../constants/index";
+import EditForm from '../../../components/Admin/Subject/editSubject';
 import {push} from "react-router-redux";
 import {Button, Modal} from "semantic-ui-react";
 
 const {
-    editUserSaga,
+    editSubjectSaga,
 } = actions;
 
-class EditUser extends Component {
+class EditSubject extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
 
-        this.props.editUser(this.props.modalContentProps.id);
-        this.props.dispatch(push('/users'));
+        this.props.editSubject(this.props.modalContentProps.id);
+        this.props.dispatch(push('/subjects'));
     };
 
     closeModal = () => {
@@ -28,20 +28,20 @@ class EditUser extends Component {
     render() {
         const {
             errors = {},
-            user = {},
+            subject = {},
             modalContentProps
         } = this.props;
 
 
         return ( <React.Fragment>
 
-                <Modal.Header>Edit user</Modal.Header>
+                <Modal.Header>Edit subject</Modal.Header>
 
                 <Modal.Content>
                     <EditForm
                         onSubmit={this.onSubmit}
                         errors={errors || {}}
-                        initialValues={user}
+                        initialValues={subject}
                         {...modalContentProps}
                     />
                 </Modal.Content>
@@ -64,16 +64,16 @@ class EditUser extends Component {
     }
 }
 
-const connectedEditUser = connect(
+const connectedEditSubject = connect(
     store => ({
-        errors: store.errors[`${constants.EDIT_USER_SAGA}_FRONTEND`],
-        user  : store.users.selected.value,
+        errors: store.errors[`${constants.EDIT_SUBJECT_SAGA}_FRONTEND`],
+        subject  : store.subjects.selected.value,
     }),
     dispatch => (
         {
-            editUser: (id) => dispatch(editUserSaga(id)),
+            editSubject: (id) => dispatch(editSubjectSaga(id)),
             dispatch
         }
-    ))(EditUser);
+    ))(EditSubject);
 
-export default connectedEditUser;
+export default connectedEditSubject;

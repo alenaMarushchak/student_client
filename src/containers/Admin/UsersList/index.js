@@ -4,11 +4,11 @@ import {getFormValues} from 'redux-form';
 import {push} from 'react-router-redux';
 import {Header} from 'semantic-ui-react'
 
-import UsersListView from '../../components/User/list';
-import Toolbar from '../../components/User/list/toolbar';
-import Pagination from '../../components/Pagination'
-import actions from '../../actions';
-import constants from '../../constants';
+import UsersListView from '../../../components/Admin/User/list/index';
+import Toolbar from '../../../components/Admin/User/list/toolbar';
+import Pagination from '../../../components/Pagination/index'
+import actions from '../../../actions/index';
+import constants from '../../../constants/index';
 
 const {
     loadUsersListSaga,
@@ -24,10 +24,10 @@ class UsersList extends Component {
     componentDidMount() {
         const {
             page,
-            filters
+            //filters
         } = this.props;
 
-        this.props.getUsersList(page === 0 ? 1 : page, filters);
+        this.props.getUsersList(page === 0 ? 1 : page );
     }
 
     componentWillReceiveProps(nextProps) {
@@ -102,7 +102,7 @@ const connectedUsersList = connect(
     }),
     dispatch => (
         {
-            getUsersList       : (page, filters) => dispatch(loadUsersListSaga(page, filters)),
+            getUsersList       : (page) => dispatch(loadUsersListSaga(page)),
             deleteUserItem     : (id) => dispatch(deleteUserItemSaga(id)),
             showCreateUserModal: () => dispatch(showModal(constants.modal.type.CREATE_USER)),
             dispatch

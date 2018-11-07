@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../components/Input'
+import Input from '../../Input/index'
 import {reduxForm} from 'redux-form';
 import {Form} from "semantic-ui-react";
 

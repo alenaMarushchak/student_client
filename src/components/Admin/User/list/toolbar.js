@@ -1,10 +1,10 @@
 import React from 'react';
-import Input from '../../Input'
+import Input from '../../../Input/index'
 import {reduxForm} from 'redux-form'
 import {Button} from 'semantic-ui-react'
 
 const Toolbar = ({
-                     loadUsersList,
+                     loadUsersList
                  }) => (
     <React.Fragment>
         <div className='ui icon input'>
@@ -13,13 +13,12 @@ const Toolbar = ({
                     className: 'search-block'
                 }}
                 inputProps={{
-                    className: 'session',
+                    className: 'search-block',
                 }}
                 placeholder="Search..."
                 name="search"
                 type='text'
             />
-
         </div>
         <Button onClick={loadUsersList} size={'small'} icon='search'/>
 

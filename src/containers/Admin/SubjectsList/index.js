@@ -4,11 +4,11 @@ import {getFormValues} from 'redux-form';
 import {push} from 'react-router-redux';
 import {Header} from 'semantic-ui-react'
 
-import SubjectsListView from '../../components/Subject/list';
-import Toolbar from '../../components/Subject/list/toolbar';
-import Pagination from '../../components/Pagination'
-import actions from '../../actions';
-import constants from '../../constants';
+import SubjectsListView from '../../../components/Admin/Subject/list';
+import Toolbar from '../../../components/Admin/Subject/list/toolbar';
+import Pagination from '../../../components/Pagination'
+import actions from '../../../actions';
+import constants from '../../../constants';
 
 const {
     loadSubjectsListSaga,

@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {Redirect, withRouter, Route, Switch} from 'react-router-dom';
 
 import Login from '../containers/Auth/Login';
-import UsersList from '../containers/UsersList'
-import SubjectsList from '../containers/SubjectsList'
-import UserProfile from '../containers/User/item';
-import Subject from '../containers/Subject/item';
+import UsersList from '../containers/Admin/UsersList'
+import SubjectsList from '../containers/Admin/SubjectsList'
+import UserProfile from '../containers/Admin/User/item';
+import Subject from '../containers/Admin/Subject/item';
 import Profile from '../containers/Profile'
 
 import {ROLES} from '../constants/custom';

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import actions from '../../actions';
-import constants from "../../constants";
+import actions from '../../../actions/index';
+import constants from "../../../constants/index";
 import {push} from "react-router-redux";
 
 import {Header, Button, Container, Image, Segment} from 'semantic-ui-react'
@@ -42,12 +42,9 @@ class UserProfile extends Component {
             } = {}
         } = this.props;
 
-
-        return (<React.Fragment>
+        let content = name ? <React.Fragment>
                 <Container>
-
                     <Header as={'h2'} content={'User Information'}/>
-
 
                     <Segment>
                         <Image src='/img/logo.jpg' size='small' circular/>
@@ -62,11 +59,15 @@ class UserProfile extends Component {
 
 
                     </Segment>
-
-
                 </Container>
-
                 <Button content='Edit' primary onClick={this.showEditModal}/>
+            </React.Fragment> :
+            <Header as={'h2'} content={'Not found subject...'}/>;
+
+        return (<React.Fragment>
+
+                {content}
+
                 <Button content='Go back' secondary onClick={this.goBack}/>
 
             </React.Fragment>
