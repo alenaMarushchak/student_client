@@ -6,7 +6,7 @@ const {
     CLEAN_DATA,
     CREATE_USER,
     EDIT_USER,
-    DELETE_USER
+    DELETE_USER,
 } = constants;
 
 const users = (users = {
@@ -22,7 +22,7 @@ const users = (users = {
 }, action) => {
     switch (action.type) {
 
-        case LOAD_USERS_LIST:
+        case LOAD_USERS_LIST: {
             const {
                 values,
                 page,
@@ -37,6 +37,7 @@ const users = (users = {
                     totalPages
                 },
             };
+        }
 
         case `${CLEAN_DATA}_${LOAD_USERS_LIST}`:
             return {

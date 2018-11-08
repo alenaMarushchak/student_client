@@ -76,3 +76,6 @@ export const EDIT_SUBJECT = 'EDIT_SUBJECT';
 
 export const DELETE_SUBJECT_SAGA = 'DELETE_SUBJECT_SAGA';
 export const DELETE_SUBJECT = 'DELETE_SUBJECT';
+
+export const SORT_USERS_SAGA = 'SORT_USERS_SAGA';
+export const SORT_USERS = 'SORT_USERS';

@@ -29,6 +29,12 @@ const {
     hideModal
 } = actions;
 
+const SORT_ASC = 1;
+const SORT_DESC = -1;
+
+const defaultSortKey = 'name';
+const defaultSortOrder = SORT_ASC;
+
 function* validateUser(data, type, action) {
     const errors = validator.validate(data, type);
 
@@ -137,21 +143,24 @@ function* _editUserSaga({id}) {
 
 function* _loadUsersList({filters = {}, page = 0}) {
     try {
-        const [oldPage, oldFilters] = yield select(store => [
-            store.users.list.page, store.users.list.filters
+        const [oldPage] = yield select(store => [
+            store.users.list.page
         ]);
 
         const search = yield select(getSearchValue);
         const newPage = (page > 0 ? page : oldPage);
 
+        let {sortKey = defaultSortKey, sortOrder = defaultSortOrder} = filters;
+
         const apiFilters = {
             page: newPage,
             search,
-            ...oldFilters,
-            ...filters,
+            sort: {
+                sortKey,
+                sortOrder
+            }
         };
 
-        console.log(apiFilters);
         const response = yield call(() => axios.get(API_USER, {
             params: {
                 ...apiFilters
@@ -166,7 +175,7 @@ function* _loadUsersList({filters = {}, page = 0}) {
             limit
         } = response.data.meta;
 
-        yield put(loadUsersList(users, newPage, {...oldFilters, search, ...filters}, pages));
+        yield put(loadUsersList(users, newPage, {search, ...filters}, pages));
     } catch (e) {
         yield put(addRequestError(e.response));
         console.error(e);
