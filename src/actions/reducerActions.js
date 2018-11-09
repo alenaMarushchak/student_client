@@ -21,7 +21,15 @@ const {
     EDIT_SUBJECT,
     CREATE_SUBJECT,
     DELETE_SUBJECT,
-    LOAD_SUBJECT
+    LOAD_SUBJECT,
+
+    LOAD_GROUPS_LIST,
+    EDIT_GROUP,
+    CREATE_GROUP,
+    DELETE_GROUP,
+    LOAD_GROUP,
+    REMOVE_SUBJECT_FROM_GROUP,
+    ADD_SUBJECT_TO_GROUP
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -156,4 +164,55 @@ export const loadSubject = (value) => ({
 export const deleteSubject = (id) => ({
     type   : DELETE_SUBJECT,
     payload: id
+});
+
+
+export const createGroup = (group) => {
+    return {
+        type   : CREATE_GROUP,
+        payload: group
+    }
+};
+
+export const editGroup = (group) => {
+    return {
+        type   : EDIT_GROUP,
+        payload: group
+    }
+};
+
+
+export const loadGroupsList = (values, page = 0, filters = {}, totalPages = 0) => ({
+    type   : LOAD_GROUPS_LIST,
+    payload: {
+        values,
+        page,
+        filters,
+        totalPages
+    }
+});
+
+export const loadGroup = (value) => ({
+    type   : LOAD_GROUP,
+    payload: {
+        value
+    }
+});
+
+
+export const deleteGroup = (id) => ({
+    type   : DELETE_GROUP,
+    payload: id
+});
+
+export const addSubjectToGroup = ({subject, group}) => ({
+    type   : ADD_SUBJECT_TO_GROUP,
+    subject,
+    group
+});
+
+export const removeSubjectFromGroup = ({subject, group}) => ({
+    type   : REMOVE_SUBJECT_FROM_GROUP,
+    subject,
+    group
 });

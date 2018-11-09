@@ -1,15 +1,15 @@
 import constants from '../constants';
 
 const {
-    LOAD_USER,
-    LOAD_USERS_LIST,
+    LOAD_GROUP,
+    LOAD_GROUPS_LIST,
     CLEAN_DATA,
-    CREATE_USER,
-    EDIT_USER,
-    DELETE_USER,
+    CREATE_GROUP,
+    EDIT_GROUP,
+    DELETE_GROUP
 } = constants;
 
-const users = (users = {
+const groups = (groups = {
     list    : {
         values    : [],
         page      : 0,
@@ -22,87 +22,88 @@ const users = (users = {
 }, action) => {
     switch (action.type) {
 
-        case LOAD_USERS_LIST: {
+        case LOAD_GROUPS_LIST:
             const {
                 values,
                 page,
                 totalPages
             } = action.payload;
             return {
-                ...users,
+                ...groups,
                 list: {
-                    ...users.list,
+                    ...groups.list,
                     values,
                     page,
                     totalPages
                 },
             };
-        }
 
-        case `${CLEAN_DATA}_${LOAD_USERS_LIST}`:
+        case `${CLEAN_DATA}_${LOAD_GROUPS_LIST}`:
             return {
-                ...users,
+                ...groups,
                 list: {
-                    ...users.list,
+                    ...groups.list,
                     values: [],
                 },
             };
 
-        case LOAD_USER:
+        case LOAD_GROUP:
             return {
-                ...users,
+                ...groups,
                 selected: Object.assign({},
                     {
                         value: action.payload.value
                     })
             };
 
-        case `${CLEAN_DATA}_${LOAD_USER}`:
+        case `${CLEAN_DATA}_${LOAD_GROUP}`:
             return {
-                ...users,
+                ...groups,
                 selected: {
                     value: {}
                 },
             };
 
-        case CREATE_USER:
+        case CREATE_GROUP:
             return {
-                ...users,
+                ...groups,
                 list: {
-                    ...users.list,
-                    values: users.list.values.concat(action.payload)
+                    ...groups.list,
+                    values: groups.list.values.concat(action.payload)
                 }
             };
-        case EDIT_USER: {
-            let index = users.list.values.findIndex(o => o._id === action.payload._id);
+        case EDIT_GROUP: {
+            let index = groups.list.values.findIndex(o => o._id === action.payload._id);
 
-            users.list.values[index] = action.payload;
+            groups.list.values[index] = action.payload;
             return {
-                ...users,
+                ...groups,
                 list: {
-                    ...users.list,
-                    values: [].concat(users.list.values)
-                }
-            };
-        }
-        case DELETE_USER: {
-            let index = users.list.values.findIndex(o => o._id === action.payload);
-
-            users.list.values.splice(index, 1);
-
-            return {
-                ...users,
-                list: {
-                    ...users.list,
-                    values: [].concat(users.list.values)
+                    ...groups.list,
+                    values: [].concat(groups.list.values)
                 }
             };
         }
+
+        case DELETE_GROUP: {
+            let index = groups.list.values.findIndex(o => o._id === action.payload);
+
+            groups.list.values.splice(index, 1);
+
+            return {
+                ...groups,
+                list: {
+                    ...groups.list,
+                    values: [].concat(groups.list.values)
+                }
+            };
+        }
+
         default:
-            return users;
+            return groups;
 
     }
 };
 
-export {users};
+export {groups};
 

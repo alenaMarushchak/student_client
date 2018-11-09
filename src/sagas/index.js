@@ -5,6 +5,7 @@ import * as errorSagas from './errors.js'
 import * as toastSagas from './toasts.js'
 import * as profileSagas from './profile.js'
 import * as subjectSagas from './subject.js'
+import * as groupSagas from './group.js'
 
 const sagas = {
     ...authSagas,
@@ -12,7 +13,8 @@ const sagas = {
     ...errorSagas,
     ...toastSagas,
     ...profileSagas,
-    ...subjectSagas
+    ...subjectSagas,
+    ...groupSagas
 };
 
 export default function* root() {

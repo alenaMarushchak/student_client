@@ -6,6 +6,7 @@ import * as errorReducer from './errors.js';
 import * as userReducer from './users.js';
 import * as modalReducer from './modal.js';
 import * as subjectReducer from './subjects.js';
+import * as groupReducer from './groups.js';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     ...errorReducer,
     ...userReducer,
     ...modalReducer,
-    ...subjectReducer
+    ...subjectReducer,
+    ...groupReducer
 });
 
 export default rootReducer;

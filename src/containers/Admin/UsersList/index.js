@@ -4,11 +4,11 @@ import {getFormValues} from 'redux-form';
 import {push} from 'react-router-redux';
 import {Header} from 'semantic-ui-react'
 
-import UsersListView from '../../../components/Admin/User/list/index';
+import UsersListView from '../../../components/Admin/User/list';
 import Toolbar from '../../../components/Admin/User/list/toolbar';
-import Pagination from '../../../components/Pagination/index'
-import actions from '../../../actions/index';
-import constants from '../../../constants/index';
+import Pagination from '../../../components/Pagination'
+import actions from '../../../actions';
+import constants from '../../../constants';
 
 const {
     loadUsersListSaga,
@@ -19,27 +19,53 @@ const {
 class UsersList extends Component {
     constructor(props) {
         super(props);
+
+        const {
+            filters: {
+                sortKey = 'name',
+                sortOrder = 1
+            }
+        } = this.props;
+
+        this.state = {
+            ...this.props.filters,
+            sortKey,
+            sortOrder
+        };
     }
 
     componentDidMount() {
         const {
             page,
-            //filters
+            filters
         } = this.props;
 
-        this.props.getUsersList(page === 0 ? 1 : page );
+        this.props.getUsersList(page === 0 ? 1 : page, filters);
     }
 
     componentWillReceiveProps(nextProps) {
         if ((nextProps.toolbarVals || {}).search !== (this.props.toolbarVals || {}).search) {
             this.search();
         }
+
+        if (nextProps.filters !== this.props.filters) {
+            this.setState = {
+                ...nextProps.filters
+            }
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state !== prevState) {
+            this.props.getUsersList(this.props.page === 0 ? 1 : this.props.page, this.state);
+        }
     }
 
     search = () => {
         clearTimeout(this.timeoutId);
+        let {filters} = this.props.filters;
         this.timeoutId = setTimeout(() => {
-            this.props.getUsersList(1);
+            this.props.getUsersList(1, filters);
         }, 500);
     };
 
@@ -60,14 +86,26 @@ class UsersList extends Component {
         this.props.showCreateUserModal();
     };
 
+    sortList = (e) => {
+        let sortKey = e.target.dataset.sortkey;
+        let oldSortOrder = this.state.sortOrder;
+
+        this.setState({
+            sortKey,
+            sortOrder: -1 * oldSortOrder
+        });
+    };
+
     render() {
 
         const {
             page = 1,
             totalPages,
             getUsersList,
-            users,
+            users
         } = this.props;
+
+        let {sortKey, sortOrder} = this.state;
 
         return (<React.Fragment>
 
@@ -80,6 +118,9 @@ class UsersList extends Component {
                     values={users}
                     navigateTo={this.navigateTo}
                     deleteUser={this.deleteUserItem}
+                    sortList={this.sortList}
+                    activeSortField={sortKey}
+                    activeSortOrder={sortOrder}
                 />
                 <Pagination
                     value={page}
@@ -102,7 +143,7 @@ const connectedUsersList = connect(
     }),
     dispatch => (
         {
-            getUsersList       : (page) => dispatch(loadUsersListSaga(page)),
+            getUsersList       : (page, filters) => dispatch(loadUsersListSaga(page, filters)),
             deleteUserItem     : (id) => dispatch(deleteUserItemSaga(id)),
             showCreateUserModal: () => dispatch(showModal(constants.modal.type.CREATE_USER)),
             dispatch

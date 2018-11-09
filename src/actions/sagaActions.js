@@ -21,6 +21,14 @@ const {
     EDIT_SUBJECT_SAGA,
     DELETE_SUBJECT_SAGA,
 
+    CREATE_GROUP_SAGA,
+    LOAD_GROUPS_LIST_SAGA,
+    LOAD_GROUP_SAGA,
+    EDIT_GROUP_SAGA,
+    DELETE_GROUP_SAGA,
+    ADD_SUBJECT_TO_GROUP_SAGA,
+    REMOVE_SUBJECT_FROM_GROUP_SAGA
+
 } = constants;
 
 export const addRequestError = (response) => {
@@ -123,7 +131,7 @@ export const uploadAvatarSaga = (avatar) => {
     })
 };
 
-
+//subjects
 export const createSubjectSaga = () => ({
     type: CREATE_SUBJECT_SAGA
 });
@@ -151,5 +159,52 @@ export const deleteSubjectItemSaga = (id) => {
     return ({
         type: DELETE_SUBJECT_SAGA,
         id
+    })
+};
+
+//Groups
+export const createGroupSaga = () => ({
+    type: CREATE_GROUP_SAGA
+});
+
+
+export const loadGroupsListSaga = (page = 0, filters = {}) => ({
+    type: LOAD_GROUPS_LIST_SAGA,
+    page,
+    filters
+});
+
+export const loadGroupSaga = (id) => ({
+    type: LOAD_GROUP_SAGA,
+    id
+});
+
+export const editGroupSaga = (id) => {
+    return ({
+        type: EDIT_GROUP_SAGA,
+        id
+    })
+};
+
+export const deleteGroupItemSaga = (id) => {
+    return ({
+        type: DELETE_GROUP_SAGA,
+        id
+    })
+};
+
+export const addSubjectToGroupSaga = ({id, subjectId}) => {
+    return ({
+        type: ADD_SUBJECT_TO_GROUP_SAGA,
+        id,
+        subjectId
+    })
+};
+
+export const removeSubjectFromGroupSaga = ({id, subjectId}) => {
+    return ({
+        type: REMOVE_SUBJECT_FROM_GROUP_SAGA,
+        id,
+        subjectId
     })
 };
