@@ -6,8 +6,12 @@ import actions from '../../actions';
 
 import EditUser from '../Admin/User/edit';
 import CreateUser from '../Admin/User/create';
+
 import CreateSubject from '../Admin/Subject/create';
 import EditSubject from '../Admin/Subject/edit';
+
+import EditGroup from '../Admin/StudentsGroup/edit';
+import CreateGroup from '../Admin/StudentsGroup/create';
 
 const {
     showModal,
@@ -38,6 +42,10 @@ class ModalComponent extends React.Component {
                 return <CreateSubject {...modalProps} />;
             case modal.type.EDIT_SUBJECT:
                 return <EditSubject {...modalProps} />;
+            case modal.type.CREATE_GROUP:
+                return <CreateGroup {...modalProps} />;
+            case modal.type.EDIT_GROUP:
+                return <EditGroup {...modalProps} />;
             default:
                 return null;
         }

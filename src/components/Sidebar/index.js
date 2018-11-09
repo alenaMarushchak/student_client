@@ -21,7 +21,7 @@ function Sidebar({user}) {
                      name='users'
                      className={`item`}>
 
-                <Icon name={'users'}/>
+                <Icon name={'address card outline'}/>
 
                 Users management
 
@@ -35,6 +35,17 @@ function Sidebar({user}) {
                 <Icon name={'book'}/>
 
                 Subject management
+
+            </NavLink>
+
+            <NavLink to="/groups"
+                     className={`item`}
+                     name='groups'
+            >
+
+                <Icon name={'group'}/>
+
+                Group management
 
             </NavLink>
 

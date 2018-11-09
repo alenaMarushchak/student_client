@@ -9,6 +9,9 @@ import UserProfile from '../containers/Admin/User/item';
 import Subject from '../containers/Admin/Subject/item';
 import Profile from '../containers/Profile'
 
+import Group from '../containers/Admin/StudentsGroup/item';
+import GroupList from '../containers/Admin/StudentsGroupList';
+
 import {ROLES} from '../constants/custom';
 
 const Home = () => (<div>Home There will be statistic for admin</div>);
@@ -19,10 +22,16 @@ class Routes extends React.Component {
     adminRoutes = [
         <Route component={Home} path="/" exact key={'/'}/>,
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
+
         <Route path="/users/:id" component={UserProfile} key={'/users/:id'}/>,
         <Route component={UsersList} path="/users*" exact key={'/users'}/>,
+
         <Route path="/subjects/:id" component={Subject} key={'/subjects/:id'}/>,
         <Route component={SubjectsList} path="/subjects*" exact key={'/subjects'}/>,
+
+        <Route path="/groups/:id" component={Group} key={'/groups/:id'}/>,
+        <Route path="/groups*" component={GroupList} exact key={'/groups/:id'}/>,
+
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
 

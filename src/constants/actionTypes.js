@@ -7,6 +7,8 @@ export const modal = {
         EDIT_USER     : 'EDIT_USER',
         EDIT_SUBJECT  : 'EDIT_SUBJECT',
         CREATE_SUBJECT: 'CREATE_SUBJECT',
+        EDIT_GROUP    : 'EDIT_GROUP',
+        CREATE_GROUP  : 'CREATE_GROUP',
     },
     route     : {
         CREATE_USER: '/user',
@@ -77,5 +79,25 @@ export const EDIT_SUBJECT = 'EDIT_SUBJECT';
 export const DELETE_SUBJECT_SAGA = 'DELETE_SUBJECT_SAGA';
 export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
-export const SORT_USERS_SAGA = 'SORT_USERS_SAGA';
-export const SORT_USERS = 'SORT_USERS';
+
+export const LOAD_GROUPS_LIST = 'LOAD_GROUPS_LIST';
+export const LOAD_GROUPS_LIST_SAGA = 'LOAD_GROUPS_LIST_SAGA';
+
+export const EDIT_GROUP = 'EDIT_GROUP';
+export const EDIT_GROUP_SAGA = 'EDIT_GROUP_SAGA';
+
+export const CREATE_GROUP = 'CREATE_GROUP';
+export const CREATE_GROUP_SAGA = 'CREATE_GROUP_SAGA';
+
+export const DELETE_GROUP = 'DELETE_GROUP';
+export const DELETE_GROUP_SAGA = 'DELETE_GROUP_SAGA';
+
+export const LOAD_GROUP = 'LOAD_GROUP';
+export const LOAD_GROUP_SAGA = 'LOAD_GROUP_SAGA';
+
+export const ADD_SUBJECT_TO_GROUP = 'ADD_SUBJECT_TO_GROUP';
+export const ADD_SUBJECT_TO_GROUP_SAGA = 'ADD_SUBJECT_TO_GROUP_SAGA';
+
+export const REMOVE_SUBJECT_FROM_GROUP = 'REMOVE_SUBJECT_FROM_GROUP';
+export const REMOVE_SUBJECT_FROM_GROUP_SAGA = 'REMOVE_SUBJECT_FROM_GROUP_SAGA';
+
