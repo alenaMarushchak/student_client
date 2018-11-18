@@ -3,10 +3,14 @@ import validator from '../services/validator'
 import {getFormValues} from 'redux-form';
 import axios from 'axios';
 import constants from '../constants';
+
+import {ROLES_BY_VALUE} from "../constants/custom";
+
 import actions from '../actions';
 
 const {
-    API_SUBJECT,
+    API,
+    API_TYPES,
     CREATE_SUBJECT_SAGA,
     LOAD_SUBJECTS_LIST_SAGA,
     LOAD_SUBJECT_SAGA,
@@ -45,12 +49,12 @@ const getSearchValue = (store) => (
 );
 
 
-const apiCreate = (data) => (
-    axios.post(API_SUBJECT, data)
+const apiCreate = (API, data) => (
+    axios.post(API, data)
 );
 
-const apiEdit = (data, id) => (
-    axios.patch(`${API_SUBJECT}/${id}`, data)
+const apiEdit = (API, data, id) => (
+    axios.patch(`${API}/${id}`, data)
 );
 
 function* _createSubjectSaga() {
@@ -65,7 +69,9 @@ function* _createSubjectSaga() {
 
         if (!isValid) return;
 
-        const response = yield call(apiCreate, jsonData);
+        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
+
+        const response = yield call(apiCreate, API_REQUEST, jsonData);
 
         const subject = response.data;
 
@@ -105,7 +111,9 @@ function* _editSubjectSaga({id}) {
             return;
         }
 
-        const response = yield call(apiEdit, jsonData, id);
+        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
+
+        const response = yield call(apiEdit, API_REQUEST, jsonData, id);
 
         const subject = response.data;
 
@@ -121,6 +129,10 @@ function* _editSubjectSaga({id}) {
 
 function* _loadSubjectsList({filters = {}, page = 0}) {
     try {
+        const user = yield select(store => store.session.user);
+
+        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[user.role]];
+
         const [oldPage, oldFilters] = yield select(store => [
             store.subjects.list.page, store.subjects.list.filters
         ]);
@@ -135,7 +147,7 @@ function* _loadSubjectsList({filters = {}, page = 0}) {
             ...filters,
         };
 
-        const response = yield call(() => axios.get(API_SUBJECT, {
+        const response = yield call(() => axios.get(API_REQUEST, {
             params: {
                 ...apiFilters
             }
@@ -157,7 +169,15 @@ function* _loadSubjectsList({filters = {}, page = 0}) {
 
 function* _loadSubject({id}) {
     try {
-        const response = yield call(() => axios.get(`${API_SUBJECT}/${id}`));
+        const user = yield select(store => store.session.user);
+
+        if (!user || !user.role) {
+            return yield put(addRequestError({status: 401}));
+        }
+
+        let API_REQUEST = API[API_TYPES.SUBJECT][user.role];
+
+        const response = yield call(() => axios.get(`${API_REQUEST}/${id}`));
         const subject = response.data;
 
         yield put(loadSubject(subject));
@@ -168,7 +188,9 @@ function* _loadSubject({id}) {
 
 function* _deleteSubject({id}) {
     try {
-        yield call(() => axios.delete(`${API_SUBJECT}/${id}`));
+        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
+
+        yield call(() => axios.delete(`${API_REQUEST}/${id}`));
 
         yield put(deleteSubject(id));
     } catch (e) {
@@ -196,6 +218,5 @@ function* editSubjectSaga() {
 function* deleteSubjectItemSaga() {
     yield takeLatest(DELETE_SUBJECT_SAGA, _deleteSubject)
 }
-
 
 export {createSubjectSaga, loadSubjectSaga, loadSubjectsListSaga, editSubjectSaga, deleteSubjectItemSaga};
