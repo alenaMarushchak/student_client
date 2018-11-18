@@ -9,3 +9,5 @@ export const API_SUBJECT = '/admin/subject';
 
 export const API_GROUP = '/admin/group';
 
+
+export const API_SUBJECT_SELECT = '/select/subject';

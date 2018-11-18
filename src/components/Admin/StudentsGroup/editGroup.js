@@ -1,9 +1,8 @@
 import React from 'react';
-import Input from '../../Input/index'
+import Input from '../../CustomElements/Input/index'
 import {reduxForm} from 'redux-form';
 import {Form} from "semantic-ui-react";
 
-//TODO change edit
 const FormComponent = ({
                            errors,
                            initialValues

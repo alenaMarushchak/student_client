@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {reduxForm} from 'redux-form'
-import Input from '../../Input';
+import Input from '../../CustomElements/Input';
 import {Button, Form, Grid, Header, Image, Segment, Icon, Divider} from 'semantic-ui-react'
 
 function Login({

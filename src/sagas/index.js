@@ -6,6 +6,7 @@ import * as toastSagas from './toasts.js'
 import * as profileSagas from './profile.js'
 import * as subjectSagas from './subject.js'
 import * as groupSagas from './group.js'
+import * as selectSagas from './select.js'
 
 const sagas = {
     ...authSagas,
@@ -14,7 +15,8 @@ const sagas = {
     ...toastSagas,
     ...profileSagas,
     ...subjectSagas,
-    ...groupSagas
+    ...groupSagas,
+    ...selectSagas
 };
 
 export default function* root() {

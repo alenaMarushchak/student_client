@@ -6,7 +6,7 @@ import {Header} from 'semantic-ui-react'
 
 import GroupsListView from '../../../components/Admin/StudentsGroup/list';
 import Toolbar from '../../../components/Admin/StudentsGroup/list/toolbar';
-import Pagination from '../../../components/Pagination'
+import Pagination from '../../../components/CustomElements/Pagination'
 import actions from '../../../actions';
 import constants from '../../../constants';
 
@@ -52,7 +52,7 @@ class GroupsList extends Component {
     };
 
     navigateTo = (id) => {
-        this.props.dispatch(push(`/subjects/${id}`));
+        this.props.dispatch(push(`/groups/${id}`));
     };
 
     showCreate = () => {

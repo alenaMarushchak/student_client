@@ -4,7 +4,9 @@ import actions from '../../../actions';
 import constants from "../../../constants";
 import CreateForm from '../../../components/Admin/StudentsGroup/createGroup';
 
-import {Button, Modal} from 'semantic-ui-react'
+import {Button, Header, Modal} from 'semantic-ui-react'
+import MultiSelectComponent from "../../CustomElements/MultiSelect";
+import {MULTI_SELECT_TYPES} from "../../../constants/custom";
 
 const {
     createGroupSaga
@@ -12,10 +14,40 @@ const {
 
 
 class CreateGroup extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            subjects: []
+        }
+    }
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.createGroup();
+
+        const subjects = this.state.subjects;
+
+        this.props.createGroup(subjects);
+    };
+
+    handelAddItem = (option) => {
+        const selected = this.state.subjects;
+
+        selected.push(option);
+
+        this.setState({
+            subjects: [].concat(selected),
+        });
+    };
+
+    handelDeleteItem = (option) => {
+        const selected = this.state.subjects;
+
+        const index = selected.findIndex(item => item._id === option._id);
+
+        selected.splice(index, 1);
+
+        this.setState({subjects: [].concat(selected)});
     };
 
     render() {
@@ -34,6 +66,14 @@ class CreateGroup extends Component {
                         onSubmit={this.onSubmit}
                         errors={errors || {}}
                         {...modalContentProps}
+                    />
+
+                    <Header as='h3' content={'Subjects'}/>
+                    <MultiSelectComponent
+                        typeOfApi={MULTI_SELECT_TYPES.SUBJECT}
+                        selectedOptions={this.state.subjects}
+                        addItem={this.handelAddItem}
+                        deleteItem={this.handelDeleteItem}
                     />
                 </Modal.Content>
 
@@ -61,7 +101,7 @@ const connectedCreateGroup = connect(
     }),
     dispatch => (
         {
-            createGroup: () => dispatch(createGroupSaga()),
+            createGroup: (subjects) => dispatch(createGroupSaga(subjects)),
             dispatch
         }
     ))(CreateGroup);

@@ -27,17 +27,17 @@ class GroupProfile extends Component {
     }
 
     showEditModal = () => {
-        let id = this.props.subject._id;
+        let id = this.props.group._id;
         this.props.showEditGroupModal(id);
     };
 
     goBack = () => {
-        this.props.dispatch(push(`/subjects`));
+        this.props.dispatch(push(`/groups`));
     };
 
     render() {
         const {
-            subject: {
+            group: {
                 name
             } = {}
         } = this.props;
@@ -58,7 +58,7 @@ class GroupProfile extends Component {
                 </Container>
                 <Button content='Edit' primary onClick={this.showEditModal}/>
             </React.Fragment> :
-            <Header as={'h2'} content={'Not found subject...'}/>;
+            <Header as={'h2'} content={'Not found group...'}/>;
 
         return (<React.Fragment>
 
@@ -73,7 +73,7 @@ class GroupProfile extends Component {
 
 const connectedGroupProfile = connect(
     store => ({
-        subject: store.subjects.selected.value,
+        group: store.groups.selected.value,
     }),
     dispatch => (
         {
