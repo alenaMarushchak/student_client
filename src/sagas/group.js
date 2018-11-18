@@ -53,12 +53,13 @@ const apiEdit = (data, id) => (
     axios.patch(`${API_GROUP}/${id}`, data)
 );
 
-function* _createGroupSaga() {
+function* _createGroupSaga({subjects}) {
     try {
         const generatedFields = yield select(store => (getFormValues('createGroup')(store)));
 
         const jsonData = {
             name: generatedFields.name,
+            subjects
         };
 
         const isValid = yield call(validateUser, jsonData, 'createGroup', CREATE_GROUP_SAGA);
@@ -79,7 +80,7 @@ function* _createGroupSaga() {
     }
 }
 
-function* _editGroupSaga({id}) {
+function* _editGroupSaga({id, subjects}) {
     try {
         const generatedFields = yield select(store => (getFormValues('editGroup')(store)));
         const {name} = generatedFields;
@@ -90,6 +91,8 @@ function* _editGroupSaga({id}) {
         if (name && oldFields.name !== name) {
             jsonData.name = name;
         }
+
+        jsonData.subjects = subjects;
 
         if (!Object.keys(jsonData).length) {
 

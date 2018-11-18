@@ -27,8 +27,9 @@ const {
     EDIT_GROUP_SAGA,
     DELETE_GROUP_SAGA,
     ADD_SUBJECT_TO_GROUP_SAGA,
-    REMOVE_SUBJECT_FROM_GROUP_SAGA
+    REMOVE_SUBJECT_FROM_GROUP_SAGA,
 
+    LOAD_SELECT_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -163,8 +164,9 @@ export const deleteSubjectItemSaga = (id) => {
 };
 
 //Groups
-export const createGroupSaga = () => ({
-    type: CREATE_GROUP_SAGA
+export const createGroupSaga = (subjects) => ({
+    type: CREATE_GROUP_SAGA,
+    subjects
 });
 
 
@@ -179,10 +181,11 @@ export const loadGroupSaga = (id) => ({
     id
 });
 
-export const editGroupSaga = (id) => {
+export const editGroupSaga = (id, subjects) => {
     return ({
         type: EDIT_GROUP_SAGA,
-        id
+        id,
+        subjects
     })
 };
 
@@ -208,3 +211,9 @@ export const removeSubjectFromGroupSaga = ({id, subjectId}) => {
         subjectId
     })
 };
+
+export const loadSelectListSaga = (typeOfApi, page = 0) => ({
+    type: LOAD_SELECT_SAGA,
+    typeOfApi,
+    page
+});

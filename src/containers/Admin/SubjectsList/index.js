@@ -6,7 +6,7 @@ import {Header} from 'semantic-ui-react'
 
 import SubjectsListView from '../../../components/Admin/Subject/list';
 import Toolbar from '../../../components/Admin/Subject/list/toolbar';
-import Pagination from '../../../components/Pagination'
+import Pagination from '../../../components/CustomElements/Pagination'
 import actions from '../../../actions';
 import constants from '../../../constants';
 

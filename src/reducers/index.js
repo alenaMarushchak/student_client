@@ -7,6 +7,7 @@ import * as userReducer from './users.js';
 import * as modalReducer from './modal.js';
 import * as subjectReducer from './subjects.js';
 import * as groupReducer from './groups.js';
+import * as selectReducer from './select.js';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     ...userReducer,
     ...modalReducer,
     ...subjectReducer,
-    ...groupReducer
+    ...groupReducer,
+    ...selectReducer
 });
 
 export default rootReducer;

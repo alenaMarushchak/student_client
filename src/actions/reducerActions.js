@@ -29,7 +29,9 @@ const {
     DELETE_GROUP,
     LOAD_GROUP,
     REMOVE_SUBJECT_FROM_GROUP,
-    ADD_SUBJECT_TO_GROUP
+    ADD_SUBJECT_TO_GROUP,
+
+    LOAD_SELECT
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -215,4 +217,14 @@ export const removeSubjectFromGroup = ({subject, group}) => ({
     type   : REMOVE_SUBJECT_FROM_GROUP,
     subject,
     group
+});
+
+export const loadSelectList = (values, page = 0, filters = {}, totalPages = 0) => ({
+    type   : LOAD_SELECT,
+    payload: {
+        values,
+        page,
+        filters,
+        totalPages
+    }
 });

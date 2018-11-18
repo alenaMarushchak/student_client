@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import actions from '../../../actions/index';
-import constants from "../../../constants/index";
-import EditForm from '../../../components/Admin/StudentsGroup/editGroup';
 import {push} from "react-router-redux";
-import {Button, Modal} from "semantic-ui-react";
+import {Button, Modal, Header} from "semantic-ui-react";
+
+import actions from '../../../actions/index';
+
+import MultiSelectComponent from '../../CustomElements/MultiSelect'
+
+import EditForm from '../../../components/Admin/StudentsGroup/editGroup';
+
+import constants from "../../../constants/index";
+
+import {MULTI_SELECT_TYPES} from '../../../constants/custom'
 
 const {
     editGroupSaga,
@@ -12,11 +19,23 @@ const {
 
 class EditGroup extends Component {
 
+    constructor(props) {
+        super(props);
+
+        const {subjects} = this.props.group;
+
+        this.state = {
+            subjects
+        }
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 
-        this.props.editGroup(this.props.modalContentProps.id);
-        this.props.dispatch(push('/subjects'));
+        const subjects = this.state.subjects;
+
+        this.props.editGroup(this.props.modalContentProps.id, subjects);
+        this.props.dispatch(push('/groups'));
     };
 
     closeModal = () => {
@@ -25,15 +44,35 @@ class EditGroup extends Component {
         closeModal();
     };
 
+    handelAddItem = (option) => {
+        const selected = this.state.subjects;
+
+        selected.push(option);
+
+        this.setState({
+            subjects: [].concat(selected),
+        });
+    };
+
+    handelDeleteItem = (option) => {
+        const selected = this.state.subjects;
+
+        const index = selected.findIndex(item => item._id === option._id);
+
+        selected.splice(index, 1);
+
+        this.setState({subjects: [].concat(selected)});
+    };
+
     render() {
         const {
             errors = {},
-            subject = {},
+            group = {},
             modalContentProps
         } = this.props;
 
-//TODO change soon...
-        return ( <React.Fragment>
+
+        return (<React.Fragment>
 
                 <Modal.Header>Edit group</Modal.Header>
 
@@ -41,10 +80,20 @@ class EditGroup extends Component {
                     <EditForm
                         onSubmit={this.onSubmit}
                         errors={errors || {}}
-                        initialValues={subject}
+                        initialValues={group}
                         {...modalContentProps}
                     />
+
+                    <Header as='h3' content={'Subjects'}/>
+                    <MultiSelectComponent
+                        typeOfApi={MULTI_SELECT_TYPES.SUBJECT}
+                        selectedOptions={this.state.subjects}
+                        addItem={this.handelAddItem}
+                        deleteItem={this.handelDeleteItem}
+                    />
+
                 </Modal.Content>
+
 
                 <Modal.Actions>
                     <Button color='black' onClick={this.closeModal}>
@@ -67,11 +116,11 @@ class EditGroup extends Component {
 const connectedEditGroup = connect(
     store => ({
         errors: store.errors[`${constants.EDIT_GROUP_SAGA}_FRONTEND`],
-        subject  : store.subjects.selected.value,
+        group : store.groups.selected.value,
     }),
     dispatch => (
         {
-            editGroup: (id) => dispatch(editGroupSaga(id)),
+            editGroup: (id, subjects) => dispatch(editGroupSaga(id, subjects)),
             dispatch
         }
     ))(EditGroup);
