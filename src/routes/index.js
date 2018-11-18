@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect, withRouter, Route, Switch} from 'react-router-dom';
 
+import HomeAdmin from '../containers/Admin/Home';
+
 import Login from '../containers/Auth/Login';
 import UsersList from '../containers/Admin/UsersList'
 import SubjectsList from '../containers/Admin/SubjectsList'
@@ -12,17 +14,15 @@ import Profile from '../containers/Profile'
 import Group from '../containers/Admin/StudentsGroup/item';
 import GroupList from '../containers/Admin/StudentsGroupList';
 
+import HomeTeacher from '../containers/Teacher/Home';
+
+import HomeStudent from '../containers/Student/Home';
+
 import {ROLES} from '../constants/custom';
-
-
-
-const Home = () => (<div>Home There will be statistic for admin</div>);
-const HomeTeacher = () => (<div>Home There will be some info for teacher </div>);
-const HomeStudent = () => (<div>Home There will be some info for student</div>);
 
 class Routes extends React.Component {
     adminRoutes = [
-        <Route component={Home} path="/" exact key={'/'}/>,
+        <Route component={HomeAdmin} path="/" exact key={'/'}/>,
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
 
         <Route path="/users/:id" component={UserProfile} key={'/users/:id'}/>,

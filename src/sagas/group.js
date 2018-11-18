@@ -5,8 +5,11 @@ import axios from 'axios';
 import constants from '../constants';
 import actions from '../actions';
 
+import {ROLES_BY_VALUE} from "../constants/custom";
+
 const {
-    API_GROUP,
+    API,
+    API_TYPES,
     CREATE_GROUP_SAGA,
     LOAD_GROUPS_LIST_SAGA,
     LOAD_GROUP_SAGA,
@@ -45,16 +48,18 @@ const getSearchValue = (store) => (
 );
 
 
-const apiCreate = (data) => (
-    axios.post(API_GROUP, data)
+const apiCreate = (API, data) => (
+    axios.post(API, data)
 );
 
-const apiEdit = (data, id) => (
-    axios.patch(`${API_GROUP}/${id}`, data)
+const apiEdit = (API, data, id) => (
+    axios.patch(`${API}/${id}`, data)
 );
 
 function* _createGroupSaga({subjects}) {
     try {
+        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
+
         const generatedFields = yield select(store => (getFormValues('createGroup')(store)));
 
         const jsonData = {
@@ -62,7 +67,7 @@ function* _createGroupSaga({subjects}) {
             subjects
         };
 
-        const isValid = yield call(validateUser, jsonData, 'createGroup', CREATE_GROUP_SAGA);
+        const isValid = yield call(validateUser, API_REQUEST, jsonData, 'createGroup', CREATE_GROUP_SAGA);
 
         if (!isValid) return;
 
@@ -108,7 +113,9 @@ function* _editGroupSaga({id, subjects}) {
             return;
         }
 
-        const response = yield call(apiEdit, jsonData, id);
+        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
+
+        const response = yield call(apiEdit, API_REQUEST, jsonData, id);
 
         const subject = response.data;
 
@@ -124,6 +131,10 @@ function* _editGroupSaga({id, subjects}) {
 
 function* _loadGroupsList({filters = {}, page = 0}) {
     try {
+        const user = yield select(store => store.session.user);
+
+        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[user.role]];
+
         const [oldPage, oldFilters] = yield select(store => [
             store.groups.list.page, store.groups.list.filters
         ]);
@@ -138,7 +149,7 @@ function* _loadGroupsList({filters = {}, page = 0}) {
             ...filters,
         };
 
-        const response = yield call(() => axios.get(API_GROUP, {
+        const response = yield call(() => axios.get(API_REQUEST, {
             params: {
                 ...apiFilters
             }
@@ -160,7 +171,11 @@ function* _loadGroupsList({filters = {}, page = 0}) {
 
 function* _loadGroup({id}) {
     try {
-        const response = yield call(() => axios.get(`${API_GROUP}/${id}`));
+        const user = yield select(store => store.session.user);
+
+        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[user.role]];
+
+        const response = yield call(() => axios.get(`${API_REQUEST}/${id}`));
         const subject = response.data;
 
         yield put(loadGroup(subject));
@@ -171,7 +186,9 @@ function* _loadGroup({id}) {
 
 function* _deleteGroup({id}) {
     try {
-        yield call(() => axios.delete(`${API_GROUP}/${id}`));
+        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[1]];
+
+        yield call(() => axios.delete(`${API_REQUEST}/${id}`));
 
         yield put(deleteGroup(id));
     } catch (e) {

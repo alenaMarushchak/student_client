@@ -4,6 +4,12 @@ export const ROLES = {
     TEACHER: 5
 };
 
+export const ROLES_BY_VALUE = {
+    1 : 'ADMIN',
+    10: 'STUDENT',
+    5 : 'TEACHER'
+};
+
 export const MULTI_SELECT_TYPES = {
     SUBJECT: 'subject'
 };
