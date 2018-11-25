@@ -29,7 +29,13 @@ const {
     ADD_SUBJECT_TO_GROUP_SAGA,
     REMOVE_SUBJECT_FROM_GROUP_SAGA,
 
-    LOAD_SELECT_SAGA
+    LOAD_SELECT_SAGA,
+
+
+    LOAD_OWN_TEACHER_SUBJECT_SAGA,
+    LOAD_ALL_SUBJECT_FOR_TEACHER_SAGA,
+    ADD_TEACHER_TO_SUBJECT_SAGA,
+    REMOVE_TEACHER_FROM_SUBJECT_SAGA,
 } = constants;
 
 export const addRequestError = (response) => {
@@ -216,4 +222,24 @@ export const loadSelectListSaga = (typeOfApi, page = 0) => ({
     type: LOAD_SELECT_SAGA,
     typeOfApi,
     page
+});
+
+/// Teacher saga
+
+export const addTeacherToSubjectSaga = (subject) => {
+    return ({
+        type: ADD_TEACHER_TO_SUBJECT_SAGA,
+        subject
+    });
+};
+
+export const removeTeacherFromSubjectSaga = (subject) => ({
+    type: REMOVE_TEACHER_FROM_SUBJECT_SAGA,
+    subject
+});
+
+export const loadOwnTeacherSubjectsListSaga = (page = 0, filters = {}) => ({
+    type: LOAD_OWN_TEACHER_SUBJECT_SAGA,
+    page,
+    filters
 });
