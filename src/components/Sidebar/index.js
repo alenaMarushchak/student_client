@@ -1,69 +1,126 @@
 import React from 'react';
+import {ROLES} from "../../constants/custom";
 import {NavLink} from 'react-router-dom';
 import {Menu, Icon} from 'semantic-ui-react'
 
-function Sidebar({user}) {
-    return (
+const Sidebar = ({user}) => {
+    const {role} = user;
 
-        <Menu>
-            <NavLink exact
-                     to="/"
-                     name='home'
-                     className={`item`}>
+    const ADMIN = <Menu>
+        <NavLink exact
+                 to="/"
+                 name='home'
+                 className={`item`}>
+            <Icon name={'home'}/>
+            Home
+        </NavLink>
+        <NavLink to='/users'
+                 name='users'
+                 className={`item`}>
+            <Icon name={'address card outline'}/>
+            Users management
+        </NavLink>
+        <NavLink to="/subjects"
+                 className={`item`}
+                 name='subjects'
+        >
+            <Icon name={'book'}/>
+            Subject management
+        </NavLink>
+        <NavLink to="/groups"
+                 className={`item`}
+                 name='groups'
+        >
+            <Icon name={'group'}/>
+            Group management
+        </NavLink>
+        <NavLink to="/blog"
+                 className={`item`}
+                 name='blog'>
+            <Icon name={'blogger'}/>
+            Blog management
+        </NavLink>
+    </Menu>;
 
-                <Icon name={'home'}/>
+    const TEACHER = <Menu>
+        <NavLink exact
+                 to="/"
+                 name='home'
+                 className={`item`}>
+            <Icon name={'home'}/>
+            Home
+        </NavLink>
+        <NavLink to='/students'
+                 name='users'
+                 className={`item`}>
+            <Icon name={'address card outline'}/>
+            Students
+        </NavLink>
+        <NavLink to="/groups"
+                 className={`item`}
+                 name='groups'
+        >
+            <Icon name={'group'}/>
+            Groups
+        </NavLink>
+        <NavLink to="/blog"
+                 className={`item`}
+                 name='blog'>
+            <Icon name={'blogger'}/>
+            Blog
+        </NavLink>
+    </Menu>;
 
-                Home
+    const STUDENT = <Menu>
+        <NavLink exact
+                 to="/"
+                 name='home'
+                 className={`item`}>
+            <Icon name={'home'}/>
+            Home
+        </NavLink>
+        <NavLink to='/users'
+                 name='users'
+                 className={`item`}>
+            <Icon name={'address card outline'}/>
+            Users management
+        </NavLink>
+        <NavLink to="/subjects"
+                 className={`item`}
+                 name='subjects'
+        >
+            <Icon name={'book'}/>
+            Subject management
+        </NavLink>
+        <NavLink to="/groups"
+                 className={`item`}
+                 name='groups'
+        >
+            <Icon name={'group'}/>
+            Group management
+        </NavLink>
+        <NavLink to="/blog"
+                 className={`item`}
+                 name='blog'>
+            <Icon name={'blogger'}/>
+            Blog management
+        </NavLink>
+    </Menu>;
 
-            </NavLink>
+    switch (role) {
 
-            <NavLink to='/users'
-                     name='users'
-                     className={`item`}>
+        case ROLES.ADMIN:
+            return ADMIN;
 
-                <Icon name={'address card outline'}/>
+        case ROLES.TEACHER:
+            return TEACHER;
 
-                Users management
+        case ROLES.STUDENT:
+            return STUDENT;
 
-            </NavLink>
-
-            <NavLink to="/subjects"
-                     className={`item`}
-                     name='subjects'
-                    >
-
-                <Icon name={'book'}/>
-
-                Subject management
-
-            </NavLink>
-
-            <NavLink to="/groups"
-                     className={`item`}
-                     name='groups'
-            >
-
-                <Icon name={'group'}/>
-
-                Group management
-
-            </NavLink>
-
-
-            <NavLink to="/blog"
-                     className={`item`}
-                     name='blog'>
-
-                <Icon name={'blogger'}/>
-
-                Blog management
-
-            </NavLink>
-
-
-        </Menu>
-
-    );
-}
+        default:
+            return null;
+    }
+};
 
 export default Sidebar;

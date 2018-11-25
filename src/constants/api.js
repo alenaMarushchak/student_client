@@ -12,6 +12,7 @@ export const API_GROUP = '/admin/group';
 export const API_SUBJECT_SELECT = '/select/subject';
 export const API_STUDENT_SELECT = '/select/student';
 
+export const API_OWN_TEACHERS_SUBJECT = '/teacher/subject/own';
 
 export const API = {
     SUBJECT: {

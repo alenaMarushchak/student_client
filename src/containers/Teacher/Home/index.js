@@ -1,5 +1,22 @@
-import React from "react";
+import React, {Component} from "react";
+import {Tab} from 'semantic-ui-react'
 
-const Home = () => (<div>Home There will be some info for teacher </div>);
+import OwnSubjects from '../OwnSubjects';
+import SubjectsList from '../SubjectsList';
 
-export default Home;
+class TeachersHomePage extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    panes = [
+        {menuItem: 'My subjects', render: () => <OwnSubjects/>},
+        {menuItem: 'All Subjects', render: () => <SubjectsList/>},
+    ];
+
+    render() {
+        return (<Tab panes={this.panes}/>)
+    }
+}
+
+export default TeachersHomePage;

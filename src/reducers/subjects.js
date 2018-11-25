@@ -6,18 +6,32 @@ const {
     CLEAN_DATA,
     CREATE_SUBJECT,
     EDIT_SUBJECT,
-    DELETE_SUBJECT
+    DELETE_SUBJECT,
+
+    ADD_TEACHER_TO_SUBJECT,
+    REMOVE_TEACHER_FROM_SUBJECT,
+    LOAD_OWN_TEACHER_SUBJECT
 } = constants;
 
 const subjects = (subjects = {
-    list    : {
+    list: {
         values    : [],
         page      : 0,
         filters   : {},
         totalPages: 0
     },
+
     selected: {
         value: {}
+    },
+
+    teachersSubject: {
+        list: {
+            values    : [],
+            page      : 0,
+            filters   : {},
+            totalPages: 0
+        }
     }
 }, action) => {
     switch (action.type) {
@@ -97,6 +111,65 @@ const subjects = (subjects = {
                 }
             };
         }
+
+        case ADD_TEACHER_TO_SUBJECT: {
+            return {
+                ...subjects,
+                teachersSubject: {
+                    list: {
+                        ...subjects.teachersSubject.list,
+                        values: subjects.teachersSubject.list.values.concat(action.payload)
+                    }
+                }
+            };
+        }
+
+        case REMOVE_TEACHER_FROM_SUBJECT: {
+            let index = subjects.teachersSubject.list.values.findIndex(o => o._id === action.payload);
+
+            subjects.teachersSubject.list.values.splice(index, 1);
+
+            return {
+                ...subjects,
+                teachersSubject: {
+                    list: {
+                        ...subjects.teachersSubject.list,
+                        values: [].concat(subjects.teachersSubject.list.values)
+                    }
+                }
+            };
+        }
+
+        case LOAD_OWN_TEACHER_SUBJECT: {
+            const {
+                values,
+                page,
+                totalPages
+            } = action.payload;
+            return {
+                ...subjects,
+                teachersSubject: {
+                    list: {
+                        ...subjects.teachersSubject.list,
+                        values,
+                        page,
+                        totalPages
+                    }
+                }
+            };
+        }
+
+        case `${CLEAN_DATA}_${LOAD_OWN_TEACHER_SUBJECT}`:
+            return {
+                ...subjects,
+                teachersSubject: {
+                    list: {
+                        ...subjects.teachersSubject.list,
+                        values: [],
+                    }
+                },
+            };
+
         default:
             return subjects;
 

@@ -11,11 +11,15 @@ import actions from '../actions';
 const {
     API,
     API_TYPES,
+    API_OWN_TEACHERS_SUBJECT,
     CREATE_SUBJECT_SAGA,
     LOAD_SUBJECTS_LIST_SAGA,
     LOAD_SUBJECT_SAGA,
     EDIT_SUBJECT_SAGA,
     DELETE_SUBJECT_SAGA,
+    LOAD_OWN_TEACHER_SUBJECT_SAGA,
+    ADD_TEACHER_TO_SUBJECT_SAGA,
+    REMOVE_TEACHER_FROM_SUBJECT_SAGA
 } = constants;
 
 const {
@@ -29,7 +33,11 @@ const {
     loadSubject,
     editSubject,
     deleteSubject,
-    hideModal
+    hideModal,
+
+    loadOwnTeacherSubjectsList,
+    removeTeacherFromSubject,
+    addTeacherToSubject
 } = actions;
 
 function* validateUser(data, type, action) {
@@ -199,6 +207,75 @@ function* _deleteSubject({id}) {
     }
 }
 
+
+function* _loadOwnTeachersSubjectsSaga({filters = {}, page = 0}) {
+    try {
+        const [oldPage, oldFilters] = yield select(store => [
+            store.subjects.teachersSubject.list.page, store.subjects.teachersSubject.list.filters
+        ]);
+
+        const search = yield select(getSearchValue);
+        const newPage = (page > 0 ? page : oldPage);
+
+        const apiFilters = {
+            page: newPage,
+            search,
+            ...oldFilters,
+            ...filters,
+        };
+
+        const response = yield call(() => axios.get(API_OWN_TEACHERS_SUBJECT, {
+            params: {
+                ...apiFilters
+            }
+        }));
+
+        const subjects = response.data.data;
+
+        const {
+            pages,
+            total,
+            limit
+        } = response.data.meta;
+
+        yield put(loadOwnTeacherSubjectsList(subjects, newPage, {...oldFilters, search, ...filters}, pages));
+    } catch (e) {
+        yield put(addRequestError(e.response));
+    }
+}
+
+function* _addTeacherToSubjectSaga({subject}) {
+    try {
+        let {_id, name} = subject;
+
+        let API_REQUEST = API[API_TYPES.SUBJECT]['TEACHER'];
+
+        let subjectId = _id;
+
+        yield call(() => axios.put(`${API_REQUEST}/${subjectId}/add`));
+
+        yield put(addTeacherToSubject({_id, name}));
+    } catch (e) {
+        console.error(e);
+        yield put(addRequestError(e.response));
+    }
+}
+
+function* _removeTeacherFromSubjectSaga({subject}) {
+    try {
+        let API_REQUEST = API[API_TYPES.SUBJECT]['TEACHER'];
+
+        let subjectId = subject._id;
+
+        yield call(() => axios.put(`${API_REQUEST}/${subjectId}/remove`));
+
+        yield put(removeTeacherFromSubject({subject}));
+    } catch (e) {
+        console.error(e);
+        yield put(addRequestError(e.response));
+    }
+}
+
 function* createSubjectSaga() {
     yield takeLatest(CREATE_SUBJECT_SAGA, _createSubjectSaga);
 }
@@ -219,4 +296,26 @@ function* deleteSubjectItemSaga() {
     yield takeLatest(DELETE_SUBJECT_SAGA, _deleteSubject)
 }
 
-export {createSubjectSaga, loadSubjectSaga, loadSubjectsListSaga, editSubjectSaga, deleteSubjectItemSaga};
+function* loadOwnTeachersSubjectsSaga() {
+    yield takeLatest(LOAD_OWN_TEACHER_SUBJECT_SAGA, _loadOwnTeachersSubjectsSaga)
+}
+
+function* addTeacherToSubjectSaga() {
+    yield takeLatest(ADD_TEACHER_TO_SUBJECT_SAGA, _addTeacherToSubjectSaga)
+}
+
+function* removeTeacherFromSubjectSaga() {
+    yield takeLatest(REMOVE_TEACHER_FROM_SUBJECT_SAGA, _removeTeacherFromSubjectSaga)
+}
+
+export {
+    createSubjectSaga,
+    loadSubjectSaga,
+    loadSubjectsListSaga,
+    editSubjectSaga,
+    deleteSubjectItemSaga,
+
+    loadOwnTeachersSubjectsSaga,
+    addTeacherToSubjectSaga,
+    removeTeacherFromSubjectSaga
+};

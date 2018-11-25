@@ -31,7 +31,11 @@ const {
     REMOVE_SUBJECT_FROM_GROUP,
     ADD_SUBJECT_TO_GROUP,
 
-    LOAD_SELECT
+    LOAD_SELECT,
+
+    LOAD_OWN_TEACHER_SUBJECT,
+    ADD_TEACHER_TO_SUBJECT,
+    REMOVE_TEACHER_FROM_SUBJECT
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -221,6 +225,29 @@ export const removeSubjectFromGroup = ({subject, group}) => ({
 
 export const loadSelectList = (values, page = 0, filters = {}, totalPages = 0) => ({
     type   : LOAD_SELECT,
+    payload: {
+        values,
+        page,
+        filters,
+        totalPages
+    }
+});
+
+// Teacher
+
+
+export const addTeacherToSubject = ({subject}) => ({
+    type: ADD_TEACHER_TO_SUBJECT,
+    subject
+});
+
+export const removeTeacherFromSubject = ({subject}) => ({
+    type: REMOVE_TEACHER_FROM_SUBJECT,
+    subject
+});
+
+export const loadOwnTeacherSubjectsList = (values, page = 0, filters = {}, totalPages = 0) => ({
+    type: LOAD_OWN_TEACHER_SUBJECT,
     payload: {
         values,
         page,
