@@ -15,6 +15,7 @@ import Group from '../containers/Admin/StudentsGroup/item';
 import GroupList from '../containers/Admin/StudentsGroupList';
 
 import HomeTeacher from '../containers/Teacher/Home';
+import OwnSubjectDetail from '../containers/Teacher/OwnSubjectDetail'
 
 import HomeStudent from '../containers/Student/Home';
 
@@ -40,6 +41,11 @@ class Routes extends React.Component {
     teacherRouter = [
         <Route component={HomeTeacher} path="/" exact key={'/'}/>,
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
+        <Route path="/subjects/:id/groups" component={OwnSubjectDetail} key={'/subjects/:id'}/>,
+        //<Route path="/addStudentsToGroup" component={} key={} />
+        //<Route path="/subjects/:id/groups/:id/students" component={} key={} />
+        //TODO adding points
+       // <Route path="/studentsAll" component={} key={} />
     ];
 
     studentRouter = [

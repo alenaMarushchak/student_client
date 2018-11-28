@@ -10,7 +10,9 @@ const {
 
     ADD_TEACHER_TO_SUBJECT,
     REMOVE_TEACHER_FROM_SUBJECT,
-    LOAD_OWN_TEACHER_SUBJECT
+    LOAD_OWN_TEACHER_SUBJECT,
+
+    LOAD_GROUPS_BY_SUBJECT
 } = constants;
 
 const subjects = (subjects = {
@@ -22,7 +24,10 @@ const subjects = (subjects = {
     },
 
     selected: {
-        value: {}
+        values    : [],
+        page      : 0,
+        filters   : {},
+        totalPages: 0
     },
 
     teachersSubject: {
@@ -169,6 +174,39 @@ const subjects = (subjects = {
                     }
                 },
             };
+
+        case `${CLEAN_DATA}_${LOAD_GROUPS_BY_SUBJECT}`: {
+            return {
+                ...subjects,
+                selected: {
+                    list: {
+                        ...subjects.selected.list,
+                        values: [],
+                    }
+                },
+            };
+        }
+
+        case LOAD_GROUPS_BY_SUBJECT: {
+            const {
+                values,
+                page,
+                totalPages
+            } = action.payload;
+
+            return {
+                ...subjects,
+                selected: {
+                    list: {
+                        ...subjects.selected.list,
+                        values,
+                        page,
+                        totalPages
+                    }
+                }
+
+            }
+        }
 
         default:
             return subjects;

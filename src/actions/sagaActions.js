@@ -36,6 +36,8 @@ const {
     LOAD_ALL_SUBJECT_FOR_TEACHER_SAGA,
     ADD_TEACHER_TO_SUBJECT_SAGA,
     REMOVE_TEACHER_FROM_SUBJECT_SAGA,
+
+    LOAD_GROUPS_BY_SUBJECT_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -242,4 +244,12 @@ export const loadOwnTeacherSubjectsListSaga = (page = 0, filters = {}) => ({
     type: LOAD_OWN_TEACHER_SUBJECT_SAGA,
     page,
     filters
+});
+
+
+export const loadGroupsBySubjectSaga = (page = 0, filters = {}, subjectId) => ({
+    type: LOAD_GROUPS_BY_SUBJECT_SAGA,
+    page,
+    filters,
+    subjectId
 });

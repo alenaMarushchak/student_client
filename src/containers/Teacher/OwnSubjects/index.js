@@ -6,10 +6,13 @@ import actions from '../../../actions'
 import OwnSubjectsComponent from '../../../components/Teacher/OwnSubjets';
 import Toolbar from "../../../components/Teacher/OwnSubjets/toolbar";
 import Pagination from "../../../components/CustomElements/Pagination";
+import {push} from "react-router-redux";
+import constants from "../../../constants";
 
 const {
     loadOwnTeacherSubjectsListSaga,
-    removeTeacherFromSubjectSaga
+    removeTeacherFromSubjectSaga,
+    cleanData
 } = actions;
 
 class OwnSubjects extends Component {
@@ -29,6 +32,13 @@ class OwnSubjects extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.clean();
+    }
+
+    navigateTo(subjectId) {
+        this.props.dispatch(push(`/subjects/${subjectId}`));
+    }
 
     search = () => {
         clearTimeout(this.timeoutId);
@@ -57,7 +67,7 @@ class OwnSubjects extends Component {
 
         return (<React.Fragment>
 
-                 {subjects.length ? <React.Fragment>
+                {subjects.length ? <React.Fragment>
                     <Toolbar
                         loadSubjectsList={getSubjectsList}
                     />
@@ -89,8 +99,9 @@ const connectedSubjectsList = connect(
     }),
     dispatch => (
         {
-            getSubjectsList       : (page, filters) => dispatch(loadOwnTeacherSubjectsListSaga(page, filters)),
-            deleteSubjectItem     : (id) => dispatch(removeTeacherFromSubjectSaga(id)),
+            getSubjectsList  : (page, filters) => dispatch(loadOwnTeacherSubjectsListSaga(page, filters)),
+            deleteSubjectItem: (id) => dispatch(removeTeacherFromSubjectSaga(id)),
+            clean             : () => dispatch(cleanData(constants.LOAD_OWN_TEACHER_SUBJECT)),
             dispatch
         }
     ))(OwnSubjects);

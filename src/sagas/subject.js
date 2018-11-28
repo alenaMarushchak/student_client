@@ -19,7 +19,9 @@ const {
     DELETE_SUBJECT_SAGA,
     LOAD_OWN_TEACHER_SUBJECT_SAGA,
     ADD_TEACHER_TO_SUBJECT_SAGA,
-    REMOVE_TEACHER_FROM_SUBJECT_SAGA
+    REMOVE_TEACHER_FROM_SUBJECT_SAGA,
+
+    LOAD_GROUPS_BY_SUBJECT_SAGA
 } = constants;
 
 const {
@@ -37,7 +39,9 @@ const {
 
     loadOwnTeacherSubjectsList,
     removeTeacherFromSubject,
-    addTeacherToSubject
+    addTeacherToSubject,
+
+    loadGroupsBySubject
 } = actions;
 
 function* validateUser(data, type, action) {
@@ -56,6 +60,9 @@ const getSearchValue = (store) => (
     (getFormValues('SubjectsToolbar')(store) || {search: ''}).search
 );
 
+const getSearchValueForGroupsBySubject = (store) => (
+    (getFormValues('groupsOfSubjectToolbar')(store) || {search: ''}).search
+);
 
 const apiCreate = (API, data) => (
     axios.post(API, data)
@@ -276,6 +283,45 @@ function* _removeTeacherFromSubjectSaga({subject}) {
     }
 }
 
+function* _loadGroupsBySubject({page, filters, subjectId}) {
+    try {
+        let API_REQUEST = API[API_TYPES.SUBJECT]['TEACHER'];
+
+        const [oldPage, oldFilters] = yield select(store => [
+            store.subjects.teachersSubject.list.page, store.subjects.teachersSubject.list.filters
+        ]);
+
+        const search = yield select(getSearchValueForGroupsBySubject);
+        const newPage = (page > 0 ? page : oldPage);
+
+        const apiFilters = {
+            page: newPage,
+            search,
+            ...oldFilters,
+            ...filters,
+        };
+
+        const response = yield call(() => axios.get(`${API_REQUEST}/${subjectId}/groups`, {
+            params: {
+                ...apiFilters
+            }
+        }));
+
+        const subjects = response.data.data;
+
+        const {
+            pages,
+            total,
+            limit
+        } = response.data.meta;
+
+        yield put(loadGroupsBySubject(subjects, newPage, {...oldFilters, search, ...filters}, pages));
+    } catch (e) {
+        console.error(e);
+        yield put(addRequestError(e.response));
+    }
+}
+
 function* createSubjectSaga() {
     yield takeLatest(CREATE_SUBJECT_SAGA, _createSubjectSaga);
 }
@@ -308,6 +354,10 @@ function* removeTeacherFromSubjectSaga() {
     yield takeLatest(REMOVE_TEACHER_FROM_SUBJECT_SAGA, _removeTeacherFromSubjectSaga)
 }
 
+function* loadGroupsBySubjectSaga() {
+    yield takeLatest(LOAD_GROUPS_BY_SUBJECT_SAGA, _loadGroupsBySubject)
+}
+
 export {
     createSubjectSaga,
     loadSubjectSaga,
@@ -317,5 +367,7 @@ export {
 
     loadOwnTeachersSubjectsSaga,
     addTeacherToSubjectSaga,
-    removeTeacherFromSubjectSaga
+    removeTeacherFromSubjectSaga,
+
+    loadGroupsBySubjectSaga
 };

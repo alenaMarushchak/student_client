@@ -35,7 +35,9 @@ const {
 
     LOAD_OWN_TEACHER_SUBJECT,
     ADD_TEACHER_TO_SUBJECT,
-    REMOVE_TEACHER_FROM_SUBJECT
+    REMOVE_TEACHER_FROM_SUBJECT,
+
+    LOAD_GROUPS_BY_SUBJECT
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -248,6 +250,17 @@ export const removeTeacherFromSubject = ({subject}) => ({
 
 export const loadOwnTeacherSubjectsList = (values, page = 0, filters = {}, totalPages = 0) => ({
     type: LOAD_OWN_TEACHER_SUBJECT,
+    payload: {
+        values,
+        page,
+        filters,
+        totalPages
+    }
+});
+
+
+export const loadGroupsBySubject = (values, page = 0, filters = {}, totalPages = 0) => ({
+    type: LOAD_GROUPS_BY_SUBJECT,
     payload: {
         values,
         page,
