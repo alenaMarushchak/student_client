@@ -6,10 +6,12 @@ import SubjectsListView from '../../../components/Teacher/SubjectsList';
 import Toolbar from '../../../components/Teacher/SubjectsList/toolbar';
 import Pagination from '../../../components/CustomElements/Pagination'
 import actions from '../../../actions';
+import constants from "../../../constants";
 
 const {
     loadSubjectsListSaga,
-    addTeacherToSubjectSaga
+    addTeacherToSubjectSaga,
+    cleanData
 } = actions;
 
 class SubjectsList extends Component {
@@ -88,8 +90,9 @@ const connectedSubjectsList = connect(
     }),
     dispatch => (
         {
-            getSubjectsList       : (page, filters) => dispatch(loadSubjectsListSaga(page, filters)),
-            addSubjectItem        : (subject) => dispatch(addTeacherToSubjectSaga(subject)),
+            getSubjectsList: (page, filters) => dispatch(loadSubjectsListSaga(page, filters)),
+            addSubjectItem : (subject) => dispatch(addTeacherToSubjectSaga(subject)),
+            clean          : () => dispatch(cleanData(constants.LOAD_SUBJECTS_LIST)),
             dispatch
         }
     ))(SubjectsList);
