@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Tab} from 'semantic-ui-react'
 
-import OwnSubjects from '../OwnSubjects';
+import OwnSubjects from '../OwnSubjectsList';
 import SubjectsList from '../SubjectsList';
 
 class TeachersHomePage extends Component {
@@ -11,7 +11,7 @@ class TeachersHomePage extends Component {
 
     panes = [
         {menuItem: 'My subjects', render: () => <OwnSubjects/>},
-        {menuItem: 'All Subjects', render: () => <SubjectsList/>},
+        {menuItem: 'Not my subjects', render: () => <SubjectsList/>},
     ];
 
     render() {

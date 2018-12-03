@@ -31,11 +31,17 @@ export const API = {
         ADMIN  : '/admin/user',
         TEACHER: '/teacher/user',
         STUDENT: '/student/user'
+    },
+
+    POINT: {
+        TEACHER: '/teacher/point',
+        STUDENT: '/student/point'
     }
 };
 
 export const API_TYPES = {
     SUBJECT: 'SUBJECT',
     GROUP  : 'GROUP',
-    USER   : 'USER'
+    USER   : 'USER',
+    POINT  : 'POINT'
 };

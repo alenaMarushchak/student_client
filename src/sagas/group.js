@@ -15,6 +15,9 @@ const {
     LOAD_GROUP_SAGA,
     EDIT_GROUP_SAGA,
     DELETE_GROUP_SAGA,
+
+    LOAD_GROUP_WITH_POINTS_SAGA,
+    ADD_POINT_TO_STUDENT_SAGA
 } = constants;
 
 const {
@@ -28,7 +31,10 @@ const {
     loadGroup,
     editGroup,
     deleteGroup,
-    hideModal
+    hideModal,
+
+    loadGroupWithStudentsPoints,
+    addPointToStudent
 } = actions;
 
 function* validateUser(data, type, action) {
@@ -85,7 +91,7 @@ function* _createGroupSaga({subjects}) {
     }
 }
 
-function* _editGroupSaga({id, subjects}) {
+function* _editGroupSaga({id, subjects, students}) {
     try {
         const generatedFields = yield select(store => (getFormValues('editGroup')(store)));
         const {name} = generatedFields;
@@ -97,7 +103,14 @@ function* _editGroupSaga({id, subjects}) {
             jsonData.name = name;
         }
 
-        jsonData.subjects = subjects;
+
+        if (oldFields.subjects !== subjects) {
+            jsonData.subjects = subjects;
+        }
+
+        if (oldFields.students !== students) {
+            jsonData.students = students;
+        }
 
         if (!Object.keys(jsonData).length) {
 
@@ -113,17 +126,17 @@ function* _editGroupSaga({id, subjects}) {
             return;
         }
 
-        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
+        let API_REQUEST = API[API_TYPES.GROUP]['ADMIN'];
 
         const response = yield call(apiEdit, API_REQUEST, jsonData, id);
 
         const subject = response.data;
 
+        yield put(hideModal());
+
         yield put(editGroup(subject));
 
         yield put(toast.success('Group was updated successfully'));
-
-        yield put(hideModal())
     } catch (e) {
         yield put(addErrorsSaga(EDIT_GROUP_SAGA, e.response));
     }
@@ -133,7 +146,7 @@ function* _loadGroupsList({filters = {}, page = 0}) {
     try {
         const user = yield select(store => store.session.user);
 
-        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[user.role]];
+        let API_REQUEST = API[API_TYPES.GROUP][ROLES_BY_VALUE[user.role]];
 
         const [oldPage, oldFilters] = yield select(store => [
             store.groups.list.page, store.groups.list.filters
@@ -173,7 +186,7 @@ function* _loadGroup({id}) {
     try {
         const user = yield select(store => store.session.user);
 
-        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[user.role]];
+        let API_REQUEST = API[API_TYPES.GROUP][ROLES_BY_VALUE[user.role]];
 
         const response = yield call(() => axios.get(`${API_REQUEST}/${id}`));
         const subject = response.data;
@@ -186,7 +199,7 @@ function* _loadGroup({id}) {
 
 function* _deleteGroup({id}) {
     try {
-        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[1]];
+        let API_REQUEST = API[API_TYPES.GROUP][ROLES_BY_VALUE[1]];
 
         yield call(() => axios.delete(`${API_REQUEST}/${id}`));
 
@@ -194,6 +207,39 @@ function* _deleteGroup({id}) {
     } catch (e) {
         console.error(e);
         yield put(addRequestError(e.response));
+    }
+}
+
+function* _loadGroupWithPointsSaga({subjectId, groupId}) {
+    try {
+        let API_REQUEST = API[API_TYPES.GROUP][ROLES_BY_VALUE[5]];
+
+        const response = yield call(() => axios.get(`${API_REQUEST}/${groupId}/subject/${subjectId}`));
+        const data = response.data;
+
+        yield put(loadGroupWithStudentsPoints(data));
+    } catch (err) {
+        console.error(err);
+        yield put(addRequestError(err.response));
+    }
+}
+
+function* _addPointToStudentSaga({studentId, subjectId, point, pointType}) {
+    try {
+        let API_REQUEST = API[API_TYPES.POINT][ROLES_BY_VALUE[5]];
+
+        let jsonData = {
+            subjectId,
+            studentId,
+            value: point
+        };
+
+        yield call(() => axios.put(`${API_REQUEST}/${pointType}`, jsonData));
+
+        yield put(addPointToStudent({studentId, point, pointType}));
+    } catch (err) {
+        console.error(err);
+        yield put(addRequestError(err.response));
     }
 }
 
@@ -217,5 +263,21 @@ function* deleteGroupItemSaga() {
     yield takeLatest(DELETE_GROUP_SAGA, _deleteGroup)
 }
 
+function* loadGroupWithPointsSaga() {
+    yield takeLatest(LOAD_GROUP_WITH_POINTS_SAGA, _loadGroupWithPointsSaga)
+}
 
-export {createGroupSaga, loadGroupSaga, loadGroupsListSaga, editGroupSaga, deleteGroupItemSaga};
+function* addPointToStudentSaga() {
+    yield takeLatest(ADD_POINT_TO_STUDENT_SAGA, _addPointToStudentSaga);
+}
+
+
+export {
+    createGroupSaga,
+    loadGroupSaga,
+    loadGroupsListSaga,
+    editGroupSaga,
+    deleteGroupItemSaga,
+    loadGroupWithPointsSaga,
+    addPointToStudentSaga
+};

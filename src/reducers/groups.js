@@ -6,7 +6,10 @@ const {
     CLEAN_DATA,
     CREATE_GROUP,
     EDIT_GROUP,
-    DELETE_GROUP
+    DELETE_GROUP,
+
+    ADD_POINT_TO_STUDENT,
+    LOAD_GROUP_WITH_POINTS
 } = constants;
 
 const groups = (groups = {
@@ -18,6 +21,9 @@ const groups = (groups = {
     },
     selected: {
         value: {}
+    },
+    students: {
+        values: []
     }
 }, action) => {
     switch (action.type) {
@@ -97,6 +103,59 @@ const groups = (groups = {
                     values: [].concat(groups.list.values)
                 }
             };
+        }
+
+        case LOAD_GROUP_WITH_POINTS: {
+            return {
+                ...groups,
+                students: Object.assign({},
+                    {
+                        values: action.payload.values
+                    })
+            };
+        }
+
+        case `${CLEAN_DATA}_${LOAD_GROUP_WITH_POINTS}`:
+            return {
+                ...groups,
+                students: {
+                    values: [],
+                },
+            };
+
+        case ADD_POINT_TO_STUDENT: {
+            const {studentId, point, pointType} = action.payload;
+
+            const studentsArray = groups.students.values;
+            const studentIndex = studentsArray.findIndex(item => item._id === studentId);
+
+            if (studentsArray[studentIndex].points && studentsArray[studentIndex].points.length) {
+                const pointIndex = studentsArray[studentIndex].points.findIndex(item => item.pointName === pointType);
+
+                if(pointIndex === -1){
+                    studentsArray[studentIndex].points.push({
+                        pointName: pointType,
+                        value: point
+                    })
+                } else {
+                    studentsArray[studentIndex].points[pointIndex].value = point;
+                }
+
+            } else {
+                studentsArray[studentIndex].points = [];
+
+                studentsArray[studentIndex].points.push({
+                    pointName: pointType,
+                    value: point
+                })
+            }
+
+            return {
+                ...groups,
+                students: {
+                    values: [].concat(studentsArray)
+                }
+            }
         }
 
         default:

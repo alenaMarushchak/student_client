@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from "react-router-redux";
-import {Button, Modal, Header} from "semantic-ui-react";
+import {Button, Modal, Header, Tab, Segment, Container} from "semantic-ui-react";
+import {SELECT_TOOLBAR_NAMES} from '../../../constants/custom'
 
 import actions from '../../../actions/index';
 
@@ -22,10 +23,11 @@ class EditGroup extends Component {
     constructor(props) {
         super(props);
 
-        const {subjects} = this.props.group;
+        const {subjects, students} = this.props.group;
 
         this.state = {
-            subjects
+            subjects,
+            students
         }
     }
 
@@ -33,8 +35,9 @@ class EditGroup extends Component {
         e.preventDefault();
 
         const subjects = this.state.subjects;
+        const students = this.state.students;
 
-        this.props.editGroup(this.props.modalContentProps.id, subjects);
+        this.props.editGroup(this.props.modalContentProps.id, subjects, students);
         this.props.dispatch(push('/groups'));
     };
 
@@ -44,7 +47,7 @@ class EditGroup extends Component {
         closeModal();
     };
 
-    handelAddItem = (option) => {
+    handelAddSubject = (option) => {
         const selected = this.state.subjects;
 
         selected.push(option);
@@ -54,7 +57,7 @@ class EditGroup extends Component {
         });
     };
 
-    handelDeleteItem = (option) => {
+    handelDeleteSubject = (option) => {
         const selected = this.state.subjects;
 
         const index = selected.findIndex(item => item._id === option._id);
@@ -64,13 +67,61 @@ class EditGroup extends Component {
         this.setState({subjects: [].concat(selected)});
     };
 
+    handelAddStudent = (option) => {
+        const selected = this.state.students;
+
+        selected.push(option);
+
+        this.setState({
+            students: [].concat(selected),
+        });
+    };
+
+    handelDeleteStudent = (option) => {
+        const selected = this.state.students;
+
+        const index = selected.findIndex(item => item._id === option._id);
+
+        selected.splice(index, 1);
+
+        this.setState({students: [].concat(selected)});
+    };
+
     render() {
         const {
             errors = {},
-            group = {},
+            group = {
+                name: ''
+            },
             modalContentProps
         } = this.props;
 
+        let panes = [
+            {
+                menuItem: 'Subjects', render: () => <React.Fragment>
+                    <Header as='h3' content={'Subjects'}/>
+                    <MultiSelectComponent
+                        typeOfApi={MULTI_SELECT_TYPES.SUBJECT}
+                        selectedOptions={this.state.subjects}
+                        addItem={this.handelAddSubject}
+                        deleteItem={this.handelDeleteSubject}
+                        toolBarName={SELECT_TOOLBAR_NAMES.SUBJECT}
+                    />
+                </React.Fragment>
+            },
+            {
+                menuItem: 'Students', render: () => <React.Fragment>
+                    <Header as='h3' content={'Students'}/>
+                    <MultiSelectComponent
+                        typeOfApi={MULTI_SELECT_TYPES.STUDENT}
+                        selectedOptions={this.state.students}
+                        addItem={this.handelAddStudent}
+                        deleteItem={this.handelDeleteStudent}
+                        toolBarName={SELECT_TOOLBAR_NAMES.STUDENT}
+                    />
+                </React.Fragment>
+            },
+        ];
 
         return (<React.Fragment>
 
@@ -83,14 +134,9 @@ class EditGroup extends Component {
                         initialValues={group}
                         {...modalContentProps}
                     />
-
-                    <Header as='h3' content={'Subjects'}/>
-                    <MultiSelectComponent
-                        typeOfApi={MULTI_SELECT_TYPES.SUBJECT}
-                        selectedOptions={this.state.subjects}
-                        addItem={this.handelAddItem}
-                        deleteItem={this.handelDeleteItem}
-                    />
+                    <Segment>
+                        <Tab panes={panes}/>
+                    </Segment>
 
                 </Modal.Content>
 
@@ -120,7 +166,7 @@ const connectedEditGroup = connect(
     }),
     dispatch => (
         {
-            editGroup: (id, subjects) => dispatch(editGroupSaga(id, subjects)),
+            editGroup: (id, subjects, students) => dispatch(editGroupSaga(id, subjects, students)),
             dispatch
         }
     ))(EditGroup);

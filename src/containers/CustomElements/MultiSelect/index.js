@@ -11,23 +11,10 @@ import SelectedOptions from '../../../components/CustomElements/MultiSelect/sele
 import Toolbar from '../../../components/CustomElements/MultiSelect/toolbar';
 import DropDown from '../../../components/CustomElements/MultiSelect/dropDown';
 
-import {getFormValues} from "redux-form";
-
 const {
     loadSelectListSaga,
 } = actions;
 
-
-const initialSubjects = [
-    {
-        name: 'Some subject1',
-        _id : 1
-    },
-    {
-        name: 'Some subject2',
-        _id : 2
-    }
-];
 
 const filterSelectedValues = (selectedOptions, options) => {
 
@@ -44,42 +31,44 @@ class MultiSelectComponent extends Component {
         super(props);
 
         this.state = {
-            isDropDownOpen: false
+            isDropDownOpen: false,
+            search        : ''
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if ((nextProps.toolbarVals || {}).search !== (this.props.toolbarVals || {}).search) {
-            this.search();
-        }
-    }
-
-    search = () => {
+    search = (event) => {
         const {
             typeOfApi
         } = this.props;
 
+        this.setState({
+            search: event.target.value
+        });
+
         clearTimeout(this.timeoutId);
         this.timeoutId = setTimeout(() => {
-            this.props.getOptions(typeOfApi, 1);
+            this.props.getOptions(typeOfApi, 1, this.state.search);
         }, 500);
     };
 
     onPageChange = (page) => {
         const {typeOfApi} = this.props;
-        this.props.getOptions(typeOfApi, page.selected + 1)
+        this.props.getOptions(typeOfApi, page.selected + 1, this.state.search)
     };
 
     onAddItem = (selectedOption) => {
         this.props.addItem(selectedOption);
+
         this.setState({
-            isDropDownOpen : false
+            isDropDownOpen: false,
+            search        : ''
         });
     };
 
     onClose = () => {
         this.setState({
-            isDropDownOpen: false
+            isDropDownOpen: false,
+            search        : ''
         });
     };
 
@@ -90,7 +79,7 @@ class MultiSelectComponent extends Component {
             isDropDownOpen: true
         });
 
-        this.props.getOptions(typeOfApi, 1);
+        this.props.getOptions(typeOfApi, 1, this.state.search);
     };
 
     onDeleteItem = (selectedOption) => {
@@ -131,6 +120,7 @@ class MultiSelectComponent extends Component {
                 <Toolbar
                     loadOptions={this.openDropDown}
                     onChange={this.search}
+                    value={this.state.search}
                 />
 
                 {List}
@@ -141,14 +131,15 @@ class MultiSelectComponent extends Component {
 }
 
 const connectedMultiSelectComponent = connect(
-    store => ({
-        select     : store.selectOptions.list.values,
-        page       : store.selectOptions.list.page,
-        totalPages : store.selectOptions.list.totalPages,
-        toolbarVals: getFormValues('selectToolbar')(store)
-    }),
+    store => {
+        return ({
+            select    : store.selectOptions.list.values,
+            page      : store.selectOptions.list.page,
+            totalPages: store.selectOptions.list.totalPages,
+        })
+    },
     dispatch => ({
-        getOptions: (typeOfApi, page) => dispatch(loadSelectListSaga(typeOfApi, page)),
+        getOptions: (typeOfApi, page, search) => dispatch(loadSelectListSaga(typeOfApi, page, search)),
     }))(MultiSelectComponent);
 
 export default connectedMultiSelectComponent;

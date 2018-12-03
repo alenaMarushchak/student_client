@@ -8,6 +8,7 @@ import {MULTI_SELECT_TYPES} from '../constants/custom'
 
 const {
     API_SUBJECT_SELECT,
+    API_STUDENT_SELECT,
     LOAD_SELECT_SAGA,
 } = constants;
 
@@ -16,21 +17,16 @@ const {
     loadSelectList,
 } = actions;
 
-const getSearchValue = (store) => (
-    (getFormValues('selectToolbar')(store) || {search: ''}).search
-);
 
-function* _loadSelectList({typeOfApi, page}) {
+function* _loadSelectList({typeOfApi, page, search = ''}) {
     try {
         let API;
-
-        console.log(typeOfApi, page);
 
         const [oldPage] = yield select(store => [
             store.selectOptions.list.page
         ]);
 
-        const search = yield select(getSearchValue);
+
         const newPage = (page > 0 ? page : oldPage);
 
         const apiFilters = {
@@ -41,6 +37,9 @@ function* _loadSelectList({typeOfApi, page}) {
         switch (typeOfApi) {
             case MULTI_SELECT_TYPES.SUBJECT:
                 API = API_SUBJECT_SELECT;
+                break;
+            case MULTI_SELECT_TYPES.STUDENT:
+                API = API_STUDENT_SELECT;
                 break;
             default:
                 API = API_SUBJECT_SELECT;
