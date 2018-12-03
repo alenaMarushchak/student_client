@@ -24,10 +24,12 @@ const subjects = (subjects = {
     },
 
     selected: {
-        values    : [],
-        page      : 0,
-        filters   : {},
-        totalPages: 0
+        list: {
+            values    : [],
+            page      : 0,
+            filters   : {},
+            totalPages: 0
+        }
     },
 
     teachersSubject: {

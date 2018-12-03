@@ -11,5 +11,22 @@ export const ROLES_BY_VALUE = {
 };
 
 export const MULTI_SELECT_TYPES = {
-    SUBJECT: 'subject'
+    SUBJECT: 'subject',
+    STUDENT: 'student'
+};
+
+export const SELECT_TOOLBAR_NAMES = {
+    DEFAULT: 'selectToolbar',
+    STUDENT: 'selectStudentToolbar',
+    SUBJECT: 'selectSubjectToolbar'
+};
+
+export const ROUTE_PARAMS = {
+    ID: /^[0-9a-fA-F]{24}$/
+};
+
+export const POINT_TYPES= {
+    EXAM   : 'EXAM',
+    MODULE1: 'MODULE1',
+    MODULE2: 'MODULE2'
 };

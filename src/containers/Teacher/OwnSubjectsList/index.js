@@ -36,9 +36,9 @@ class OwnSubjects extends Component {
         this.props.clean();
     }
 
-    navigateTo(subjectId) {
-        this.props.dispatch(push(`/subjects/${subjectId}`));
-    }
+    navigateTo = (subjectId) => {
+        this.props.dispatch(push(`/subjects/${subjectId}/groups`));
+    };
 
     search = () => {
         clearTimeout(this.timeoutId);
@@ -101,7 +101,7 @@ const connectedSubjectsList = connect(
         {
             getSubjectsList  : (page, filters) => dispatch(loadOwnTeacherSubjectsListSaga(page, filters)),
             deleteSubjectItem: (id) => dispatch(removeTeacherFromSubjectSaga(id)),
-            clean             : () => dispatch(cleanData(constants.LOAD_OWN_TEACHER_SUBJECT)),
+            clean            : () => dispatch(cleanData(constants.LOAD_OWN_TEACHER_SUBJECT)),
             dispatch
         }
     ))(OwnSubjects);

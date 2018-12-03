@@ -102,7 +102,7 @@ function* _createSubjectSaga() {
 
 function* _editSubjectSaga({id}) {
     try {
-        const generatedFields = yield select(store => (getFormValues('editUser')(store)));
+        const generatedFields = yield select(store => (getFormValues('editSubject')(store)));
         const {name} = generatedFields;
 
         const oldFields = yield select(store => store.subjects.selected.value);
@@ -186,11 +186,7 @@ function* _loadSubject({id}) {
     try {
         const user = yield select(store => store.session.user);
 
-        if (!user || !user.role) {
-            return yield put(addRequestError({status: 401}));
-        }
-
-        let API_REQUEST = API[API_TYPES.SUBJECT][user.role];
+        let API_REQUEST = API[API_TYPES.SUBJECT][ROLES_BY_VALUE[user.role]];
 
         const response = yield call(() => axios.get(`${API_REQUEST}/${id}`));
         const subject = response.data;

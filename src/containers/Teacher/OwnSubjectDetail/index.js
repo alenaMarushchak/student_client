@@ -4,10 +4,11 @@ import actions from '../../../actions/index';
 import constants from "../../../constants/index";
 import {push} from "react-router-redux";
 
-import {Button, Header} from 'semantic-ui-react'
+import {Button, Header, Segment} from 'semantic-ui-react'
 import Toolbar from "../../../components/Teacher/OwnSubjectDetail/toolbar";
 import OwnSubjectDetail from "../../../components/Teacher/OwnSubjectDetail";
 import Pagination from "../../../components/CustomElements/Pagination";
+import {getFormValues} from "redux-form";
 
 const {
     loadGroupsBySubjectSaga,
@@ -21,8 +22,26 @@ class GroupProfile extends Component {
     }
 
     componentDidMount() {
-        this.props.loadGroupsBySubject(this.props.match.params.id);
+        const {
+            page
+        } = this.props;
+
+        this.props.loadGroupsBySubject(page === 0 ? 1 : page, this.props.match.params.id);
     }
+
+    componentWillReceiveProps(nextProps) {
+        if ((nextProps.toolbarVals || {}).search !== (this.props.toolbarVals || {}).search) {
+            this.search();
+        }
+    }
+
+    search = () => {
+        clearTimeout(this.timeoutId);
+
+        this.timeoutId = setTimeout(() => {
+            this.props.loadGroupsBySubject(1, this.props.match.params.id);
+        }, 500);
+    };
 
     componentWillUnmount() {
         this.props.clean();
@@ -33,19 +52,25 @@ class GroupProfile extends Component {
     };
 
     onPageChange = (page) => {
-        const {filters} = this.props;
-        this.props.loadGroupsBySubject(page.selected + 1, filters)
+        this.props.loadGroupsBySubject(page.selected + 1, this.props.match.params.id)
     };
 
-    navigateTo = () => {
+    navigateTo = (groupId) => {
+        const {match: {params: {id}}} = this.props;
 
+        console.log('navigateTo ownsubjectdetail ', id, groupId);
+
+        this.props.dispatch(push(`/subjects/${id}/groups/${groupId}`));
     };
 
     render() {
         const {
             groups,
+            page,
+            totalPages,
             loadGroupsBySubject
         } = this.props;
+
 
         let content = groups.length ? <React.Fragment>
                 <Toolbar
@@ -65,9 +90,13 @@ class GroupProfile extends Component {
 
         return (<React.Fragment>
 
-                {content}
+                <Segment>
+                    {content}
+                </Segment>
 
-                <Button content='Go back' secondary onClick={this.goBack}/>
+                <Button content='Go back' secondary onClick={this.goBack}
+                        style={{marginTop: '40px'}}
+                />
 
             </React.Fragment>
         );
@@ -76,12 +105,16 @@ class GroupProfile extends Component {
 
 const connectedGroupProfile = connect(
     store => ({
-        groups: store.subjects.selected,
+        groups     : store.subjects.selected.list.values,
+        page       : store.subjects.selected.list.page,
+        totalPages : store.subjects.selected.list.totalPages,
+        filters    : store.subjects.selected.list.filters,
+        toolbarVals: getFormValues('groupsOfSubjectToolbar')(store)
     }),
     dispatch => (
         {
-            loadGroupsBySubject         : (id) => dispatch(loadGroupsBySubjectSaga(id)),
-            clean             : () => dispatch(cleanData(constants.LOAD_GROUPS_BY_SUBJECT)),
+            loadGroupsBySubject: (page, id) => dispatch(loadGroupsBySubjectSaga(page, id)),
+            clean              : () => dispatch(cleanData(constants.LOAD_GROUPS_BY_SUBJECT)),
             dispatch
         }
     ))(GroupProfile);

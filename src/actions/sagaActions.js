@@ -31,13 +31,16 @@ const {
 
     LOAD_SELECT_SAGA,
 
-
     LOAD_OWN_TEACHER_SUBJECT_SAGA,
     LOAD_ALL_SUBJECT_FOR_TEACHER_SAGA,
     ADD_TEACHER_TO_SUBJECT_SAGA,
     REMOVE_TEACHER_FROM_SUBJECT_SAGA,
 
-    LOAD_GROUPS_BY_SUBJECT_SAGA
+    LOAD_GROUPS_BY_SUBJECT_SAGA,
+
+    LOAD_GROUP_WITH_POINTS_SAGA,
+    ADD_POINT_TO_STUDENT_SAGA,
+    EDIT_POINT_OF_STUDENT_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -189,11 +192,12 @@ export const loadGroupSaga = (id) => ({
     id
 });
 
-export const editGroupSaga = (id, subjects) => {
+export const editGroupSaga = (id, subjects, students) => {
     return ({
         type: EDIT_GROUP_SAGA,
         id,
-        subjects
+        subjects,
+        students
     })
 };
 
@@ -220,10 +224,11 @@ export const removeSubjectFromGroupSaga = ({id, subjectId}) => {
     })
 };
 
-export const loadSelectListSaga = (typeOfApi, page = 0) => ({
+export const loadSelectListSaga = (typeOfApi, page = 0, search) => ({
     type: LOAD_SELECT_SAGA,
     typeOfApi,
-    page
+    page,
+    search
 });
 
 /// Teacher saga
@@ -247,9 +252,19 @@ export const loadOwnTeacherSubjectsListSaga = (page = 0, filters = {}) => ({
 });
 
 
-export const loadGroupsBySubjectSaga = (page = 0, filters = {}, subjectId) => ({
+export const loadGroupsBySubjectSaga = (page = 0, subjectId) => ({
     type: LOAD_GROUPS_BY_SUBJECT_SAGA,
     page,
-    filters,
     subjectId
+});
+
+export const loadGroupWithStudentsPointsSaga = (subjectId, groupId) => ({
+    type: LOAD_GROUP_WITH_POINTS_SAGA,
+    groupId,
+    subjectId
+});
+
+export const addPointToStudentSaga = ({studentId, subjectId, point, pointType}) => ({
+    type: ADD_POINT_TO_STUDENT_SAGA,
+    studentId, subjectId, point, pointType
 });

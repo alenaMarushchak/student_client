@@ -1,25 +1,22 @@
 import React from 'react';
-import Input from '../../CustomElements/Input'
-import {reduxForm} from 'redux-form'
+// import Input from '../../CustomElements/Input'
+// import {reduxForm} from 'redux-form'
 import {Button} from 'semantic-ui-react'
 
 const Toolbar = ({
                      loadOptions,
-                     onChange
+                     onChange,
+                     value
                  }) => (
     <React.Fragment>
         <div className='ui icon input'>
-            <Input
-                containerProps={{
-                    className: 'search-block'
-                }}
-                inputProps={{
-                    className: 'session',
-                }}
+            <input
+                className='search-block'
                 placeholder="Search..."
                 name="search"
                 type='text'
                 onChange={onChange}
+                value={value}
             />
 
         </div>
@@ -28,6 +25,4 @@ const Toolbar = ({
     </React.Fragment>
 );
 
-export default reduxForm({
-    form: 'selectToolbar'
-})(Toolbar);
+export default Toolbar;

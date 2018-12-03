@@ -37,7 +37,11 @@ const {
     ADD_TEACHER_TO_SUBJECT,
     REMOVE_TEACHER_FROM_SUBJECT,
 
-    LOAD_GROUPS_BY_SUBJECT
+    LOAD_GROUPS_BY_SUBJECT,
+
+    LOAD_GROUP_WITH_POINTS,
+    ADD_POINT_TO_STUDENT,
+    EDIT_POINT_OF_STUDENT
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -57,15 +61,15 @@ export const requestLogin = () => {
 
 export const addErrors = (requestType, errors) => {
     return {
-        type: ADD_ERRORS,
-        errors: errors,
+        type       : ADD_ERRORS,
+        errors     : errors,
         requestType: requestType
     }
 };
 
 export const cleanErrors = (requestType) => {
     return {
-        type: CLEAN_ERRORS,
+        type       : CLEAN_ERRORS,
         requestType: requestType
     }
 };
@@ -214,13 +218,13 @@ export const deleteGroup = (id) => ({
 });
 
 export const addSubjectToGroup = ({subject, group}) => ({
-    type   : ADD_SUBJECT_TO_GROUP,
+    type: ADD_SUBJECT_TO_GROUP,
     subject,
     group
 });
 
 export const removeSubjectFromGroup = ({subject, group}) => ({
-    type   : REMOVE_SUBJECT_FROM_GROUP,
+    type: REMOVE_SUBJECT_FROM_GROUP,
     subject,
     group
 });
@@ -249,7 +253,7 @@ export const removeTeacherFromSubject = ({subject}) => ({
 });
 
 export const loadOwnTeacherSubjectsList = (values, page = 0, filters = {}, totalPages = 0) => ({
-    type: LOAD_OWN_TEACHER_SUBJECT,
+    type   : LOAD_OWN_TEACHER_SUBJECT,
     payload: {
         values,
         page,
@@ -260,11 +264,22 @@ export const loadOwnTeacherSubjectsList = (values, page = 0, filters = {}, total
 
 
 export const loadGroupsBySubject = (values, page = 0, filters = {}, totalPages = 0) => ({
-    type: LOAD_GROUPS_BY_SUBJECT,
+    type   : LOAD_GROUPS_BY_SUBJECT,
     payload: {
         values,
         page,
         filters,
         totalPages
     }
+});
+
+
+export const loadGroupWithStudentsPoints = (values) => ({
+    type   : LOAD_GROUP_WITH_POINTS,
+    payload: {values}
+});
+
+export const addPointToStudent = ({studentId, point, pointType}) => ({
+    type   : ADD_POINT_TO_STUDENT,
+    payload: {studentId, point, pointType}
 });
