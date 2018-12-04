@@ -40,7 +40,8 @@ const {
 
     LOAD_GROUP_WITH_POINTS_SAGA,
     ADD_POINT_TO_STUDENT_SAGA,
-    EDIT_POINT_OF_STUDENT_SAGA
+
+    LOAD_STUDENT_POINTS_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -267,4 +268,9 @@ export const loadGroupWithStudentsPointsSaga = (subjectId, groupId) => ({
 export const addPointToStudentSaga = ({studentId, subjectId, point, pointType}) => ({
     type: ADD_POINT_TO_STUDENT_SAGA,
     studentId, subjectId, point, pointType
+});
+
+export const loadStudentPointsSaga = ({studentId}) => ({
+    type: LOAD_STUDENT_POINTS_SAGA,
+    studentId
 });

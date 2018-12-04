@@ -27,7 +27,7 @@ class GroupsList extends Component {
             }
         } = this.props;
 
-        this.props.loadGroup(id);
+        this.props.getGroup(id);
     }
 
     componentWillUnmount() {

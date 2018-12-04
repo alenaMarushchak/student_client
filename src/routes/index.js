@@ -51,13 +51,9 @@ class Routes extends React.Component {
         <Route path="/subjects/:id/groups" component={OwnSubjectDetail} key={'/subjects/:id/groups'}
                params={{id: ROUTE_PARAMS.ID}}/>,
 
-
-
         <Route path="/groups" component={StudentsGroupList} key={"/groups"}/>,
         <Route path="/groups/:id" component={StudentsGroup} key={"/groups/:id"} params={{id: ROUTE_PARAMS.ID}}/>,
-        //  <Route path="/groups/:id/student/:studentId" component={} key={"/groups/:id/student/:studentId"}/>, //all points of student for all time
-
-        //TODO add blo
+        <Route path="/groups/:id/student/:studentId" component={} key={"/groups/:id/student/:studentId"}/>,
     ];
 
     studentRouter = [
