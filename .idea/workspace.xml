@@ -2,38 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab1e8782-ff40-4c3f-b2d9-6088510eef5c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Admin/StudentsGroup/studentsTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Admin/StudentsGroup/subjectsTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/listItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/toolbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroupList/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/pointInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/stundentLineItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Student/PointsTable/pointItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Student/StudentsGroup/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsList/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsList/listItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsList/toolbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Student/Group/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsList/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sagas/student.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/reducerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/reducerActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/sagaActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/sagaActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomElements/MultiSelect/toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomElements/MultiSelect/toolbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/item.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/actionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CustomElements/MultiSelect/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CustomElements/MultiSelect/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/OwnSubjectDetail/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/OwnSubjectDetail/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/OwnSubjects/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/OwnSubjectsList/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/groups.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/subjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/subjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Student/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Student/Home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/StundetItemAllPoints/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentItemAllPoints/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroupWithPoints/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/pointInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroupWithPoints/pointInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/stundentLineItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Teacher/StudentsGroupWithPoints/stundentLineItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/student.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/student.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sagas/group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagas/group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sagas/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagas/select.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sagas/subject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagas/subject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validators/group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/validators/group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sagas/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagas/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Student/PointsTable/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -48,9 +42,11 @@
     <session id="-814333363">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="36" />
+          <entry key="project.closed" value="39" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="13" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.149" value="1" />
           <entry key="project.open.time.2" value="5" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.29" value="1" />
@@ -61,6 +57,7 @@
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.47" value="1" />
+          <entry key="project.open.time.49" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.6" value="1" />
@@ -68,8 +65,9 @@
           <entry key="project.open.time.67" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.90" value="1" />
+          <entry key="project.open.time.94" value="1" />
           <entry key="project.open.time.97" value="1" />
-          <entry key="project.opened" value="37" />
+          <entry key="project.opened" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -80,8 +78,8 @@
           <entry key="eslintrc" value="6" />
           <entry key="html" value="8" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="1604" />
-          <entry key="json" value="43" />
+          <entry key="js" value="1762" />
+          <entry key="json" value="45" />
           <entry key="md" value="1" />
           <entry key="png" value="2" />
           <entry key="svg" value="1" />
@@ -94,8 +92,8 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="8" />
           <entry key="Image" value="3" />
-          <entry key="JSON" value="53" />
-          <entry key="JavaScript" value="1604" />
+          <entry key="JSON" value="55" />
+          <entry key="JavaScript" value="1762" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="SVG" value="1" />
           <entry key="TypeScript" value="7" />
@@ -107,9 +105,9 @@
           <entry key="css" value="1" />
           <entry key="eslintrc" value="4" />
           <entry key="html" value="4" />
-          <entry key="js" value="37127" />
+          <entry key="js" value="39426" />
           <entry key="json" value="12" />
-          <entry key="txt" value="501" />
+          <entry key="txt" value="570" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -117,8 +115,8 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="4" />
           <entry key="JSON" value="16" />
-          <entry key="JavaScript" value="37127" />
-          <entry key="PLAIN_TEXT" value="501" />
+          <entry key="JavaScript" value="39426" />
+          <entry key="PLAIN_TEXT" value="570" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -135,13 +133,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+            <state relative-caret-position="141">
+              <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Student/Home/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/Student/Group/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="71" column="60" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,11 +178,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>toolbarVals</find>
-      <find>/users/sign_in</find>
-      <find>/sign_in</find>
-      <find>cleanData</find>
-      <find>errors</find>
       <find>preview</find>
       <find>addErrors</find>
       <find>EDIT_USER_SAGA</find>
@@ -189,6 +203,11 @@
       <find>LOAD_GROUP_WITH_POINTS_SAGA</find>
       <find>loadGroupWithStudentsPointsSaga</find>
       <find>ADD_POINT_TO_STUDENT_SAGA</find>
+      <find>loadGroupSaga</find>
+      <find>loadGroup</find>
+      <find>LOAD_STUDENT_POINTS</find>
+      <find>loadStudentPoints</find>
+      <find>LOAD_STUDENT_POINTS_SAGA</find>
     </findStrings>
     <replaceStrings>
       <replace>Subject</replace>
@@ -209,26 +228,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/containers/Admin/Home/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/Student/Home/index.js" />
-        <option value="$PROJECT_DIR$/src/services/getUserApi.js" />
-        <option value="$PROJECT_DIR$/src/components/Sidebar/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/Teacher/OwnSubjetcs.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/OwnSubjets/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/SubjectsList/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/SubjectsList/toolbar.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/OwnSubjets/toolbar.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/SubjectsList/listItem.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/OwnSubjets/listItem.js" />
-        <option value="$PROJECT_DIR$/src/containers/Teacher/OwnSubjects/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/Teacher/SubjectsList/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/OwnSubjectDetail/toolbar.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/OwnSubjectDetail/listItem.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/OwnSubjectDetail/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/listItem.js" />
-        <option value="$PROJECT_DIR$/src/containers/Teacher/StudentsGroupList/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/StudentsGroup/editGroup.js" />
         <option value="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/editListOfStudents.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/Home/index.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/StudentsGroup/studentsTable.js" />
@@ -240,26 +239,46 @@
         <option value="$PROJECT_DIR$/src/sagas/select.js" />
         <option value="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/edit.js" />
         <option value="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/group.js" />
-        <option value="$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Admin/StudentsGroup/item.js" />
-        <option value="$PROJECT_DIR$/src/constants/actionTypes.js" />
         <option value="$PROJECT_DIR$/test.js" />
-        <option value="$PROJECT_DIR$/src/actions/reducerActions.js" />
-        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/OwnSubjectsList/index.js" />
-        <option value="$PROJECT_DIR$/src/actions/sagaActions.js" />
         <option value="$PROJECT_DIR$/src/containers/Admin/StudentsGroupList/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/subjects.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/OwnSubjectDetail/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/pointInput.js" />
-        <option value="$PROJECT_DIR$/src/constants/api.js" />
-        <option value="$PROJECT_DIR$/src/sagas/group.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/avgLine.js" />
         <option value="$PROJECT_DIR$/src/constants/custom.js" />
         <option value="$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/stundentLineItem.js" />
         <option value="$PROJECT_DIR$/src/reducers/groups.js" />
+        <option value="$PROJECT_DIR$/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/Teacher/StundetItemAllPoints/index.js" />
+        <option value="$PROJECT_DIR$/src/sagas/index.js" />
+        <option value="$PROJECT_DIR$/src/sagas/group.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js" />
+        <option value="$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js" />
+        <option value="$PROJECT_DIR$/src/constants/actionTypes.js" />
+        <option value="$PROJECT_DIR$/src/reducers/student.js" />
+        <option value="$PROJECT_DIR$/src/constants/api.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsListView/toolbar.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsListView/listItem.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsListView/index.js" />
+        <option value="$PROJECT_DIR$/src/actions/sagaActions.js" />
+        <option value="$PROJECT_DIR$/src/containers/Teacher/StudentsList/item.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsList/listItem.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentsList/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/Teacher/StudentsList/index.js" />
+        <option value="$PROJECT_DIR$/src/sagas/student.js" />
+        <option value="$PROJECT_DIR$/src/actions/reducerActions.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/item.js" />
+        <option value="$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/Teacher/StudentItemAllPoints/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Student/StudentsGroup/index.js" />
         <option value="$PROJECT_DIR$/src/routes/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Student/PointsTable/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Student/PointsTable/pointItem.js" />
+        <option value="$PROJECT_DIR$/src/containers/Student/Home/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/Student/Group/index.js" />
       </list>
     </option>
   </component>
@@ -297,7 +316,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,18 +332,26 @@
               <item name="student_client" type="b2602c69:ProjectViewProjectNode" />
               <item name="student_client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="student_client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="student_client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Student" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../work/ceek_vr" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../student_server" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -335,11 +361,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\proj\myProject\student_client\src\components\Teacher\StudentsListView" />
       <recent name="D:\proj\myProject\student_client\src\components\Teacher\StudentsGroup" />
       <recent name="D:\proj\myProject\student_client\src\components\Teacher\OwnSubjectDetail" />
       <recent name="D:\proj\myProject\student_client\src\components\Teacher\SubjectsList" />
       <recent name="D:\proj\myProject\student_client\src\containers\Teacher" />
-      <recent name="D:\proj\myProject\student_client\src\components\Teacher\OwnSubjets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\proj\myProject\student_client\src\components\Admin\Subject\list" />
@@ -468,7 +494,11 @@
       <workItem from="1543521311192" duration="10100000" />
       <workItem from="1543581833289" duration="11391000" />
       <workItem from="1543692990105" duration="8872000" />
-      <workItem from="1543846761499" duration="12533000" />
+      <workItem from="1543846761499" duration="13177000" />
+      <workItem from="1543934940154" duration="88000" />
+      <workItem from="1543935758087" duration="44000" />
+      <workItem from="1543939102112" duration="4063000" />
+      <workItem from="1543952124868" duration="11988000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1538845714136</created>
@@ -582,11 +612,25 @@
       <option name="project" value="LOCAL" />
       <updated>1543441723430</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="adding points functionality">
+      <created>1543861167718</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1543861167718</updated>
+    </task>
+    <task id="LOCAL-00018" summary="studentItemAllPoints component">
+      <created>1543945586249</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1543945586249</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243104000" />
+    <option name="totallyTimeSpent" value="259931000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -601,7 +645,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2504957" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2504957" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -665,7 +709,9 @@
     <MESSAGE value="fix api" />
     <MESSAGE value="Add/remove teacher from subject" />
     <MESSAGE value="Detail of subject" />
-    <option name="LAST_COMMIT_MESSAGE" value="Detail of subject" />
+    <MESSAGE value="adding points functionality" />
+    <MESSAGE value="studentItemAllPoints component" />
+    <option name="LAST_COMMIT_MESSAGE" value="studentItemAllPoints component" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -677,288 +723,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/SubjectsList/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="86" column="52" lean-forward="true" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/toolbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/listItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsGroup/list/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/StudentsGroup/list/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/StudentsGroup/editGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/select.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Admin/StudentsGroup/editListOfStudents.js" />
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/Home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/StudentsGroup/subjectsTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/StudentsGroup/studentsTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/validators/group.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CustomElements/MultiSelect/toolbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sagas/select.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/CustomElements/MultiSelect/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1210">
-          <caret line="115" column="44" lean-forward="true" selection-start-line="115" selection-start-column="44" selection-end-line="115" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Admin/StudentsGroup/edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="163" column="47" lean-forward="true" selection-start-line="163" selection-start-column="47" selection-end-line="163" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/User/editUser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroupList/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!block;n#componentWillReceiveProps#0;n#GroupsList#0" />
-            <element signature="n#!!block;n#componentWillUnmount#0;n#GroupsList#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/Subject/editSubject.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Admin/Subject/item.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="35" column="6" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="35" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/StudentsGroup/list/listItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="14" selection-start-line="24" selection-start-column="27" selection-end-line="26" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/App/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Root.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#componentWillUnmount#0;n#GroupsList#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="125" column="39" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Admin/StudentsGroup/item.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/validators/subject.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="72" column="3" lean-forward="true" selection-start-line="72" selection-start-column="3" selection-end-line="72" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Teacher/OwnSubjectDetail/toolbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Admin/StudentsGroupList/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="90" column="29" lean-forward="true" selection-start-line="90" selection-start-column="29" selection-end-line="91" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Teacher/OwnSubjectsList/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sagas/subject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="243" column="44" selection-start-line="243" selection-start-column="18" selection-end-line="243" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -976,65 +744,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/avgLine.js" />
+    <entry file="file://$PROJECT_DIR$/src/reducers/session.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-662">
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Teacher/OwnSubjectDetail/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        <state relative-caret-position="522">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Teacher/OwnSubjectDetail/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-553">
-          <caret line="62" column="57" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
+        <state relative-caret-position="261">
+          <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Admin/Subject/item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="70" column="52" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Admin/SubjectsList/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/sagaActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="268" column="42" lean-forward="true" selection-start-line="268" selection-start-column="4" selection-end-line="268" selection-end-column="42" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/api.js">
+    <entry file="file://$PROJECT_DIR$/src/sagas/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/reducerActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="282" column="33" selection-start-line="282" selection-start-column="13" selection-end-line="282" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sagas/group.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="245" column="29" lean-forward="true" selection-start-line="245" selection-start-column="29" selection-end-line="245" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/pointInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-302">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        <state>
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#76#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/avgLine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -1045,41 +811,360 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/groups.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="137" column="36" selection-start-line="137" selection-start-column="36" selection-end-line="137" selection-end-column="36" />
+        <state relative-caret-position="275">
+          <caret line="72" column="3" lean-forward="true" selection-start-line="72" selection-start-column="3" selection-end-line="72" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/stundentLineItem.js">
+    <entry file="file://$PROJECT_DIR$/src/sagas/group.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-626">
-          <caret line="84" column="50" selection-start-line="84" selection-start-column="50" selection-end-line="84" selection-end-column="50" />
+        <state relative-caret-position="337">
+          <caret line="191" column="38" selection-start-line="191" selection-start-column="38" selection-end-line="191" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/select.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="11" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="49" column="22" lean-forward="true" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#1045#1069#0" />
-            <element signature="e#1355#1379#0" />
+            <element signature="e#667#873#0" />
+            <element signature="e#718#858#0" />
+            <element signature="e#1339#1514#0" />
+            <element signature="e#1394#1513#0" />
+            <element signature="e#1449#1498#0" />
+            <element signature="e#1524#1753#0" />
+            <element signature="e#1562#1752#0" />
+            <element signature="e#1613#1738#0" />
+            <element signature="e#1762#2135#0" />
+            <element signature="e#1946#2124#0" />
+            <element signature="e#1997#2110#0" />
+            <element signature="e#2145#2510#0" />
+            <element signature="e#2321#2499#0" />
+            <element signature="e#2372#2485#0" />
+            <element signature="e#2663#2740#0" />
+            <element signature="e#2843#2964#0" />
+            <element signature="e#2898#2949#0" />
+            <element signature="e#2975#4188#0" />
+            <element signature="e#3317#3785#0" />
+            <element signature="e#3476#3663#0" />
+            <element signature="e#3538#3644#0" />
+            <element signature="e#3669#3770#0" />
+            <element signature="e#3791#4016#0" />
+            <element signature="e#3907#4001#0" />
+            <element signature="e#4037#4178#0" />
+            <element signature="e#4092#4164#0" />
+            <element signature="e#4198#4233#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StundetsGroupWithPoints/index.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/SubjectsList/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="396">
+          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsList/toolbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/actionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagas/subject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="58" selection-start-line="58" selection-end-line="60" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagas/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsGroup/stundetsGroupDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroup/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroupList/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="52" column="51" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsList/item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="102" column="37" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#componentWillUnmount#0;n#SubjectsList#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsList/listItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentsList/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/student.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/sagaActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="275" column="34" selection-start-line="275" selection-start-column="10" selection-end-line="275" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/reducerActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="289" column="30" selection-start-line="289" selection-start-column="13" selection-end-line="289" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagas/student.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-482">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsList/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#componentWillUnmount#0;n#SubjectsList#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroupWithPoints/pointInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroupWithPoints/stundentLineItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="86" column="9" lean-forward="true" selection-start-line="78" selection-start-column="7" selection-end-line="86" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentsGroupWithPoints/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/StudentItemAllPoints/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#StudentItemAllPointsContainer#0" />
+            <element signature="e#953#1619#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Teacher/Home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Admin/StudentsGroup/item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/StudentsGroup/studentsTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Teacher/StudentItemAllPoints/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/Subject/list/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Student/PointsTable/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Student/PointsTable/pointItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Student/StudentsGroup/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+        <state relative-caret-position="141">
+          <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Student/Home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Student/Group/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="71" column="60" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

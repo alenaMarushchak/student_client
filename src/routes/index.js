@@ -18,7 +18,9 @@ import HomeTeacher from '../containers/Teacher/Home';
 import OwnSubjectDetail from '../containers/Teacher/OwnSubjectDetail'
 import StudentsGroupList from '../containers/Teacher/StudentsGroupList';
 import StudentsGroup from '../containers/Teacher/StudentsGroup';
-import StudentsGroupWithPoints from '../containers/Teacher/StundetsGroupWithPoints';
+import StudentsGroupWithPoints from '../containers/Teacher/StudentsGroupWithPoints';
+import StudentItemAllPoints from '../containers/Teacher/StudentItemAllPoints'
+import StudentsList from '../containers/Teacher/StudentsList'
 
 import HomeStudent from '../containers/Student/Home';
 
@@ -44,27 +46,28 @@ class Routes extends React.Component {
         <Route component={HomeTeacher} path="/" exact key={'/'}/>,
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
 
-        <Route path="/subjects/:id/groups/:groupId" component={StudentsGroupWithPoints} key={'/subjects/:id/groups/:groupId'}
+        <Route path="/subjects/:id/groups/:groupId" component={StudentsGroupWithPoints}
+               key={'/subjects/:id/groups/:groupId'}
                params={{id: ROUTE_PARAMS.ID, groupId: ROUTE_PARAMS.ID}}
         />,
 
         <Route path="/subjects/:id/groups" component={OwnSubjectDetail} key={'/subjects/:id/groups'}
                params={{id: ROUTE_PARAMS.ID}}/>,
 
+        <Route path="/students/:id" component={StudentItemAllPoints} key={"/students/:id"}
+               params={{id: ROUTE_PARAMS.ID}}/>,
+        <Route path="/students" component={StudentsList} key={'/students'}/>,
 
 
-        <Route path="/groups" component={StudentsGroupList} key={"/groups"}/>,
+        <Route path="/groups/:id/student/:studentId" component={StudentItemAllPoints} key={"/students/:id"}/>,
         <Route path="/groups/:id" component={StudentsGroup} key={"/groups/:id"} params={{id: ROUTE_PARAMS.ID}}/>,
-        //  <Route path="/groups/:id/student/:studentId" component={} key={"/groups/:id/student/:studentId"}/>, //all points of student for all time
+        <Route path="/groups" component={StudentsGroupList} key={"/groups"}/>,
 
-        //TODO add blo
     ];
 
     studentRouter = [
         <Route component={HomeStudent} path="/" exact key={'/'}/>,
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
-        //My points all
-        // my group list
     ];
 
     //Blog writing

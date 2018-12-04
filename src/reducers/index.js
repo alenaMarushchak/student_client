@@ -8,6 +8,7 @@ import * as modalReducer from './modal.js';
 import * as subjectReducer from './subjects.js';
 import * as groupReducer from './groups.js';
 import * as selectReducer from './select.js';
+import * as studentReducer from './student.js';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     ...modalReducer,
     ...subjectReducer,
     ...groupReducer,
-    ...selectReducer
+    ...selectReducer,
+    ...studentReducer
 });
 
 export default rootReducer;
