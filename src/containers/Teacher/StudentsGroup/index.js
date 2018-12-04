@@ -52,13 +52,15 @@ class GroupsList extends Component {
 
     render() {
         const {
-            group
+            group:{
+                students
+            }
         } = this.props;
 
         return (<React.Fragment>
 
                 <StudentsGroupDetail
-                    students={group.students}
+                    students={students}
                     navigateTo={this.navigateTo}
                 />
 

@@ -2,12 +2,20 @@ import constants from '../constants';
 
 const {
     LOAD_STUDENT_POINTS,
+    LOAD_STUDENTS_LIST,
     CLEAN_DATA
 
 } = constants;
 
 const student = (student = {
-    values: []
+    values: [],
+
+    list: {
+        values    : [],
+        page      : 0,
+        filters   : {},
+        totalPages: 0
+    }
 }, action) => {
     switch (action.type) {
 
@@ -26,6 +34,33 @@ const student = (student = {
                 ...student,
                 values: []
             };
+
+        case LOAD_STUDENTS_LIST: {
+            const {
+                values,
+                page,
+                totalPages
+            } = action.payload;
+            return {
+                ...student,
+                list: {
+                    ...student.list,
+                    values,
+                    page,
+                    totalPages
+                },
+            };
+        }
+
+        case `${CLEAN_DATA}_${LOAD_STUDENTS_LIST}`: {
+            return {
+                ...student,
+                list: {
+                    ...student.list,
+                    values: [],
+                },
+            };
+        }
 
         default:
             return student;

@@ -1,8 +1,7 @@
 import React from 'react';
 import {Table} from 'semantic-ui-react'
 
-
-const StudentItem = ({subject}) => {
+const PointItem = ({subject}) => {
     let module1, module2, exam;
 
     let points = subject && subject.points;
@@ -37,4 +36,4 @@ const StudentItem = ({subject}) => {
     </React.Fragment>)
 };
 
-export default StudentItem;
+export default PointItem;

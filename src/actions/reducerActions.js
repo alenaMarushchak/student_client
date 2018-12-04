@@ -42,7 +42,9 @@ const {
     LOAD_GROUP_WITH_POINTS,
     ADD_POINT_TO_STUDENT,
 
-    LOAD_STUDENT_POINTS
+    LOAD_STUDENT_POINTS,
+
+    LOAD_STUDENTS_LIST
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -285,8 +287,18 @@ export const addPointToStudent = ({studentId, point, pointType}) => ({
     payload: {studentId, point, pointType}
 });
 
-export const loadStudentPointsSaga = ({values}) => ({
+export const loadStudentPoints = ({values}) => ({
     type   : LOAD_STUDENT_POINTS,
     payload: {values}
 });
 
+
+export const loadStudentsList = (values, page = 0, filters = {}, totalPages = 0) => ({
+    type: LOAD_STUDENTS_LIST,
+    payload:{
+        values,
+        page,
+        filters,
+        totalPages
+    }
+});

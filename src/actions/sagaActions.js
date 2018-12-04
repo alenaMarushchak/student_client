@@ -41,7 +41,9 @@ const {
     LOAD_GROUP_WITH_POINTS_SAGA,
     ADD_POINT_TO_STUDENT_SAGA,
 
-    LOAD_STUDENT_POINTS_SAGA
+    LOAD_STUDENT_POINTS_SAGA,
+
+    LOAD_STUDENTS_LIST_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -273,4 +275,11 @@ export const addPointToStudentSaga = ({studentId, subjectId, point, pointType}) 
 export const loadStudentPointsSaga = ({studentId}) => ({
     type: LOAD_STUDENT_POINTS_SAGA,
     studentId
+});
+
+
+export const loadStudentsListSaga = (page = 0, filters = {}) => ({
+    type: LOAD_STUDENTS_LIST_SAGA,
+    page,
+    filters
 });

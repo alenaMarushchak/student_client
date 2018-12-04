@@ -14,6 +14,9 @@ export const API_STUDENT_SELECT = '/select/student';
 
 export const API_OWN_TEACHERS_SUBJECT = '/teacher/subject/own';
 
+export const API_STUDENTS_POINTS_LIST = '/teacher/student';
+export const API_STUDENTS_LIST = '/teacher/student';
+
 export const API = {
     SUBJECT: {
         ADMIN  : '/admin/subject',

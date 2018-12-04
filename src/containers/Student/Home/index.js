@@ -1,5 +1,5 @@
 import React from "react";
 
-const Home = () => (<div>Home There will be some info for student</div>);
+const Home = () => (<div>Home page</div>);
 
 export default Home;
