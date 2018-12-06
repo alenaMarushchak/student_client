@@ -79,31 +79,17 @@ const Sidebar = ({user}) => {
             <Icon name={'home'}/>
             Home
         </NavLink>
-        <NavLink to='/users'
-                 name='users'
+        <NavLink to='/groups'
+                 name='group'
                  className={`item`}>
             <Icon name={'address card outline'}/>
-            Users management
-        </NavLink>
-        <NavLink to="/subjects"
-                 className={`item`}
-                 name='subjects'
-        >
-            <Icon name={'book'}/>
-            Subject management
-        </NavLink>
-        <NavLink to="/groups"
-                 className={`item`}
-                 name='groups'
-        >
-            <Icon name={'group'}/>
-            Group management
+            My group
         </NavLink>
         <NavLink to="/blog"
                  className={`item`}
                  name='blog'>
             <Icon name={'blogger'}/>
-            Blog management
+            Blog
         </NavLink>
     </Menu>;
 

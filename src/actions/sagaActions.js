@@ -43,7 +43,18 @@ const {
 
     LOAD_STUDENT_POINTS_SAGA,
 
-    LOAD_STUDENTS_LIST_SAGA
+    LOAD_STUDENTS_LIST_SAGA,
+
+    LOAD_BLOG_LIST_SAGA,
+    CREATE_BLOG_SAGA,
+    EDIT_BLOG_SAGA,
+    DELETE_BLOG_SAGA,
+    LOAD_POSTS_SAGA,
+    LOAD_POST_ITEM_SAGA,
+    CREATE_POST_SAGA,
+    DELETE_POST_SAGA,
+    CREATE_COMMENT_SAGA,
+    DELETE_COMMENT_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -272,7 +283,7 @@ export const addPointToStudentSaga = ({studentId, subjectId, point, pointType}) 
     studentId, subjectId, point, pointType
 });
 
-export const loadStudentPointsSaga = ({studentId}) => ({
+export const loadStudentPointsSaga = ({studentId = ''}) => ({
     type: LOAD_STUDENT_POINTS_SAGA,
     studentId
 });
@@ -282,4 +293,45 @@ export const loadStudentsListSaga = (page = 0, filters = {}) => ({
     type: LOAD_STUDENTS_LIST_SAGA,
     page,
     filters
+});
+
+export const loadBlogListSaga = (page = 0, filters = {}) => ({
+    type: LOAD_BLOG_LIST_SAGA,
+    page,
+    filters
+});
+
+export const createBlogSaga = ({blog}) => {
+    return  ({
+        type: CREATE_BLOG_SAGA,
+        blog
+    })
+};
+
+export const deleteBlogSaga = ({blog}) => ({
+    type: DELETE_BLOG_SAGA,
+    blog
+});
+
+export const createPostSaga = ({blogId, tags}) => ({
+    type: CREATE_POST_SAGA,
+    blogId,
+    tags
+});
+
+export const loadPostListSaga = (blogId, page = 0, filters = {}) => ({
+    type: LOAD_POSTS_SAGA,
+    blogId,
+    page,
+    filters
+});
+
+export const loadPostItemSaga = ({post}) => ({
+    type: LOAD_POST_ITEM_SAGA,
+    post
+});
+
+export const deletePostSaga = ({post}) => ({
+    type: DELETE_POST_SAGA,
+    post
 });

@@ -8,6 +8,7 @@ import * as subjectSagas from './subject.js'
 import * as groupSagas from './group.js'
 import * as selectSagas from './select.js'
 import * as studentSagas from './student.js';
+import * as blogSagas from './blog.js';
 
 const sagas = {
     ...authSagas,
@@ -18,7 +19,8 @@ const sagas = {
     ...subjectSagas,
     ...groupSagas,
     ...selectSagas,
-    ...studentSagas
+    ...studentSagas,
+    ...blogSagas,
 };
 
 export default function* root() {

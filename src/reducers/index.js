@@ -9,10 +9,21 @@ import * as subjectReducer from './subjects.js';
 import * as groupReducer from './groups.js';
 import * as selectReducer from './select.js';
 import * as studentReducer from './student.js';
+import * as blogReducer from './blog.js';
+import * as postReducer from './post.js';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
-    form   : formReducer,
+    form   : formReducer.plugin({
+        'createPost': (state, action) => {
+            switch (action.type) {
+                case 'CREATE_POST':
+                    return undefined;
+                default:
+                    return state;
+            }
+        }
+    }),
     ...sessionReducer,
     ...errorReducer,
     ...userReducer,
@@ -20,7 +31,9 @@ const rootReducer = combineReducers({
     ...subjectReducer,
     ...groupReducer,
     ...selectReducer,
-    ...studentReducer
+    ...studentReducer,
+    ...blogReducer,
+    ...postReducer
 });
 
 export default rootReducer;

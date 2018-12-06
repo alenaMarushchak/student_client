@@ -23,6 +23,10 @@ import StudentItemAllPoints from '../containers/Teacher/StudentItemAllPoints'
 import StudentsList from '../containers/Teacher/StudentsList'
 
 import HomeStudent from '../containers/Student/Home';
+import OwnGroup from '../containers/Student/Group'
+
+import Blog from '../containers/Blog';
+import Post from '../containers/Post'
 
 import {ROLES, ROUTE_PARAMS} from '../constants/custom';
 
@@ -39,6 +43,13 @@ class Routes extends React.Component {
 
         <Route path="/groups/:id" component={Group} key={'/groups/:id'} params={{id: ROUTE_PARAMS.ID}}/>,
         <Route path="/groups*" component={GroupList} exact key={'/groups/:id'} params={{id: ROUTE_PARAMS.ID}}/>,
+
+        <Route path="/blog/:id/posts" component={Post}
+               key={"/blog/:id/posts"}
+               params={{id: ROUTE_PARAMS.ID}}/>,
+
+        <Route path="/blog" component={Blog} key={"/blog"}/>,
+
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
 
@@ -63,11 +74,28 @@ class Routes extends React.Component {
         <Route path="/groups/:id" component={StudentsGroup} key={"/groups/:id"} params={{id: ROUTE_PARAMS.ID}}/>,
         <Route path="/groups" component={StudentsGroupList} key={"/groups"}/>,
 
+        <Route path="/blog/:id/posts" component={Post}
+               key={"/blog/:id/posts"}
+               params={{id: ROUTE_PARAMS.ID}}/>,
+
+        <Route path="/blog" component={Blog} key={"/blog"}/>,
+
+
+        <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
 
     studentRouter = [
         <Route component={HomeStudent} path="/" exact key={'/'}/>,
         <Route path="/users/profile" component={Profile} key={'/users/profile'}/>,
+        <Route path="/groups" component={OwnGroup} key={'/groups'}/>,
+
+        <Route path="/blog/:id/posts" component={Post}
+               key={"/blog/:id/posts"}
+               params={{id: ROUTE_PARAMS.ID}}/>,
+
+        <Route path="/blog" component={Blog} key={"/blog"}/>,
+
+        <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
 
     //Blog writing
@@ -83,14 +111,14 @@ class Routes extends React.Component {
     routes = () => {
         const {
             logged,
-            user: {
-                role
-            }
+            user
         } = this.props;
 
         let routes = this.guestRoutes;
 
         if (logged) {
+            let role = user.role;
+
             switch (role) {
                 case ROLES.ADMIN:
                     routes = this.adminRoutes;
@@ -133,3 +161,5 @@ const connectedRoutes = connect((store) => ({
 }))(Routes);
 
 export default withRouter(connectedRoutes);
+
+//
