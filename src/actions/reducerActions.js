@@ -57,7 +57,8 @@ const {
     CREATE_COMMENT,
     DELETE_COMMENT,
 
-    ADD_AUTHOR
+    LOAD_ADMIN_STATISTIC,
+    LOAD_STUDENT_STATISTIC
 } = constants;
 
 export const showModal = (modalType, modalContentProps = {}) => ({
@@ -307,8 +308,8 @@ export const loadStudentPoints = ({values}) => ({
 
 
 export const loadStudentsList = (values, page = 0, filters = {}, totalPages = 0) => ({
-    type: LOAD_STUDENTS_LIST,
-    payload:{
+    type   : LOAD_STUDENTS_LIST,
+    payload: {
         values,
         page,
         filters,
@@ -317,8 +318,8 @@ export const loadStudentsList = (values, page = 0, filters = {}, totalPages = 0)
 });
 
 export const loadBlogList = (values, page = 0, filters = {}, totalPages = 0) => ({
-    type: LOAD_BLOG_LIST,
-    payload:{
+    type   : LOAD_BLOG_LIST,
+    payload: {
         values,
         page,
         filters,
@@ -327,46 +328,61 @@ export const loadBlogList = (values, page = 0, filters = {}, totalPages = 0) => 
 });
 
 export const createBlog = ({blog}) => ({
-    type: CREATE_BLOG,
-    payload:{
+    type   : CREATE_BLOG,
+    payload: {
         blog
     }
 });
 
-export const deleteBlog = ({blog}) => ({
-    type: DELETE_BLOG,
-    payload:{
-        blog
+export const deleteBlog = (blogId) => ({
+    type   : DELETE_BLOG,
+    payload: {
+        blogId
     }
 });
 
 export const createPost = ({post}) => ({
-    type: CREATE_POST,
-    payload:{
+    type   : CREATE_POST,
+    payload: {
         post
     }
 });
 
 export const loadPostItem = ({post}) => ({
-    type: LOAD_POST_ITEM,
-    payload:{
+    type   : LOAD_POST_ITEM,
+    payload: {
         post
     }
 });
 
-export const deletePost = ({post}) => ({
-    type: DELETE_POST,
-    payload:{
-        post
+export const deletePost = (postId) => ({
+    type   : DELETE_POST,
+    payload: {
+        postId
     }
 });
 
 export const loadPostList = (values, page = 0, filters = {}, totalPages = 0) => ({
-    type: LOAD_POSTS,
-    payload:{
+    type   : LOAD_POSTS,
+    payload: {
         values,
         page,
         filters,
         totalPages
+    }
+});
+
+
+export const loadAdminStatistic = (value) => ({
+    type   : LOAD_ADMIN_STATISTIC,
+    payload: {
+        value
+    }
+});
+
+export const loadStudentStatistic = (value) => ({
+    type: LOAD_STUDENT_STATISTIC,
+    payload:{
+        value
     }
 });

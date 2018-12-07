@@ -54,7 +54,7 @@ const blog = (blogs = {
 
 
         case DELETE_BLOG: {
-            let index = blogs.list.values.findIndex(o => o._id === action.payload.blog._id);
+            let index = blogs.list.values.findIndex(o => o._id === action.payload.blogId);
 
             blogs.list.values.splice(index, 1);
 

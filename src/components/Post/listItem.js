@@ -14,27 +14,37 @@ const Item = ({
                       commentCount
                   },
                   navigateTo,
+                  canDeleted,
+                  deleteItem
               }) => (
     <React.Fragment>
-        <Card.Content>
-            <Card.Header>{title}</Card.Header>
-            <Card.Meta>{formatDate(createdAt)} | {author.name}</Card.Meta>
-            <Card.Description>{description}</Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-            <a onClick={() => {
-                navigateTo(_id);
+        <Card>
+            {canDeleted ? <Label as='a' onClick={() => {
+                deleteItem(_id);
             }}>
-                <Icon name='align left'/>
-                Comment: {commentCount}
-            </a>
+                Delete
+                <Icon name='delete'/>
+            </Label> : null}
+            <Card.Content>
+                <Card.Header>{title}</Card.Header>
+                <Card.Meta>{formatDate(createdAt)} | {author.name}</Card.Meta>
+                <Card.Description>{description}</Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+                <a onClick={() => {
+                    navigateTo(_id);
+                }}>
+                    <Icon name='align left'/>
+                    Comment: {commentCount}
+                </a>
 
-            <div style={{marginTop: '20px'}}>
-                {tags.map(tag => <Label key={tag}>
-                    <Icon name='tag'/> {tag}
-                </Label>)}
-            </div>
-        </Card.Content>
+                <div style={{marginTop: '20px'}}>
+                    {tags.map(tag => <Label key={tag}>
+                        <Icon name='tag'/> {tag}
+                    </Label>)}
+                </div>
+            </Card.Content>
+        </Card>
     </React.Fragment>
 
 

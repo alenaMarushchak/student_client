@@ -28,6 +28,8 @@ import OwnGroup from '../containers/Student/Group'
 import Blog from '../containers/Blog';
 import Post from '../containers/Post'
 
+import Statistic from '../containers/Statistic'
+
 import {ROLES, ROUTE_PARAMS} from '../constants/custom';
 
 class Routes extends React.Component {
@@ -49,6 +51,8 @@ class Routes extends React.Component {
                params={{id: ROUTE_PARAMS.ID}}/>,
 
         <Route path="/blog" component={Blog} key={"/blog"}/>,
+
+        <Route path="/statistic" component={Statistic} key={"/statistic"}/>,
 
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
@@ -80,6 +84,7 @@ class Routes extends React.Component {
 
         <Route path="/blog" component={Blog} key={"/blog"}/>,
 
+        <Route path="/statistic" component={Statistic} key={"/statistic"}/>,
 
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
@@ -94,6 +99,8 @@ class Routes extends React.Component {
                params={{id: ROUTE_PARAMS.ID}}/>,
 
         <Route path="/blog" component={Blog} key={"/blog"}/>,
+
+        <Route path="/statistic" component={Statistic} key={"/statistic"}/>,
 
         <Redirect from="/sign_in" to="/" key={'redirect'}/>
     ];
@@ -161,5 +168,3 @@ const connectedRoutes = connect((store) => ({
 }))(Routes);
 
 export default withRouter(connectedRoutes);
-
-//

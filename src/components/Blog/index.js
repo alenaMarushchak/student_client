@@ -1,14 +1,16 @@
 import React from 'react';
 import Item from './listItem'
-import {Segment} from 'semantic-ui-react'
 
 function BlogList({
                           values = [],
-                          navigateTo
+                          navigateTo,
+                          canDeleted,
+                          deleteItem
                       }) {
-    return (<Segment>
-            {values.map( value => <Item item={value} navigateTo={navigateTo} key={value._id}/>)}
-            </Segment>
+    return (<React.Fragment>
+            {values.map( value => <Item item={value} navigateTo={navigateTo} key={value._id}  canDeleted={canDeleted}
+                deleteItem={deleteItem} />)}
+            </React.Fragment>
     );
 }
 

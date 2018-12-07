@@ -11,6 +11,7 @@ import * as selectReducer from './select.js';
 import * as studentReducer from './student.js';
 import * as blogReducer from './blog.js';
 import * as postReducer from './post.js';
+import * as statistic from './statistic.js';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
     ...selectReducer,
     ...studentReducer,
     ...blogReducer,
-    ...postReducer
+    ...postReducer,
+    ...statistic
 });
 
 export default rootReducer;

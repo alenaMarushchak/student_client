@@ -40,6 +40,12 @@ const Sidebar = ({user}) => {
             <Icon name={'blogger'}/>
             Blog management
         </NavLink>
+        <NavLink to="/statistic"
+                 className={`item`}
+                 name='statistic'>
+            <Icon name={'chart bar'}/>
+            Student group statistic
+        </NavLink>
     </Menu>;
 
     const TEACHER = <Menu>
@@ -69,6 +75,12 @@ const Sidebar = ({user}) => {
             <Icon name={'blogger'}/>
             Blog
         </NavLink>
+        <NavLink to="/statistic"
+                 className={`item`}
+                 name='statistic'>
+            <Icon name={'chart bar'}/>
+            Student group statistic
+        </NavLink>
     </Menu>;
 
     const STUDENT = <Menu>
@@ -90,6 +102,12 @@ const Sidebar = ({user}) => {
                  name='blog'>
             <Icon name={'blogger'}/>
             Blog
+        </NavLink>
+        <NavLink to="/statistic"
+                 className={`item`}
+                 name='statistic'>
+            <Icon name={'chart bar'}/>
+            Student group statistic
         </NavLink>
     </Menu>;
 

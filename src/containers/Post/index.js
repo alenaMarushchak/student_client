@@ -13,6 +13,7 @@ import CreatePostForm from '../Teacher/Post/create'
 
 import {ROLES} from "../../constants/custom";
 import {Segment, Card, Label, Icon, Confirm, Button} from "semantic-ui-react";
+import BlogComponent from "../../components/Blog";
 
 const {
     loadPostListSaga,
@@ -26,7 +27,8 @@ class PostContainer extends Component {
         super(props);
 
         this.state = {
-            open: false
+            open        : false,
+            selectedPost: null
         }
     }
 
@@ -72,10 +74,10 @@ class PostContainer extends Component {
         }, 500);
     };
 
-    deletePostItem = (blog) => {
+    deletePostItem = () => {
         this.setState({open: false});
 
-        this.props.deletePostItem(blog);
+        this.props.deletePostItem(this.state.selectedPost);
     };
 
     addPost = (tags) => {
@@ -94,16 +96,22 @@ class PostContainer extends Component {
     };
 
     close = () => {
-        this.setState({open: false})
+        this.setState({
+            open        : false,
+            selectedPost: null
+        })
     };
 
-    open = () => {
-        this.setState({open: true})
+    open = (item) => {
+        this.setState({
+            open        : true,
+            selectedPost: item
+        })
     };
 
     render() {
         const {
-            user:{
+            user: {
                 _id,
                 role
             },
@@ -128,16 +136,13 @@ class PostContainer extends Component {
                         <Toolbar
                             loadPostList={getPostList}
                         />
-                        <Card>
-                            <Label as='a' onClick={this.open}>
-                                Delete
-                                <Icon name='delete'/>
-                            </Label>
-                            <PostComponent
-                                values={post}
-                                navigateTo={this.navigateTo}
-                            />
-                        </Card>
+                        <PostComponent
+                            canDeleted
+                            deleteItem={this.open}
+                            values={post}
+                            navigateTo={this.navigateTo}
+                        />
+
                         <Pagination
                             value={page}
                             totalPages={totalPages}
@@ -155,12 +160,12 @@ class PostContainer extends Component {
                         <Toolbar
                             loadPostList={getPostList}
                         />
-                        <Card>
-                            <PostComponent
-                                values={post}
-                                navigateTo={this.navigateTo}
-                            />
-                        </Card>
+
+                        <PostComponent
+                            values={post}
+                            navigateTo={this.navigateTo}
+                        />
+
                         <Pagination
                             value={page}
                             totalPages={totalPages}
@@ -175,12 +180,12 @@ class PostContainer extends Component {
                         <Toolbar
                             loadPostList={getPostList}
                         />
-                        <Card>
-                            <PostComponent
-                                values={post}
-                                navigateTo={this.navigateTo}
-                            />
-                        </Card>
+
+                        <PostComponent
+                            values={post}
+                            navigateTo={this.navigateTo}
+                        />
+
                         <Pagination
                             value={page}
                             totalPages={totalPages}
@@ -210,7 +215,7 @@ const connectedPostContainer = connect(
     dispatch => (
         {
             getPostList   : (blogId, page, filters) => dispatch(loadPostListSaga(blogId, page, filters)),
-            deletePostItem: (post) => dispatch(deletePostSaga({post})),
+            deletePostItem: (postId) => dispatch(deletePostSaga(postId)),
             createPost    : ({blogId, tags}) => dispatch(createPostSaga({blogId, tags})),
             clean         : () => dispatch(cleanData(constants.LOAD_POSTS)),
             dispatch

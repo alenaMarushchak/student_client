@@ -114,13 +114,11 @@ function* _createBlogSaga({blog}) {
     }
 }
 
-function* _deleteBlogSaga({blog}) {
+function* _deleteBlogSaga({blogId}) {
     try {
-        let id = blog._id;
+        yield call(() => axios.delete(`${API_BLOG}/${blogId}`));
 
-        yield call(() => axios.delete(`${API_BLOG}/${id}`));
-
-        yield put(deleteBlog({blog}));
+        yield put(deleteBlog(blogId));
     } catch (e) {
         yield put(addRequestError(e.response));
     }
@@ -205,13 +203,11 @@ function* _createPostSaga({blogId, tags}) {
     }
 }
 
-function* _deletePostSaga({post}) {
+function* _deletePostSaga({postId}) {
     try {
-        let postId = post._id
-
         yield call(() => axios.delete(`${API_BLOG}/post/${postId}`));
 
-        yield put(deletePost({post}));
+        yield put(deletePost(postId));
     } catch (e) {
         yield put(addRequestError(e.response));
     }

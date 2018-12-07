@@ -47,14 +47,17 @@ const {
 
     LOAD_BLOG_LIST_SAGA,
     CREATE_BLOG_SAGA,
-    EDIT_BLOG_SAGA,
     DELETE_BLOG_SAGA,
     LOAD_POSTS_SAGA,
     LOAD_POST_ITEM_SAGA,
     CREATE_POST_SAGA,
     DELETE_POST_SAGA,
     CREATE_COMMENT_SAGA,
-    DELETE_COMMENT_SAGA
+    DELETE_COMMENT_SAGA,
+
+    LOAD_ADMIN_STATISTIC_SAGA,
+
+    LOAD_STUDENT_STATISTIC_SAGA
 } = constants;
 
 export const addRequestError = (response) => {
@@ -302,15 +305,15 @@ export const loadBlogListSaga = (page = 0, filters = {}) => ({
 });
 
 export const createBlogSaga = ({blog}) => {
-    return  ({
+    return ({
         type: CREATE_BLOG_SAGA,
         blog
     })
 };
 
-export const deleteBlogSaga = ({blog}) => ({
+export const deleteBlogSaga = (blogId) => ({
     type: DELETE_BLOG_SAGA,
-    blog
+    blogId
 });
 
 export const createPostSaga = ({blogId, tags}) => ({
@@ -331,7 +334,15 @@ export const loadPostItemSaga = ({post}) => ({
     post
 });
 
-export const deletePostSaga = ({post}) => ({
+export const deletePostSaga = (postId) => ({
     type: DELETE_POST_SAGA,
-    post
+    postId
+});
+
+export const loadAdminStatisticSaga = () => ({
+    type: LOAD_ADMIN_STATISTIC_SAGA
+});
+
+export const loadStudentStatisticSaga = () => ({
+    type: LOAD_STUDENT_STATISTIC_SAGA
 });

@@ -78,7 +78,7 @@ const post = (posts = {
             };
 
         case DELETE_POST: {
-            let index = posts.list.values.findIndex(o => o._id === action.payload.post._id);
+            let index = posts.list.values.findIndex(o => o._id === action.payload.postId);
 
             posts.list.values.splice(index, 1);
 

@@ -24,7 +24,8 @@ class BlogContainer extends Component {
         super(props);
 
         this.state = {
-            open: false
+            open: false,
+            selectedBlog: null
         }
     }
 
@@ -62,9 +63,9 @@ class BlogContainer extends Component {
         }, 500);
     };
 
-    deleteBlogItem = (blog) => {
+    deleteBlogItem = () => {
         this.setState({open: false});
-        this.props.deleteBlogItem(blog);
+        this.props.deleteBlogItem(this.state.selectedBlog);
     };
 
     showCreate = () => {
@@ -77,11 +78,11 @@ class BlogContainer extends Component {
     };
 
     close = () => {
-        this.setState({open: false})
+        this.setState({open: false, selectedBlog: null})
     };
 
-    open = () => {
-        this.setState({open: true})
+    open = (item) => {
+        this.setState({open: true, selectedBlog: item})
     };
 
     render() {
@@ -108,16 +109,13 @@ class BlogContainer extends Component {
                         <Toolbar
                             loadBlogList={getBlogList}
                         />
-                        <Card>
-                            <Label as='a' onClick={this.open}>
-                                Delete
-                                <Icon name='delete'/>
-                            </Label>
-                            <BlogComponent
-                                values={blog}
-                                navigateTo={this.navigateTo}
-                            />
-                        </Card>
+                        <BlogComponent
+                            canDeleted
+                            deleteItem={this.open}
+                            values={blog}
+                            navigateTo={this.navigateTo}
+                        />
+
                         <Pagination
                             value={page}
                             totalPages={totalPages}
@@ -134,12 +132,10 @@ class BlogContainer extends Component {
                         <Toolbar
                             loadBlogList={getBlogList}
                         />
-                        <Card>
-                            <BlogComponent
-                                values={blog}
-                                navigateTo={this.navigateTo}
-                            />
-                        </Card>
+                        <BlogComponent
+                            values={blog}
+                            navigateTo={this.navigateTo}
+                        />
                         <Pagination
                             value={page}
                             totalPages={totalPages}
@@ -154,12 +150,11 @@ class BlogContainer extends Component {
                         <Toolbar
                             loadBlogList={getBlogList}
                         />
-                        <Card>
-                            <BlogComponent
+
+                        <BlogComponent
                                 values={blog}
                                 navigateTo={this.navigateTo}
-                            />
-                        </Card>
+                        />
                         <Pagination
                             value={page}
                             totalPages={totalPages}
@@ -190,7 +185,7 @@ const connectedBlogContainer = connect(
         {
             addAuthor          : (author) => dispatch(addAuthor(author)),
             getBlogList        : (page, filters) => dispatch(loadBlogListSaga(page, filters)),
-            deleteBlogItem     : (blog) => dispatch(deleteBlogSaga(blog)),
+            deleteBlogItem     : (blogId) => dispatch(deleteBlogSaga(blogId)),
             showCreateBlogModal: () => dispatch(showModal(constants.modal.type.CREATE_BLOG)),
             clean              : () => dispatch(cleanData(constants.LOAD_BLOG_LIST)),
             dispatch
