@@ -15,7 +15,12 @@ export const API_STUDENT_SELECT = '/select/student';
 export const API_OWN_TEACHERS_SUBJECT = '/teacher/subject/own';
 
 export const API_STUDENTS_POINTS_LIST = '/teacher/student';
+export const API_STUDENTS_POINTS_LIST_OWN_POINTS = '/student/point';
 export const API_STUDENTS_LIST = '/teacher/student';
+
+export const API_ADMIN_STATISTIC = '/admin/statistic';
+
+export const API_BLOG = '/blog'
 
 export const API = {
     SUBJECT: {
@@ -39,6 +44,12 @@ export const API = {
     POINT: {
         TEACHER: '/teacher/point',
         STUDENT: '/student/point'
+    },
+
+    STATISTIC: {
+        ADMIN  : '/admin/statistic/student',
+        TEACHER: '/teacher/statistic/student',
+        STUDENT: '/student/statistic/student'
     }
 };
 

@@ -40,6 +40,12 @@ const Sidebar = ({user}) => {
             <Icon name={'blogger'}/>
             Blog management
         </NavLink>
+        <NavLink to="/statistic"
+                 className={`item`}
+                 name='statistic'>
+            <Icon name={'chart bar'}/>
+            Student group statistic
+        </NavLink>
     </Menu>;
 
     const TEACHER = <Menu>
@@ -69,6 +75,12 @@ const Sidebar = ({user}) => {
             <Icon name={'blogger'}/>
             Blog
         </NavLink>
+        <NavLink to="/statistic"
+                 className={`item`}
+                 name='statistic'>
+            <Icon name={'chart bar'}/>
+            Student group statistic
+        </NavLink>
     </Menu>;
 
     const STUDENT = <Menu>
@@ -79,31 +91,23 @@ const Sidebar = ({user}) => {
             <Icon name={'home'}/>
             Home
         </NavLink>
-        <NavLink to='/users'
-                 name='users'
+        <NavLink to='/groups'
+                 name='group'
                  className={`item`}>
             <Icon name={'address card outline'}/>
-            Users management
-        </NavLink>
-        <NavLink to="/subjects"
-                 className={`item`}
-                 name='subjects'
-        >
-            <Icon name={'book'}/>
-            Subject management
-        </NavLink>
-        <NavLink to="/groups"
-                 className={`item`}
-                 name='groups'
-        >
-            <Icon name={'group'}/>
-            Group management
+            My group
         </NavLink>
         <NavLink to="/blog"
                  className={`item`}
                  name='blog'>
             <Icon name={'blogger'}/>
-            Blog management
+            Blog
+        </NavLink>
+        <NavLink to="/statistic"
+                 className={`item`}
+                 name='statistic'>
+            <Icon name={'chart bar'}/>
+            Student group statistic
         </NavLink>
     </Menu>;
 

@@ -13,6 +13,8 @@ import EditSubject from '../Admin/Subject/edit';
 import EditGroup from '../Admin/StudentsGroup/edit';
 import CreateGroup from '../Admin/StudentsGroup/create';
 
+import CreateBlog from '../Teacher/Blog/create'
+
 const {
     showModal,
     hideModal
@@ -46,6 +48,8 @@ class ModalComponent extends React.Component {
                 return <CreateGroup {...modalProps} />;
             case modal.type.EDIT_GROUP:
                 return <EditGroup {...modalProps} />;
+            case modal.type.CREATE_BLOG:
+                return <CreateBlog {...modalProps} />;
             default:
                 return null;
         }

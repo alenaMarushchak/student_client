@@ -22,8 +22,6 @@ class GroupProfile extends Component {
     }
 
     componentDidMount() {
-
-
         this.props.loadGroup(this.props.match.params.id);
     }
 

@@ -73,7 +73,7 @@ function* _createGroupSaga({subjects}) {
             subjects
         };
 
-        const isValid = yield call(validateUser, API_REQUEST, jsonData, 'createGroup', CREATE_GROUP_SAGA);
+        const isValid = yield call(validateUser,jsonData, 'createGroup', CREATE_GROUP_SAGA);
 
         if (!isValid) return;
 
@@ -188,10 +188,17 @@ function* _loadGroup({id}) {
 
         let API_REQUEST = API[API_TYPES.GROUP][ROLES_BY_VALUE[user.role]];
 
-        const response = yield call(() => axios.get(`${API_REQUEST}/${id}`));
-        const subject = response.data;
+        if (ROLES_BY_VALUE[user.role] === 'STUDENT') {
+            const response = yield call(() => axios.get(`${API_REQUEST}`));
+            const group = response.data;
 
-        yield put(loadGroup(subject));
+            yield put(loadGroup(group));
+        } else {
+            const response = yield call(() => axios.get(`${API_REQUEST}/${id}`));
+            const group = response.data;
+
+            yield put(loadGroup(group));
+        }
     } catch (e) {
         yield put(addRequestError(e.response));
     }

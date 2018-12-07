@@ -5,9 +5,11 @@ import constants from '../constants';
 import actions from '../actions';
 import {LOAD_STUDENTS_LIST_SAGA} from "../constants/actionTypes";
 import {getFormValues} from "redux-form";
+import {ROLES_BY_VALUE} from "../constants/custom";
 
 const {
     API_STUDENTS_POINTS_LIST,
+    API_STUDENTS_POINTS_LIST_OWN_POINTS,
     LOAD_STUDENT_POINTS_SAGA,
     API_STUDENTS_LIST
 } = constants;
@@ -20,12 +22,22 @@ const {
 
 function* _loadStudentPointsSaga({studentId}) {
     try {
+        const user = yield select(store => store.session.user);
 
-        const request = yield call(() => axios.get(`${API_STUDENTS_POINTS_LIST}/${studentId}`));
+        if(ROLES_BY_VALUE[user.role] === 'TEACHER'){
+            const request = yield call(() => axios.get(`${API_STUDENTS_POINTS_LIST}/${studentId}`));
 
-        const data = request.data;
+            const data = request.data;
 
-        yield put(loadStudentPoints({values: data}));
+            yield put(loadStudentPoints({values: data}));
+        } else {
+            const request = yield call(() => axios.get(`${API_STUDENTS_POINTS_LIST_OWN_POINTS}`));
+
+            const data = request.data;
+
+            yield put(loadStudentPoints({values: data}));
+        }
+
     } catch (err) {
         console.error(err);
         yield put(addRequestError(err.response));
