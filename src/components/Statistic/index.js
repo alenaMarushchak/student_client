@@ -35,11 +35,10 @@ let GroupItem = (props) => {
 };
 
 const StatisticComponent = (props) => {
-    const {statistic} = props;
-
+    const {data} = props;
 
     return (<Container>
-        {statistic && statistic.length ? statistic.map(item => <GroupItem item={item} key={item._id}/>) : null}
+        {data && data.length ? data.map(item => <GroupItem item={item} key={item._id}/>) : null}
     </Container>)
 };
 

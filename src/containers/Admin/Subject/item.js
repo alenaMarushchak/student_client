@@ -4,7 +4,7 @@ import actions from '../../../actions/index';
 import constants from "../../../constants/index";
 import {push} from "react-router-redux";
 
-import {Header, Button, Container, Image, Segment} from 'semantic-ui-react'
+import {Header, Button, Container, Image, Segment, Card, Label, Icon} from 'semantic-ui-react'
 
 const {
     loadSubjectSaga,
@@ -38,17 +38,15 @@ class UserProfile extends Component {
     render() {
         const {
             subject: {
-                name
+                name,
+                teacher,
+                groups
             } = {}
         } = this.props;
 
         let content = name ? <React.Fragment>
                 <Container>
-                    <Header as={'h2'} content={'User Information'}/>
-
-                    <Segment>
-                        <Image src='/img/logo.jpg' size='small' circular/>
-                    </Segment>
+                    <Header as={'h2'} content={'Subject Information'}/>
 
                     <Segment>
                         <Header as='h5' attached='top'>
@@ -57,6 +55,19 @@ class UserProfile extends Component {
 
                         <Segment attached color='teal'>{name}</Segment>
 
+                        {teacher && teacher._id ? <Card>
+                            <Image src={teacher.avatar}/>
+                            <Card.Content>
+                                <Card.Header>{teacher.name}</Card.Header>
+                                <Card.Meta>{teacher.email}</Card.Meta>
+                            </Card.Content>
+                        </Card> : null}
+
+                        <Segment>
+                            {groups && groups.length ? groups.map(item => <Label key={item._id}>
+                                <Icon name='group'/> {item.name}
+                            </Label>) : null}
+                        </Segment>
 
                     </Segment>
                 </Container>
