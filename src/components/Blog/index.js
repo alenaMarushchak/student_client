@@ -8,7 +8,7 @@ function BlogList({
                           deleteItem
                       }) {
     return (<React.Fragment>
-            {values.map( value => <Item item={value} navigateTo={navigateTo} key={value._id}  canDeleted={canDeleted}
+            {values && values.length && values.map( value => <Item item={value} navigateTo={navigateTo} key={value._id}  canDeleted={canDeleted}
                 deleteItem={deleteItem} />)}
             </React.Fragment>
     );
