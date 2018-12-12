@@ -42,7 +42,7 @@ function* _loadStudentStatisticSaga() {
     try {
         const user = yield select(store => store.session.user);
 
-        let API_REQUEST = API[API_TYPES.GROUP][ROLES_BY_VALUE[user.role]];
+        let API_REQUEST = API[API_TYPES.STATISTIC][ROLES_BY_VALUE[user.role]];
 
         const response = yield call(() => axios.get(API_REQUEST));
 

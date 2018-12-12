@@ -50,7 +50,7 @@ class PointInput extends Component {
         const {value, edited, saved} = this.state;
 
         return (<React.Fragment>
-            {edited ? <Label pointing='below'>Press enter to save changes</Label> : null}
+            {edited ? <Label pointing='right'>Press enter to save changes</Label> : null}
             <input type="text" value={value} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
         </React.Fragment>);
     }

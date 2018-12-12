@@ -103,7 +103,7 @@ class BlogContainer extends Component {
                 content = (<React.Fragment>
 
                     <Confirm open={this.state.open} onCancel={this.close} onConfirm={this.deleteBlogItem}/>
-                    <Header as='h3' onClick={this.showCreate} style={{cursor: 'pointer'}}>Create blog +</Header>
+
 
                     {blog && blog.length ? <React.Fragment>
                         <Toolbar
@@ -183,7 +183,6 @@ const connectedBlogContainer = connect(
     }),
     dispatch => (
         {
-            addAuthor          : (author) => dispatch(addAuthor(author)),
             getBlogList        : (page, filters) => dispatch(loadBlogListSaga(page, filters)),
             deleteBlogItem     : (blogId) => dispatch(deleteBlogSaga(blogId)),
             showCreateBlogModal: () => dispatch(showModal(constants.modal.type.CREATE_BLOG)),

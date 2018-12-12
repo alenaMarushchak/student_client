@@ -57,5 +57,6 @@ export const API_TYPES = {
     SUBJECT: 'SUBJECT',
     GROUP  : 'GROUP',
     USER   : 'USER',
-    POINT  : 'POINT'
+    POINT  : 'POINT',
+    STATISTIC: 'STATISTIC'
 };
