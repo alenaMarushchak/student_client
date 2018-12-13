@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import actions from '../../../actions';
 
-import {Button, Header, Table} from 'semantic-ui-react'
+import {Table} from 'semantic-ui-react'
 
 import PointInput from './pointInput';
 

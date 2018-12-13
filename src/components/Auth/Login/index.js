@@ -5,7 +5,8 @@ import Input from '../../CustomElements/Input';
 import {Button, Form, Grid, Header, Image, Segment, Icon, Divider} from 'semantic-ui-react'
 
 function Login({
-                   onSubmit
+                   onSubmit,
+                   errors
                }) {
     return (
         <Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
@@ -20,11 +21,13 @@ function Login({
                         <Header as='h5' color='teal' textAlign='center'>
                             <Icon circular name='user'/> Email
                         </Header>
+                        {errors && errors.email ? <span>{errors.email}</span> : null}
                         <Input name="email" type="email" containerProps={{className: 'input-field'}}
                                placeholder={'email'}/>
                         <Header as='h5' color='teal' textAlign='center'>
                             <Icon circular name='lock'/> Password
                         </Header>
+                        {errors && errors.password ? <span>{errors.password}</span> : null}
                         <Input name="password" type="password" placeholder={'password'}
                                containerProps={{className: 'input-field'}}
                         />

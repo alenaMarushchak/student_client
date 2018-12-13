@@ -1,4 +1,4 @@
-import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, select, takeLatest} from 'redux-saga/effects';
 import validator from '../services/validator'
 import {getFormValues} from 'redux-form';
 import axios from 'axios';
@@ -12,7 +12,6 @@ const {
     LOAD_USER_SAGA,
     EDIT_USER_SAGA,
     DELETE_USER_SAGA,
-    UPLOAD_AVATAR_SAGA
 } = constants;
 
 const {
@@ -30,7 +29,6 @@ const {
 } = actions;
 
 const SORT_ASC = 1;
-const SORT_DESC = -1;
 
 const defaultSortKey = 'name';
 const defaultSortOrder = SORT_ASC;
@@ -171,14 +169,11 @@ function* _loadUsersList({filters = {}, page = 0}) {
 
         const {
             pages,
-            total,
-            limit
         } = response.data.meta;
 
         yield put(loadUsersList(users, newPage, {search, ...filters}, pages));
     } catch (e) {
         yield put(addRequestError(e.response));
-        console.error(e);
     }
 }
 
@@ -189,7 +184,6 @@ function* _loadUser({id}) {
 
         yield put(loadUser(user));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }
@@ -200,7 +194,6 @@ function* _deleteUser({id}) {
 
         yield put(deleteUser(id));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }

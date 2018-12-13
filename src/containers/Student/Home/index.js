@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
-import {Header, Button, Table} from 'semantic-ui-react'
+import {Header, Table} from 'semantic-ui-react'
 
 import StudentItemAllPoints from '../../../components/Teacher/StudentItemAllPoints'
 

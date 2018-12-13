@@ -1,4 +1,4 @@
-import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, select, takeLatest} from 'redux-saga/effects';
 import validator from '../services/validator'
 import {getFormValues} from 'redux-form';
 import axios from 'axios';
@@ -64,8 +64,6 @@ const apiEdit = (API, data, id) => (
 
 function* _createGroupSaga({subjects}) {
     try {
-        let API_REQUEST = API[API_TYPES.SUBJECT]['ADMIN'];
-
         const generatedFields = yield select(store => (getFormValues('createGroup')(store)));
 
         const jsonData = {
@@ -172,8 +170,7 @@ function* _loadGroupsList({filters = {}, page = 0}) {
 
         const {
             pages,
-            total,
-            limit
+
         } = response.data.meta;
 
         yield put(loadGroupsList(groups, newPage, {...oldFilters, search, ...filters}, pages));
@@ -212,7 +209,7 @@ function* _deleteGroup({id}) {
 
         yield put(deleteGroup(id));
     } catch (e) {
-        console.error(e);
+
         yield put(addRequestError(e.response));
     }
 }
@@ -226,7 +223,7 @@ function* _loadGroupWithPointsSaga({subjectId, groupId}) {
 
         yield put(loadGroupWithStudentsPoints(data));
     } catch (err) {
-        console.error(err);
+
         yield put(addRequestError(err.response));
     }
 }
@@ -245,7 +242,7 @@ function* _addPointToStudentSaga({studentId, subjectId, point, pointType}) {
 
         yield put(addPointToStudent({studentId, point, pointType}));
     } catch (err) {
-        console.error(err);
+
         yield put(addRequestError(err.response));
     }
 }

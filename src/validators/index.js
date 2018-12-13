@@ -4,6 +4,7 @@ import {createSubject, editSubject} from './subject.js'
 import {createGroup, editGroup} from './group.js'
 import {createPost} from './post.js';
 import {createBlog} from './blog.js';
+import {authorize} from './authorize';
 
 export {
     profile,
@@ -14,6 +15,7 @@ export {
     createGroup,
     editGroup,
     createPost,
-    createBlog
+    createBlog,
+    authorize
 }
 

@@ -18,7 +18,6 @@ class TagsInputComponent extends Component {
     onAddItem = (selectedOption) => {
         this.props.addItem(selectedOption);
 
-        console.log(selectedOption);
         this.setState({
             value: ''
         });

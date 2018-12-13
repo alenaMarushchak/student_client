@@ -8,7 +8,6 @@ function UsersList({
                        deleteUser,
                        sortList,
                        activeSortField,
-                       activeSortOrder
                    }) {
 
     let baseStyle = {cursor: 'pointer', color: 'black'};

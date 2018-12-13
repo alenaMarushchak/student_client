@@ -1,5 +1,4 @@
 import {call, put, select, takeLatest} from 'redux-saga/effects';
-import {getFormValues} from 'redux-form';
 import axios from 'axios';
 import constants from '../constants';
 import actions from '../actions';
@@ -55,14 +54,12 @@ function* _loadSelectList({typeOfApi, page, search = ''}) {
 
         const {
             pages,
-            total,
-            limit
+
         } = response.data.meta;
 
         yield put(loadSelectList(selectOptions, newPage, {search}, pages));
     } catch (e) {
         yield put(addRequestError(e.response));
-        console.error(e);
     }
 }
 

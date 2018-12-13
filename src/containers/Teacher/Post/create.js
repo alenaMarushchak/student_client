@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
-import {Button, Header, Input, Segment} from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react'
 
 import constants from "../../../constants";
 import CreatePostForm from "../../../components/Post/createPost";

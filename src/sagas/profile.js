@@ -1,4 +1,4 @@
-import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, takeEvery} from 'redux-saga/effects';
 import axios from 'axios';
 import constants from '../constants';
 import actions from '../actions';
@@ -35,9 +35,6 @@ function* _updateProfileAvatar({avatar: {avatar: file}}) {
             avatar: file
         };
 
-        console.log('_updateProfileAvatar');
-        console.log(file);
-
         if (file.type.indexOf('image') === -1) {
             yield put(addErrorsSaga(UPLOAD_AVATAR_SAGA, 'Invalid file'));
             return;
@@ -53,7 +50,6 @@ function* _updateProfileAvatar({avatar: {avatar: file}}) {
         yield put(toast.success('Profile was updated successfully'))
     } catch (e) {
         yield put(addErrorsSaga(UPLOAD_AVATAR_SAGA, e.response));
-        console.error(e);
     }
 }
 

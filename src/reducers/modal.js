@@ -1,5 +1,4 @@
 import constants from '../constants';
-import {push} from 'react-router-redux';
 
 const {
     SHOW_MODAL,

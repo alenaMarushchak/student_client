@@ -1,4 +1,4 @@
-import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, select, takeLatest} from 'redux-saga/effects';
 import validator from '../services/validator'
 import {getFormValues} from 'redux-form';
 import axios from 'axios';
@@ -80,8 +80,7 @@ function* _loadBlogListSaga({filters = {}, page = 0}) {
 
         const {
             pages,
-            total,
-            limit
+
         } = response.data.meta;
 
         yield put(loadBlogList(blog, newPage, {...oldFilters, search, ...filters}, pages));
@@ -109,7 +108,7 @@ function* _createBlogSaga({blog}) {
 
         yield put(hideModal());
     } catch (e) {
-        console.log(e);
+
         yield put(addErrorsSaga(CREATE_BLOG_SAGA, e.response));
     }
 }
@@ -150,8 +149,7 @@ function* _loadPostListSaga({blogId, filters = {}, page = 0}) {
 
         const {
             pages,
-            total,
-            limit
+
         } = response.data.meta;
 
         yield put(loadPostList(post, newPage, {...oldFilters, search, ...filters}, pages));
@@ -166,9 +164,9 @@ function* _loadPostItemSaga({post}) {
 
         const response = yield call(() => axios.get(`${API_BLOG}/post/${postId}`));
 
-        const post = response.data;
+        const postData = response.data;
 
-        yield put(loadPostItem({post}));
+        yield put(loadPostItem({post: postData}));
     } catch (e) {
         yield put(addRequestError(e.response));
     }

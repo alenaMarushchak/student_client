@@ -39,7 +39,6 @@ function* _loadStudentPointsSaga({studentId}) {
         }
 
     } catch (err) {
-        console.error(err);
         yield put(addRequestError(err.response));
     }
 }
@@ -74,13 +73,12 @@ function* _loadStudentListSaga({filters = {}, page = 0}) {
 
         const {
             pages,
-            total,
-            limit
+
         } = response.data.meta;
 
         yield put(loadStudentsList(subjects, newPage, {...oldFilters, search, ...filters}, pages));
     } catch (err) {
-        console.error(err);
+
         yield put(addRequestError(err.response));
     }
 }

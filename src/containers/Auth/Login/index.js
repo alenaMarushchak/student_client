@@ -8,6 +8,7 @@ const {
 } = actions;
 
 import LoginForm from '../../../components/Auth/Login';
+import constants from "../../../constants";
 
 class Login extends Component {
     static propTypes = {
@@ -25,10 +26,13 @@ class Login extends Component {
     };
 
     render() {
+        const {errors} = this.props;
+
         return (
             <React.Fragment>
                 <LoginForm
                     onSubmit={this.onSubmit}
+                    errors={errors}
                 />
             </React.Fragment>
         );
@@ -36,7 +40,9 @@ class Login extends Component {
 }
 
 const connectedLogin = connect(
-    state => ({}),
+    store => ({
+        errors: store.errors[`${constants.LOGIN}_FRONTEND`],
+    }),
     dispatch => (
         {
             login: () => dispatch(loginSaga()),

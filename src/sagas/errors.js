@@ -1,7 +1,6 @@
-import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
+import {call, put, takeEvery} from 'redux-saga/effects';
 import constants from '../constants';
 import actions from '../actions';
-// import validator from 'services/validator.js'
 
 const {
     API_ERROR_SAGA,
@@ -52,7 +51,7 @@ function* handleResponseByStatus(response) {
 
 function* handleErrors(requestType, handler, errors, response) {
     yield call(handleResponseByStatus, response);
-    console.log(requestType, handler, errors, response);
+
     switch (handler) {
         case TOAST_HANDLER:
             yield put(toast.error(errors));

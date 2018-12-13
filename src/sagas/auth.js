@@ -1,9 +1,10 @@
-import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, select, takeLatest} from 'redux-saga/effects';
 import _ from 'lodash';
 import auth from '../services/auth';
 import axios from 'axios';
 import constants from '../constants';
 import actions from '../actions';
+import validator from "../services/validator";
 
 const {
     API_LOGIN,
@@ -18,13 +19,36 @@ const {
     requestLoginSuccess,
     requestLoginError,
     toast,
-    updateSession
+    updateSession,
+    addValidateError,
+    cleanErrors,
 } = actions;
+
+function* validateUser(data, type, action) {
+    const errors = validator.validate(data, type);
+
+    if (errors) {
+        yield put(addValidateError(action, errors));
+        return false;
+    } else {
+        yield put(cleanErrors(action));
+        return true;
+    }
+}
 
 function* loginAsync() {
     try {
         yield put(requestLogin());
         const {email, password} = yield select(store => store.form.login.values);
+
+        let data = {
+            email, password
+        };
+
+        const isValid = yield call(validateUser, data, 'authorize', LOGIN);
+
+        if (!isValid) return;
+
         const user = yield call(() => {
             return axios.post(API_LOGIN, {
                 email,
@@ -38,6 +62,7 @@ function* loginAsync() {
 
         yield put(requestLoginSuccess(user));
     } catch (error) {
+        yield put(toast.error(`Email or password is incorrect!`));
         yield put(requestLoginError(error));
     }
 }
