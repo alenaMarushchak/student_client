@@ -5,6 +5,20 @@ Student Management system on React Redux
 Hi, this is a simple project to demonstrate my skills on **React** and **Redux**  . 
 This is frontend-side project for Student Management System.
 
+The main idea behind this project is the control of the learning process by students and faculty. Students can receive data from their subjects, teachers present ratings and view progress statistics.
+
+![image](https://user-images.githubusercontent.com/20284844/49926648-b9db4400-fec4-11e8-870e-6298261c8eff.png)
+
+![image](https://user-images.githubusercontent.com/20284844/49926705-d9726c80-fec4-11e8-89c2-edd46c0e3568.png)
+
+![image](https://user-images.githubusercontent.com/20284844/49926731-eabb7900-fec4-11e8-9643-486e2d761c1f.png)
+
+![image](https://user-images.githubusercontent.com/20284844/49926748-f60ea480-fec4-11e8-9947-5d4517437ec3.png)
+
+![image](https://user-images.githubusercontent.com/20284844/49926777-0888de00-fec5-11e8-9d40-7f9689f98029.png)
+
+![image](https://user-images.githubusercontent.com/20284844/49926791-13437300-fec5-11e8-817a-dbc7d8a1a6f6.png)
+
 Main requirements: 
 
 The system should have three roles:
@@ -59,4 +73,6 @@ Basic system requirements:
 
 ### So just enjoy it!
 ![img](https://i.pinimg.com/564x/aa/e9/fa/aae9fa8f8275b347515627de7e537d18.jpg "git")
+
+
 
