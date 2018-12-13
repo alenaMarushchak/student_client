@@ -1,4 +1,4 @@
-import {call, put, select, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, select, takeLatest} from 'redux-saga/effects';
 import validator from '../services/validator'
 import {getFormValues} from 'redux-form';
 import axios from 'axios';
@@ -171,9 +171,7 @@ function* _loadSubjectsList({filters = {}, page = 0}) {
         const subjects = response.data.data;
 
         const {
-            pages,
-            total,
-            limit
+            pages
         } = response.data.meta;
 
         yield put(loadSubjectsList(subjects, newPage, {...oldFilters, search, ...filters}, pages));
@@ -205,7 +203,6 @@ function* _deleteSubject({id}) {
 
         yield put(deleteSubject(id));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }
@@ -236,9 +233,7 @@ function* _loadOwnTeachersSubjectsSaga({filters = {}, page = 0}) {
         const subjects = response.data.data;
 
         const {
-            pages,
-            total,
-            limit
+            pages
         } = response.data.meta;
 
         yield put(loadOwnTeacherSubjectsList(subjects, newPage, {...oldFilters, search, ...filters}, pages));
@@ -259,7 +254,6 @@ function* _addTeacherToSubjectSaga({subject}) {
 
         yield put(addTeacherToSubject({_id, name}));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }
@@ -274,7 +268,6 @@ function* _removeTeacherFromSubjectSaga({subject}) {
 
         yield put(removeTeacherFromSubject({subject}));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }
@@ -306,14 +299,11 @@ function* _loadGroupsBySubject({page, filters, subjectId}) {
         const subjects = response.data.data;
 
         const {
-            pages,
-            total,
-            limit
+            pages
         } = response.data.meta;
 
         yield put(loadGroupsBySubject(subjects, newPage, {...oldFilters, search, ...filters}, pages));
     } catch (e) {
-        console.error(e);
         yield put(addRequestError(e.response));
     }
 }

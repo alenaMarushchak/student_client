@@ -32,7 +32,8 @@ function* showToast({ toastType, node }) {
             <ToastComp>{node || false}</ToastComp>
         )
     } catch (e) {
-        console.error(e);
+        // eslint-disable-next-line no-use-before-define
+        console.error(e); // eslint-disable-line no-use-before-define
     }
 }
 

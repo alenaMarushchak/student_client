@@ -3,7 +3,6 @@ import constants from '../constants';
 const {
     LOAD_BLOG_LIST,
     CREATE_BLOG,
-    EDIT_BLOG,
     DELETE_BLOG,
     CLEAN_DATA
 } = constants;

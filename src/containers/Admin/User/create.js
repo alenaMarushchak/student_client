@@ -25,7 +25,6 @@ class CreateUser extends Component {
             modalContentProps
         } = this.props;
 
-        console.log('render modal');
         return (
             <React.Fragment>
 

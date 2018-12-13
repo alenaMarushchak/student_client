@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from "react-router-redux";
-import {Button, Modal, Header, Tab, Segment, Container} from "semantic-ui-react";
+import {Button, Modal, Header, Tab, Segment} from "semantic-ui-react";
 import {SELECT_TOOLBAR_NAMES} from '../../../constants/custom'
 
 import actions from '../../../actions/index';

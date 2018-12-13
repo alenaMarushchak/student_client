@@ -12,8 +12,7 @@ import Pagination from "../../components/CustomElements/Pagination";
 import CreatePostForm from '../Teacher/Post/create'
 
 import {ROLES} from "../../constants/custom";
-import {Segment, Card, Label, Icon, Confirm, Button} from "semantic-ui-react";
-import BlogComponent from "../../components/Blog";
+import {Segment,  Confirm} from "semantic-ui-react";
 
 const {
     loadPostListSaga,

@@ -9,14 +9,13 @@ import Toolbar from "../../components/Blog/toolbar";
 import BlogComponent from "../../components/Blog";
 import Pagination from "../../components/CustomElements/Pagination";
 import {ROLES} from "../../constants/custom";
-import {Header, Card, Label, Icon, Confirm} from "semantic-ui-react";
+import {Header, Confirm} from "semantic-ui-react";
 
 const {
     loadBlogListSaga,
     showModal,
     deleteBlogSaga,
-    cleanData,
-    addAuthor
+    cleanData
 } = actions;
 
 class BlogContainer extends Component {

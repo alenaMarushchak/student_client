@@ -4,7 +4,6 @@ import {Icon, Label, Segment} from 'semantic-ui-react'
 
 const SelectedOptions = ({
                              values,
-                             options,
                              onDeleteItem
                          }) => {
     const selectedOptions = values.length ? values.map(item =>

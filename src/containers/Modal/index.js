@@ -16,7 +16,6 @@ import CreateGroup from '../Admin/StudentsGroup/create';
 import CreateBlog from '../Teacher/Blog/create'
 
 const {
-    showModal,
     hideModal
 } = actions;
 

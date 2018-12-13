@@ -6,10 +6,7 @@ const {
     LOAD_POST_ITEM,
     CREATE_POST,
     DELETE_POST,
-    CREATE_COMMENT,
-    DELETE_COMMENT,
 
-    ADD_AUTHOR
 } = constants;
 
 const post = (posts = {
@@ -93,17 +90,6 @@ const post = (posts = {
                 }
             };
         }
-
-        // case CREATE_COMMENT: {
-        //     const {comment} = action.payload;
-        //
-        //
-        // }
-        //
-        // case DELETE_COMMENT: {
-        //
-        // }
-
         default:
             return posts;
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {Header, Button} from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react'
 
 import StudentsGroupDetail from '../../../components/Teacher/StudentsGroup/stundetsGroupDetail'
 

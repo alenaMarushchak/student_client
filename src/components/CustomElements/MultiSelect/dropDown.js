@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {List, Segment, Label} from 'semantic-ui-react'
+import {List, Segment} from 'semantic-ui-react'
 
 const DropDownComponent = ({
                                options,

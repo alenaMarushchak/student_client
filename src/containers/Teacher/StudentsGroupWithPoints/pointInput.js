@@ -47,7 +47,7 @@ class PointInput extends Component {
     };
 
     render() {
-        const {value, edited, saved} = this.state;
+        const {value, edited} = this.state;
 
         return (<React.Fragment>
             {edited ? <Label pointing='right'>Press enter to save changes</Label> : null}

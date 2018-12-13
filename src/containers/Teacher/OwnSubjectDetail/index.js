@@ -58,8 +58,6 @@ class GroupProfile extends Component {
     navigateTo = (groupId) => {
         const {match: {params: {id}}} = this.props;
 
-        console.log('navigateTo ownsubjectdetail ', id, groupId);
-
         this.props.dispatch(push(`/subjects/${id}/groups/${groupId}`));
     };
 

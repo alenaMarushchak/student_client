@@ -8,19 +8,13 @@ import {ROLES_BY_VALUE} from "../constants/custom";
 const {
     API,
     API_TYPES,
-
     LOAD_ADMIN_STATISTIC_SAGA,
     API_ADMIN_STATISTIC,
     LOAD_STUDENT_STATISTIC_SAGA
 } = constants;
 
 const {
-    toast,
-    addErrorsSaga,
-    addValidateError,
-    cleanErrors,
     addRequestError,
-
     loadAdminStatistic,
     loadStudentStatistic
 } = actions;
@@ -68,5 +62,3 @@ export {
     loadAdminStatisticSaga,
     loadStudentStatisticSaga
 };
-
-//  коментарі, статтистика по студентам, прикріплення файлів до постів і сповіщення
